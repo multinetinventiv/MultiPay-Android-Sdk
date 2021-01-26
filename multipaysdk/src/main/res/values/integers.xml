@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="otp_length">6</integer>
+    <integer name="multinet_card_length">19</integer>
+    <integer name="multinet_card_cvv_length">4</integer>
+</resources>

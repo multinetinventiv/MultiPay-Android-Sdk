@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="keppel">#5db185</color>
+    <color name="como">#457E5B</color>
+    <color name="clear_day">#E6F3ED</color>
+    <color name="blackcurrant">#18163d</color>
+    <color name="dark_green">#000118</color>
+    <color name="solitude">#e7e7ef</color>
+    <color name="white">#ffffff</color>
+    <color name="carmine">#b00020</color>
+    <color name="black">#000000</color>
+    <color name="colorProgressDim">#33000000</color>
+    <color name="paua">#242554</color>
+    <color name="deep_koamaru">#33366B</color>
+    <color name="white_blur">#fafafa</color>
+</resources>
