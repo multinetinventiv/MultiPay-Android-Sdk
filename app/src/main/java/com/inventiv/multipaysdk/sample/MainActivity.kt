@@ -3,9 +3,8 @@ package com.inventiv.multipaysdk.sample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
+import com.google.gson.Gson
 import com.inventiv.multipaysdk.Environment
-import com.inventiv.multipaysdk.MultiPaySdk
-import com.inventiv.multipaysdk.data.model.type.Language
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,48 +23,27 @@ class MainActivity : AppCompatActivity() {
         buttonProduction = findViewById(R.id.btn_production_env)
 
         buttonDev.setOnClickListener {
-            MultiPaySdk.init(
-                context = this.applicationContext,
-                walletAppToken = "",
-                paymentAppToken = "",
-                environment = Environment.DEV,
-                language = Language.TR
-            )
-            goToWallet()
+            goToInfo(Environment.DEV)
         }
         buttonPilot.setOnClickListener {
-            MultiPaySdk.init(
-                context = this.applicationContext,
-                walletAppToken = "",
-                paymentAppToken = "",
-                environment = Environment.PILOT,
-                language = Language.TR
-            )
-            goToWallet()
+            goToInfo(Environment.PILOT)
         }
         buttonTest.setOnClickListener {
-            MultiPaySdk.init(
-                context = this.applicationContext,
-                walletAppToken = "",
-                paymentAppToken = "",
-                environment = Environment.TEST,
-                language = Language.TR
-            )
-            goToWallet()
+            goToInfo(Environment.TEST)
         }
         buttonProduction.setOnClickListener {
-            MultiPaySdk.init(
-                context = this.applicationContext,
-                walletAppToken = "",
-                paymentAppToken = "",
-                environment = Environment.PRODUCTION,
-                language = Language.TR
-            )
-            goToWallet()
+            goToInfo(Environment.PRODUCTION)
+        }
+
+        val sharedPref = getSharedPref()
+        val strInfos = sharedPref.getString(PREF_INFOS, String())
+        if (!strInfos.isNullOrEmpty()) {
+            val infos = Gson().fromJson<Infos>(strInfos, Infos::class.java)
+            startActivity(MultinetWalletActivity.newIntent(this@MainActivity, infos))
         }
     }
 
-    private fun goToWallet() {
-        startActivity(MultinetWalletActivity.newIntent(this@MainActivity))
+    private fun goToInfo(environment: Environment) {
+        startActivity(InformationActivity.newIntent(this@MainActivity, environment))
     }
 }
