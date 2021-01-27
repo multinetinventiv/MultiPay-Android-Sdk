@@ -55,71 +55,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_payment_app_token" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_merchant_reference_number"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="MerchantReferenceNumber"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_user_id" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_terminal_reference_number"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="TerminalReferenceNumber"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_merchant_reference_number" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_amount"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Amount"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_terminal_reference_number" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_product_id"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="ProductId"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_amount" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_sign"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Sign"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_product_id" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_save"
                 android:layout_width="0dp"
@@ -128,7 +63,7 @@
                 android:text="Save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_sign" />
+                app:layout_constraintTop_toBottomOf="@+id/edit_user_id" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

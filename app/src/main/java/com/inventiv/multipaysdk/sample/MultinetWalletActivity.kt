@@ -13,8 +13,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.MultiPaySdkListener
+import com.inventiv.multipaysdk.data.model.request.TransactionDetail
 import com.inventiv.multipaysdk.data.model.response.SingleWalletResponse
 import com.inventiv.multipaysdk.data.model.response.UnselectWalletResponse
 import com.inventiv.multipaysdk.data.model.response.WalletResponse
@@ -39,6 +41,7 @@ class MultinetWalletActivity : AppCompatActivity() {
     private lateinit var info: Infos
     private var walletToken: String? = null
     private var walletResponse: WalletResponse? = null
+    private var paymentInfos: PaymentInfos? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +74,33 @@ class MultinetWalletActivity : AppCompatActivity() {
         }
 
         bindOnClickEvents()
+        subscribeDialogFragmentResult()
+    }
+
+    private fun subscribeDialogFragmentResult() {
+        supportFragmentManager
+            .setFragmentResultListener(REQUEST_PAYMENT_DIALOG, this) { _, bundle ->
+                val strPaymentInfos = bundle.getString(FRAGMENT_RESULT_PAYMENT_INFOS)
+                if (!strPaymentInfos.isNullOrEmpty()) {
+                    paymentInfos = Gson().fromJson(strPaymentInfos, PaymentInfos::class.java)
+                    MultiPaySdk.confirmPayment(
+                        walletToken = walletToken!!,
+                        requestId = paymentInfos!!.requestId,
+                        terminalReferenceNumber = paymentInfos!!.terminalReferenceNumber,
+                        merchantReferenceNumber = paymentInfos!!.merchantReferenceNumber,
+                        transferReferenceNumber = paymentInfos!!.transferReferenceNumber,
+                        transactionDetails = listOf(
+                            TransactionDetail(
+                                amount = paymentInfos!!.amount,
+                                productId = paymentInfos!!.productId,
+                                referenceNumber = paymentInfos!!.referenceNumber
+                            )
+                        ),
+                        sign = paymentInfos!!.sign,
+                        listener = multiPaySdkListener
+                    )
+                }
+            }
     }
 
     private fun bindOnClickEvents() {
@@ -91,7 +121,7 @@ class MultinetWalletActivity : AppCompatActivity() {
         }
 
         (walletItem.findViewById(R.id.button_confirm_payment) as Button).setOnClickListener {
-//            onConfirmPaymentClicked()
+            onConfirmPaymentClicked()
         }
     }
 
@@ -163,6 +193,13 @@ class MultinetWalletActivity : AppCompatActivity() {
 
     private fun onCardDeleteClicked() {
         MultiPaySdk.deleteWallet(walletResponse?.token!!, multiPaySdkListener)
+    }
+
+    private fun onConfirmPaymentClicked() {
+        ConfirmPaymentDialogFragment().show(
+            supportFragmentManager,
+            "FRAGMENT_CONFIRM_PAYMENT_DIALOG"
+        )
     }
 
     private fun onDeleteInfosClicked() {
