@@ -76,7 +76,7 @@ class InformationActivity : AppCompatActivity() {
             getSharedPref().edit().putString(PREF_INFOS, strInfos).apply()
 
             startActivity(MultinetWalletActivity.newIntent(this@InformationActivity, infos))
-
+            finish()
         }
 
     }

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.base.BaseContainerActivity
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
+import com.inventiv.multipaysdk.ui.splash.SplashActivity
 import com.inventiv.multipaysdk.util.*
 
 internal class OtpActivity : BaseContainerActivity() {
@@ -42,5 +43,11 @@ internal class OtpActivity : BaseContainerActivity() {
             otpNavigationArgs!!,
             otpDirectionFrom!!
         )
+    }
+
+    // TODO : login ve otp sayfası tek activity'e çekildikten sonra bu kod silinmeli
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(SplashActivity.newIntent(this@OtpActivity, isCancelled = true))
     }
 }

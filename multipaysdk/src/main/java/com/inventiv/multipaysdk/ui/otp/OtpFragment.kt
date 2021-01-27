@@ -91,6 +91,10 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         otpNavigationArgs = arguments?.getParcelable(ARG_OTP_NAVIGATION)
         otpDirectionFrom = arguments?.getParcelable(ARG_OTP_DIRECTION_FROM)
         requireBinding().viewPin.addTextChangedListener(simpleTextWatcher)
+        // TODO : login ve otp sayfası tek activity'e çekildikten sonra bu kod silinmeli
+        toolbar().setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
         val textOtpDescription = getString(
             R.string.otp_description,
             Formatter.formatPhoneNumber(otpNavigationArgs?.gsmNumber, true)

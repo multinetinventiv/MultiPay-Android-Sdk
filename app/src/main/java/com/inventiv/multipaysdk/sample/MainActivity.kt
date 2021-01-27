@@ -38,8 +38,9 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPref()
         val strInfos = sharedPref.getString(PREF_INFOS, String())
         if (!strInfos.isNullOrEmpty()) {
-            val infos = Gson().fromJson<Infos>(strInfos, Infos::class.java)
+            val infos = Gson().fromJson(strInfos, Infos::class.java)
             startActivity(MultinetWalletActivity.newIntent(this@MainActivity, infos))
+            finish()
         }
     }
 
