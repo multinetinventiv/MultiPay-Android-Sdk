@@ -128,6 +128,7 @@ class MultinetWalletActivity : AppCompatActivity() {
     private val multiPaySdkListener = object : MultiPaySdkListener {
         override fun onTokenReceived(token: String) {
             Log.i(TAG, "${info.environment.name} onTokenReceived: $token")
+            getSharedPref().edit().putString(PREF_WALLET_TOKEN, token).apply()
             getCardInfo(token, this)
         }
 
