@@ -183,11 +183,11 @@ class MultinetWalletActivity : AppCompatActivity() {
     }
 
     private fun callStartSdkMethod() {
-        MultiPaySdk.startSDKForSubmitConsumer(this, null)
+        MultiPaySdk.start(this, null)
     }
 
     private fun onCardChangeClicked() {
-        MultiPaySdk.startSDKForSubmitConsumer(this, walletToken!!)
+        MultiPaySdk.start(this, walletToken!!)
     }
 
     private fun getCardInfo(token: String, multiPaySdkListener: MultiPaySdkListener) {

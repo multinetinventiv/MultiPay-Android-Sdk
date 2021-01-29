@@ -37,7 +37,7 @@ object MultiPaySdk {
     fun setLanguage(language: Language) = getComponent().setLanguage(language)
 
     @JvmStatic
-    fun startSDKForSubmitConsumer(
+    fun start(
         context: Context,
         walletToken: String?
     ) {
