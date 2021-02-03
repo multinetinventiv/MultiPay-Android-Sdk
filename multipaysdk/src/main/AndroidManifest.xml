@@ -18,12 +18,7 @@
             android:theme="@style/Theme.MultiPaySdk" />
 
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.MultiPaySdk" />
-        <activity
-            android:name=".ui.otp.OtpActivity"
+            android:name=".ui.authentication.AuthenticationActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MultiPaySdk"

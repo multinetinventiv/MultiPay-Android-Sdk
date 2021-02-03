@@ -1,4 +1,4 @@
-package com.inventiv.multipaysdk.ui.otp
+package com.inventiv.multipaysdk.ui.authentication.otp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

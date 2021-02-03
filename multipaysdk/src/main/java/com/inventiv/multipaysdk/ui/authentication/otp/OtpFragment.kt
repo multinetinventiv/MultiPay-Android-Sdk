@@ -1,4 +1,4 @@
-package com.inventiv.multipaysdk.ui.otp
+package com.inventiv.multipaysdk.ui.authentication.otp
 
 import android.os.Bundle
 import android.os.CountDownTimer

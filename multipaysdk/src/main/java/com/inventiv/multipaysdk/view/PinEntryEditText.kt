@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.inventiv.multipaysdk.R
 
-class PinEntryEditText : AppCompatEditText {
+internal class PinEntryEditText : AppCompatEditText {
 
     private var mSpace = 8f //24 dp by default, space between the lines
     private var mCharSize = 0f

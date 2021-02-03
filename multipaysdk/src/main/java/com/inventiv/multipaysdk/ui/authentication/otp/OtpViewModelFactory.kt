@@ -1,14 +1,16 @@
-package com.inventiv.multipaysdk.ui.login
+package com.inventiv.multipaysdk.ui.authentication.otp
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
+import com.inventiv.multipaysdk.repository.OtpRepository
 
 @Suppress("UNCHECKED_CAST")
-internal class LoginViewModelFactory(
+internal class OtpViewModelFactory(
+    private val otpRepository: OtpRepository,
     private val authenticationRepository: AuthenticationRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        (LoginViewModel(authenticationRepository) as T)
+        (OtpViewModel(otpRepository, authenticationRepository) as T)
 }

@@ -7,6 +7,7 @@ internal const val EXTRA_OTP_DIRECTION_FROM = "extra_otp_direction_from"
 internal const val EXTRA_EMAIL_OR_GSM = "extra_email_or_gsm"
 internal const val EXTRA_PASSWORD = "extra_password"
 internal const val EXTRA_SPLASH = "extra_splash"
+internal const val EXTRA_AUTHENTICATION_TYPE = "extra_authentication_type"
 
 internal const val ARG_OTP_NAVIGATION = "arg_otp_navigation"
 internal const val ARG_OTP_DIRECTION_FROM = "arg_otp_direction_from"

@@ -3,7 +3,7 @@ package com.inventiv.multipaysdk.view.listener
 import android.text.Editable
 import android.text.TextWatcher
 
-interface SimpleTextWatcher : TextWatcher {
+internal interface SimpleTextWatcher : TextWatcher {
 
     override fun afterTextChanged(s: Editable?) {
     }

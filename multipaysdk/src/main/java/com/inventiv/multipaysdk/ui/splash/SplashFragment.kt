@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
 import com.inventiv.multipaysdk.databinding.FragmentSplashBinding
-import com.inventiv.multipaysdk.ui.login.LoginActivity
+import com.inventiv.multipaysdk.ui.authentication.AuthenticationActivity
 import com.inventiv.multipaysdk.ui.wallet.WalletActivity
 import com.inventiv.multipaysdk.util.SPLASH_ACTVITY_REQUEST_CODE
 
@@ -27,7 +27,7 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         super.onViewCreated(view, savedInstanceState)
         if (MultiPayUser.walletToken.isNullOrEmpty()) {
             requireActivity().startActivityForResult(
-                LoginActivity.newIntent(
+                AuthenticationActivity.startLogin(
                     requireActivity()
                 ), SPLASH_ACTVITY_REQUEST_CODE
             )

@@ -1,4 +1,4 @@
-package com.inventiv.multipaysdk.ui.login
+package com.inventiv.multipaysdk.ui.authentication.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,10 +13,12 @@ import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.databinding.FragmentLoginBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
-import com.inventiv.multipaysdk.ui.otp.OtpActivity
-import com.inventiv.multipaysdk.ui.otp.OtpNavigationArgs
+import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
+import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
 import com.inventiv.multipaysdk.util.hideKeyboard
+import com.inventiv.multipaysdk.util.replaceFragment
 import com.inventiv.multipaysdk.util.showSnackBarAlert
+import com.inventiv.multipaysdk.util.showToolbar
 import com.inventiv.multipaysdk.view.listener.MaskWatcher
 
 
@@ -32,6 +34,11 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     companion object {
         fun newInstance(): LoginFragment = LoginFragment()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showToolbar(false)
     }
 
     override fun createBinding(
@@ -63,21 +70,18 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     setLayoutProgressVisibility(View.VISIBLE)
                 }
                 is Resource.Success -> {
-                    requireActivity().finish()
                     val loginResponse = resource.data
-                    startActivity(
-                        OtpActivity.newIntent(
-                            requireActivity(),
-                            emailOrGsm,
-                            password,
-                            OtpNavigationArgs(
-                                loginResponse?.verificationCode,
-                                loginResponse?.gsm,
-                                loginResponse?.remainingTime
-                            ),
-                            OtpDirectionFrom.LOGIN
-                        )
+                    val otpFragment = OtpFragment.newInstance(
+                        emailOrGsm,
+                        password,
+                        OtpNavigationArgs(
+                            loginResponse?.verificationCode,
+                            loginResponse?.gsm,
+                            loginResponse?.remainingTime
+                        ),
+                        OtpDirectionFrom.LOGIN
                     )
+                    replaceFragment(otpFragment, R.id.layout_container)
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
