@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.MultiPaySdkListener
 import com.inventiv.multipaysdk.data.model.request.TransactionDetail
@@ -21,7 +20,7 @@ import com.inventiv.multipaysdk.data.model.response.SingleWalletResponse
 import com.inventiv.multipaysdk.data.model.response.UnselectWalletResponse
 import com.inventiv.multipaysdk.data.model.response.WalletResponse
 
-class MultinetWalletActivity : AppCompatActivity() {
+class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener {
 
     companion object {
         const val EXTRA_INFOS = "extra_infos"
@@ -74,33 +73,25 @@ class MultinetWalletActivity : AppCompatActivity() {
         }
 
         bindOnClickEvents()
-        subscribeDialogFragmentResult()
     }
 
-    private fun subscribeDialogFragmentResult() {
-        supportFragmentManager
-            .setFragmentResultListener(REQUEST_PAYMENT_DIALOG, this) { _, bundle ->
-                val strPaymentInfos = bundle.getString(FRAGMENT_RESULT_PAYMENT_INFOS)
-                if (!strPaymentInfos.isNullOrEmpty()) {
-                    paymentInfos = Gson().fromJson(strPaymentInfos, PaymentInfos::class.java)
-                    MultiPaySdk.confirmPayment(
-                        walletToken = walletToken!!,
-                        requestId = paymentInfos!!.requestId,
-                        terminalReferenceNumber = paymentInfos!!.terminalReferenceNumber,
-                        merchantReferenceNumber = paymentInfos!!.merchantReferenceNumber,
-                        transferReferenceNumber = paymentInfos!!.transferReferenceNumber,
-                        transactionDetails = listOf(
-                            TransactionDetail(
-                                amount = paymentInfos!!.amount,
-                                productId = paymentInfos!!.productId,
-                                referenceNumber = paymentInfos!!.referenceNumber
-                            )
-                        ),
-                        sign = paymentInfos!!.sign,
-                        listener = multiPaySdkListener
-                    )
-                }
-            }
+    override fun onConfirmPayment(paymentInfos: PaymentInfos) {
+        MultiPaySdk.confirmPayment(
+            walletToken = walletToken!!,
+            requestId = paymentInfos.requestId,
+            terminalReferenceNumber = paymentInfos.terminalReferenceNumber,
+            merchantReferenceNumber = paymentInfos.merchantReferenceNumber,
+            transferReferenceNumber = paymentInfos.transferReferenceNumber,
+            transactionDetails = listOf(
+                TransactionDetail(
+                    amount = paymentInfos.amount,
+                    productId = paymentInfos.productId,
+                    referenceNumber = paymentInfos.referenceNumber
+                )
+            ),
+            sign = paymentInfos.sign,
+            listener = multiPaySdkListener
+        )
     }
 
     private fun bindOnClickEvents() {

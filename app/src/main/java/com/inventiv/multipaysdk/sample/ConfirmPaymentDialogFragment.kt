@@ -1,5 +1,6 @@
 package com.inventiv.multipaysdk.sample
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,11 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.setFragmentResult
-import com.google.gson.Gson
+
+interface ConfirmPaymentDialogListener {
+    fun onConfirmPayment(paymentInfos: PaymentInfos)
+}
 
 class ConfirmPaymentDialogFragment : DialogFragment() {
 
@@ -23,7 +25,12 @@ class ConfirmPaymentDialogFragment : DialogFragment() {
     private lateinit var editReferenceNumber: AppCompatEditText
     private lateinit var editSign: AppCompatEditText
     private lateinit var buttonConfirmPayment: Button
+    private var confirmPaymentDialogListener: ConfirmPaymentDialogListener? = null
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        confirmPaymentDialogListener = context as ConfirmPaymentDialogListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +56,6 @@ class ConfirmPaymentDialogFragment : DialogFragment() {
         buttonConfirmPayment.setOnClickListener {
             confirmPayment()
         }
-
-//        dialog!!.setTitle("Confirm Payment")
     }
 
     override fun onStart() {
@@ -81,11 +86,12 @@ class ConfirmPaymentDialogFragment : DialogFragment() {
             referenceNumber = referenceNumber,
             sign = sign
         )
-        val strPaymentInfos = Gson().toJson(paymentInfos)
-        setFragmentResult(
-            REQUEST_PAYMENT_DIALOG,
-            bundleOf(FRAGMENT_RESULT_PAYMENT_INFOS to strPaymentInfos)
-        )
         dismiss()
+        confirmPaymentDialogListener?.onConfirmPayment(paymentInfos)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        confirmPaymentDialogListener = null
     }
 }
