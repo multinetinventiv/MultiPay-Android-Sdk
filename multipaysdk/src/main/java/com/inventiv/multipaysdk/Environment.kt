@@ -20,7 +20,7 @@ enum class Environment(
 
     ),
     PRODUCTION(
-        "",
+        "https://gateway-api.multinet.com.tr/",
         "multipay-sdk/v1/"
     )
 }

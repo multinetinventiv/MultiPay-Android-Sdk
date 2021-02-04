@@ -43,7 +43,6 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation deps.kotlin.stdlib
-    implementation deps.androidx.app_compat
     implementation deps.androidx.ktx
     implementation deps.ui.constraint
     implementation deps.ui.material
