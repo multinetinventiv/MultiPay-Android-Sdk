@@ -49,7 +49,6 @@ dependencies {
     implementation deps.ui.material
     implementation deps.network.volley
     implementation deps.network.gson
-    implementation deps.androidx.fragment
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_viewmodel
     testImplementation 'junit:junit:4.13.1'

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
@@ -20,9 +20,7 @@ import com.inventiv.multipaysdk.view.listener.MaskCardNumberWatcherView
 internal class AddWalletFragment : BaseFragment<FragmentAddWalletBinding>(),
     MaskCardNumberWatcherView {
 
-    private val viewModel: AddWalletViewModel by viewModels {
-        AddWalletViewModelFactory(WalletRepository(MultiPaySdk.getComponent().apiService()))
-    }
+    private lateinit var viewModel: AddWalletViewModel
 
     companion object {
         fun newInstance(): AddWalletFragment = AddWalletFragment()
@@ -40,6 +38,21 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletBinding>(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): FragmentAddWalletBinding = FragmentAddWalletBinding.inflate(inflater, container, false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val viewModelFactory =
+            AddWalletViewModelFactory(WalletRepository(MultiPaySdk.getComponent().apiService()))
+        viewModel = ViewModelProvider(
+            this@AddWalletFragment,
+            viewModelFactory
+        ).get(AddWalletViewModel::class.java)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

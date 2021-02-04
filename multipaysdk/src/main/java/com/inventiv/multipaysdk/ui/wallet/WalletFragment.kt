@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.inventiv.multipaysdk.MultiPaySdk
@@ -30,9 +30,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
         fun newInstance() = WalletFragment()
     }
 
-    private val viewModel: WalletViewModel by viewModels {
-        WalletViewModelFactory(WalletRepository(MultiPaySdk.getComponent().apiService()))
-    }
+    private lateinit var viewModel: WalletViewModel
 
     private lateinit var listAdapter: WalletAdapter
 
@@ -50,6 +48,22 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): FragmentWalletBinding = FragmentWalletBinding.inflate(inflater, container, false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val viewModelFactory =
+            WalletViewModelFactory(WalletRepository(MultiPaySdk.getComponent().apiService()))
+
+        viewModel = ViewModelProvider(
+            this@WalletFragment,
+            viewModelFactory
+        ).get(WalletViewModel::class.java)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

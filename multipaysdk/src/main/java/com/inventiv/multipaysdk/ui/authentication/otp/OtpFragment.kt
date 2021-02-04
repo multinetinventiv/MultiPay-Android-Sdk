@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
@@ -32,13 +32,9 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
 
     private lateinit var countDownTimer: CountDownTimer
 
-    private val viewModel: OtpViewModel by viewModels {
-        val apiService = MultiPaySdk.getComponent().apiService()
-        OtpViewModelFactory(
-            OtpRepository(apiService),
-            AuthenticationRepository(apiService)
-        )
-    }
+    private val apiService = MultiPaySdk.getComponent().apiService()
+
+    private lateinit var viewModel: OtpViewModel
 
     companion object {
         fun newInstance(
@@ -82,6 +78,21 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         savedInstanceState: Bundle?
     ): FragmentOtpBinding = FragmentOtpBinding.inflate(inflater, container, false)
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val viewModelFactory = OtpViewModelFactory(
+            OtpRepository(apiService),
+            AuthenticationRepository(apiService)
+        )
+        viewModel =
+            ViewModelProvider(this@OtpFragment, viewModelFactory).get(OtpViewModel::class.java)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeConfirmOtp()
@@ -91,7 +102,6 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         otpNavigationArgs = arguments?.getParcelable(ARG_OTP_NAVIGATION)
         otpDirectionFrom = arguments?.getParcelable(ARG_OTP_DIRECTION_FROM)
         requireBinding().viewPin.addTextChangedListener(simpleTextWatcher)
-        // TODO : login ve otp sayfası tek activity'e çekildikten sonra bu kod silinmeli
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }

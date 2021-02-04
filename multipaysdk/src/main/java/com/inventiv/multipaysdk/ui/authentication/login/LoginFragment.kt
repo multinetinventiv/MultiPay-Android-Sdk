@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
@@ -28,9 +28,7 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private lateinit var emailOrGsm: String
     private lateinit var password: String
 
-    private val viewModel: LoginViewModel by viewModels {
-        LoginViewModelFactory(AuthenticationRepository(MultiPaySdk.getComponent().apiService()))
-    }
+    private lateinit var viewModel: LoginViewModel
 
     companion object {
         fun newInstance(): LoginFragment = LoginFragment()
@@ -46,6 +44,19 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): FragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val viewModelFactory =
+            LoginViewModelFactory(AuthenticationRepository(MultiPaySdk.getComponent().apiService()))
+        viewModel =
+            ViewModelProvider(this@LoginFragment, viewModelFactory).get(LoginViewModel::class.java)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
