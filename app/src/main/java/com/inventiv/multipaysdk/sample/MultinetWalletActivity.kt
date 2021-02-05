@@ -40,7 +40,6 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     private lateinit var info: Infos
     private var walletToken: String? = null
     private var walletResponse: WalletResponse? = null
-    private var paymentInfos: PaymentInfos? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
