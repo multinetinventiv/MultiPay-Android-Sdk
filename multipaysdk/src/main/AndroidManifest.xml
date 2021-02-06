@@ -1,16 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.inventiv.multipaysdk">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application
-        android:allowBackup="true"
-        android:label="@string/app_name_multipay_sdk"
-        android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-
+    <application>
         <activity
             android:name=".ui.splash.SplashActivity"
             android:launchMode="singleTask"
