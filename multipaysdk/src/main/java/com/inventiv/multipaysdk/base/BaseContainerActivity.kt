@@ -31,11 +31,11 @@ internal abstract class BaseContainerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCommonBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val fragment = supportFragmentManager.findFragmentById(R.id.layout_container)
+        val fragment = supportFragmentManager.findFragmentById(R.id.layout_container_multipay_sdk)
         if (fragment == null) {
-            addFragment(fragment(), R.id.layout_container)
+            addFragment(fragment(), R.id.layout_container_multipay_sdk)
         }
-        binding.toolbar.setNavigationOnClickListener {
+        binding.toolbarMultipaySdk.setNavigationOnClickListener {
             finish()
         }
     }

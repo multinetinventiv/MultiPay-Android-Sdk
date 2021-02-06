@@ -57,10 +57,12 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletBinding>(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeAddWallet()
-        requireBinding().textInputEditCardAlias.afterTextChanged { validate() }
-        requireBinding().textInputEditCardNumber.addTextChangedListener(MaskCardNumberWatcher(this@AddWalletFragment))
-        requireBinding().textInputEditCardCvv.afterTextChanged { validate() }
-        requireBinding().buttonContinue.setOnClickListener {
+        requireBinding().textInputEditCardAliasMultipaySdk.afterTextChanged { validate() }
+        requireBinding().textInputEditCardNumberMultipaySdk.addTextChangedListener(
+            MaskCardNumberWatcher(this@AddWalletFragment)
+        )
+        requireBinding().textInputEditCardCvvMultipaySdk.afterTextChanged { validate() }
+        requireBinding().buttonContinueMultipaySdk.setOnClickListener {
             addWallet()
         }
     }
@@ -89,25 +91,28 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletBinding>(),
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().addCardProgress.layoutProgress.visibility = visibility
+        requireBinding().addCardProgressMultipaySdk.layoutProgressMultipaySdk.visibility =
+            visibility
     }
 
     private fun addWallet() {
-        requireBinding().textInputEditCardAlias.hideKeyboard()
-        requireBinding().textInputEditCardNumber.hideKeyboard()
-        requireBinding().textInputEditCardCvv.hideKeyboard()
-        val cardAlias = requireBinding().textInputEditCardAlias.text.toString().trim()
-        val cardNumber = requireBinding().textInputEditCardNumber.text.toString().trim()
-        val cvv = requireBinding().textInputEditCardCvv.text.toString().trim()
+        requireBinding().textInputEditCardAliasMultipaySdk.hideKeyboard()
+        requireBinding().textInputEditCardNumberMultipaySdk.hideKeyboard()
+        requireBinding().textInputEditCardCvvMultipaySdk.hideKeyboard()
+        val cardAlias = requireBinding().textInputEditCardAliasMultipaySdk.text.toString().trim()
+        val cardNumber = requireBinding().textInputEditCardNumberMultipaySdk.text.toString().trim()
+        val cvv = requireBinding().textInputEditCardCvvMultipaySdk.text.toString().trim()
         viewModel.addWallet(Formatter.stringToNumeric(cardNumber), cvv, cardAlias)
     }
 
     private fun validate() {
-        val validCardAlias = requireBinding().textInputEditCardAlias.text.toString().isNotEmpty()
+        val validCardAlias =
+            requireBinding().textInputEditCardAliasMultipaySdk.text.toString().isNotEmpty()
         val validCardNumber =
-            requireBinding().textInputEditCardNumber.text.toString().isValidCardNumber()
-        val validCardCvv = requireBinding().textInputEditCardCvv.text.toString().isValidCvv()
-        requireBinding().buttonContinue.isEnabled =
+            requireBinding().textInputEditCardNumberMultipaySdk.text.toString().isValidCardNumber()
+        val validCardCvv =
+            requireBinding().textInputEditCardCvvMultipaySdk.text.toString().isValidCvv()
+        requireBinding().buttonContinueMultipaySdk.isEnabled =
             (validCardAlias && validCardNumber && validCardCvv)
     }
 }

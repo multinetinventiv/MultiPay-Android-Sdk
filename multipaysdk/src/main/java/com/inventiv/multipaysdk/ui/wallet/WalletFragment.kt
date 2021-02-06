@@ -75,13 +75,13 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
         subscribeMatchWallet()
         viewModel.walletsListItem()
 
-        requireBinding().buttonAddWallet.setOnClickListener {
+        requireBinding().buttonAddWalletMultipaySdk.setOnClickListener {
             startActivityForResult(
                 AddWalletActivity.newIntent(requireActivity()),
                 ADD_CARD_ACTVITY_REQUEST_CODE
             )
         }
-        requireBinding().buttonMatch.setOnClickListener {
+        requireBinding().buttonMatchMultipaySdk.setOnClickListener {
             walletToken =
                 listAdapter.currentList.find { walletListItem -> walletListItem.isChecked }?.walletResponse?.token
             walletToken?.let { viewModel.matchWallet(it) }
@@ -89,7 +89,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
     }
 
     private fun prepareRecyclerView() {
-        requireBinding().listWallets.apply {
+        requireBinding().listWalletsMultipaySdk.apply {
             setHasFixedSize(true)
             adapter = listAdapter
             itemAnimator = DefaultItemAnimator()
@@ -99,10 +99,10 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
 
     private fun subscribeSelectedWallet() {
         viewModel.selectedWallet.observe(viewLifecycleOwner, Observer { walletResponse ->
-            requireBinding().buttonMatch.visibility = View.VISIBLE
+            requireBinding().buttonMatchMultipaySdk.visibility = View.VISIBLE
             if (listAdapter.currentList.find { it.isChecked } == null) {
                 val animSlideUp = AnimationUtils.loadAnimation(context, R.anim.anim_slide_up)
-                requireBinding().buttonMatch.startAnimation(animSlideUp)
+                requireBinding().buttonMatchMultipaySdk.startAnimation(animSlideUp)
             }
             val newWalletItemList: MutableList<WalletListItem> = mutableListOf()
             listAdapter.currentList.forEach {
@@ -165,15 +165,15 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
     }
 
     private fun showHideEmptyListText(isShow: Boolean) {
-        requireBinding().textWalletListEmpty.layoutCommonEmptyList.visibility =
+        requireBinding().textWalletListEmptyMultipaySdk.layoutCommonEmptyListMultipaySdk.visibility =
             if (isShow) View.VISIBLE else View.GONE
-        requireBinding().listWallets.visibility = if (isShow) View.GONE else View.VISIBLE
-        requireBinding().textWalletListEmpty.textCommonEmptyList.text =
+        requireBinding().listWalletsMultipaySdk.visibility = if (isShow) View.GONE else View.VISIBLE
+        requireBinding().textWalletListEmptyMultipaySdk.textCommonEmptyListMultipaySdk.text =
             getString(R.string.wallet_list_no_wallet)
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().walletProgress.layoutProgress.visibility = visibility
+        requireBinding().walletProgressMultipaySdk.layoutProgressMultipaySdk.visibility = visibility
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

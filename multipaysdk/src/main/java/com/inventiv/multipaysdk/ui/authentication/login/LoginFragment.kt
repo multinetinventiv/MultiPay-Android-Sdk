@@ -62,15 +62,15 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         super.onViewCreated(view, savedInstanceState)
         subscribeLogin()
         val maskPhone = getString(R.string.mask_phone)
-        maskWatcher = MaskWatcher(requireBinding().textInputEditEmailOrGsm, maskPhone)
-        requireBinding().textInputEditEmailOrGsm.addTextChangedListener(maskWatcher)
-        requireBinding().buttonLogin.setOnClickListener {
+        maskWatcher = MaskWatcher(requireBinding().textInputEditEmailOrGsmMultipaySdk, maskPhone)
+        requireBinding().textInputEditEmailOrGsmMultipaySdk.addTextChangedListener(maskWatcher)
+        requireBinding().buttonLoginMultipaySdk.setOnClickListener {
             loginClicked()
         }
     }
 
     override fun onDestroyView() {
-        requireBinding().textInputEditEmailOrGsm.removeTextChangedListener(maskWatcher)
+        requireBinding().textInputEditEmailOrGsmMultipaySdk.removeTextChangedListener(maskWatcher)
         super.onDestroyView()
     }
 
@@ -92,7 +92,7 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                         ),
                         OtpDirectionFrom.LOGIN
                     )
-                    replaceFragment(otpFragment, R.id.layout_container)
+                    replaceFragment(otpFragment, R.id.layout_container_multipay_sdk)
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
@@ -104,14 +104,14 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().loginProgress.layoutProgress.visibility = visibility
+        requireBinding().loginProgressMultipaySdk.layoutProgressMultipaySdk.visibility = visibility
     }
 
     private fun loginClicked() {
-        requireBinding().textInputEditEmailOrGsm.hideKeyboard()
-        requireBinding().textInputEditPassword.hideKeyboard()
-        emailOrGsm = requireBinding().textInputEditEmailOrGsm.text.toString().trim()
-        password = requireBinding().textInputEditPassword.text.toString().trim()
+        requireBinding().textInputEditEmailOrGsmMultipaySdk.hideKeyboard()
+        requireBinding().textInputEditPasswordMultipaySdk.hideKeyboard()
+        emailOrGsm = requireBinding().textInputEditEmailOrGsmMultipaySdk.text.toString().trim()
+        password = requireBinding().textInputEditPasswordMultipaySdk.text.toString().trim()
         viewModel.login(emailOrGsm, password)
     }
 }

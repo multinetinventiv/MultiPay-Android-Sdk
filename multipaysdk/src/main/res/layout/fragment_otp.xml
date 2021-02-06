@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_title"
+        android:id="@+id/text_title_multipay_sdk"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
@@ -19,7 +19,7 @@
         tools:text="@string/otp_description" />
 
     <com.inventiv.multipaysdk.view.PinEntryEditText
-        android:id="@+id/view_pin"
+        android:id="@+id/view_pin_multipay_sdk"
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
@@ -34,10 +34,10 @@
         android:textIsSelectable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title" />
+        app:layout_constraintTop_toBottomOf="@+id/text_title_multipay_sdk" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_remaining_time"
+        android:id="@+id/text_remaining_time_multipay_sdk"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
@@ -46,10 +46,10 @@
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_pin" />
+        app:layout_constraintTop_toBottomOf="@+id/view_pin_multipay_sdk" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_resend"
+        android:id="@+id/button_resend_multipay_sdk"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
@@ -60,11 +60,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_remaining_time"
+        app:layout_constraintTop_toBottomOf="@+id/text_remaining_time_multipay_sdk"
         app:layout_constraintVertical_bias="0.957" />
 
     <include
-        android:id="@+id/otp_progress"
+        android:id="@+id/otp_progress_multipay_sdk"
         layout="@layout/layout_progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

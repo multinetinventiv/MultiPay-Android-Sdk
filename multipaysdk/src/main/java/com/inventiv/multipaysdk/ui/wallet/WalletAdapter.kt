@@ -27,18 +27,18 @@ internal class WalletAdapter(private val clickListener: WalletListener) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(walletListItem: WalletListItem, clickListener: WalletListener) {
-            binding.textWalletName.text = walletListItem.walletResponse.name
-            binding.textWalletBalance.text = walletListItem.walletResponse.balance
-            binding.textWalletNumber.text = walletListItem.walletResponse.maskedNumber
-            binding.radiobtnWallet.isChecked = walletListItem.isChecked
+            binding.textWalletNameMultipaySdk.text = walletListItem.walletResponse.name
+            binding.textWalletBalanceMultipaySdk.text = walletListItem.walletResponse.balance
+            binding.textWalletNumberMultipaySdk.text = walletListItem.walletResponse.maskedNumber
+            binding.radiobtnWalletMultipaySdk.isChecked = walletListItem.isChecked
             if (walletListItem.isChecked) {
-                binding.layoutWalletItem.setBackgroundColor(
-                    binding.layoutWalletItem.context.themeColor(R.attr.colorControlHighlight)
+                binding.layoutWalletItemMultipaySdk.setBackgroundColor(
+                    binding.layoutWalletItemMultipaySdk.context.themeColor(R.attr.colorControlHighlight)
                 )
             } else {
-                binding.layoutWalletItem.setBackgroundColor(Color.TRANSPARENT)
+                binding.layoutWalletItemMultipaySdk.setBackgroundColor(Color.TRANSPARENT)
             }
-            binding.imageWallet.setImageUrl(walletListItem.walletResponse.imageUrl)
+            binding.imageWalletMultipaySdk.setImageUrl(walletListItem.walletResponse.imageUrl)
             if (walletListItem.walletResponse.isSelected != null && walletListItem.walletResponse.isSelected) {
                 binding.root.isClickable = false
                 binding.root.alpha = 0.3f

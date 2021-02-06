@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/layout_wallet_item"
+    android:id="@+id/layout_wallet_item_multipay_sdk"
     android:paddingTop="@dimen/margin_normal"
     android:paddingBottom="@dimen/margin_normal"
     android:paddingStart="@dimen/margin_normal"
     android:paddingEnd="@dimen/margin_small">
 
     <com.inventiv.multipaysdk.view.MultiPayNetworkImageView
-        android:id="@+id/image_wallet"
+        android:id="@+id/image_wallet_multipay_sdk"
         android:layout_width="64dp"
         android:layout_height="48dp"
         android:scaleType="fitXY"
@@ -23,12 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_small"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/radiobtn_wallet"
-        app:layout_constraintStart_toEndOf="@+id/image_wallet"
+        app:layout_constraintEnd_toStartOf="@+id/radiobtn_wallet_multipay_sdk"
+        app:layout_constraintStart_toEndOf="@+id/image_wallet_multipay_sdk"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_wallet_name"
+            android:id="@+id/text_wallet_name_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_micro"
@@ -38,7 +38,7 @@
             tools:text="Multinet" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_wallet_number"
+            android:id="@+id/text_wallet_number_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_micro"
@@ -48,7 +48,7 @@
             tools:text="3213 **** **** 4123" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_wallet_balance"
+            android:id="@+id/text_wallet_balance_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_micro"
@@ -58,7 +58,7 @@
             tools:text="32,03 TL" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_wallet_balance_description"
+            android:id="@+id/text_wallet_balance_description_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -69,7 +69,7 @@
     </LinearLayout>
 
     <com.google.android.material.radiobutton.MaterialRadioButton
-        android:id="@+id/radiobtn_wallet"
+        android:id="@+id/radiobtn_wallet_multipay_sdk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.R
 
-fun Fragment.toolbar() = requireActivity().findViewById<Toolbar>(R.id.toolbar)!!
+fun Fragment.toolbar() = requireActivity().findViewById<Toolbar>(R.id.toolbar_multipay_sdk)!!
 
 fun Fragment.title(strId: Int) {
     toolbar().title = context?.getString(strId)

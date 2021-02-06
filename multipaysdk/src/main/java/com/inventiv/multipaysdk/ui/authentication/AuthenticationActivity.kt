@@ -64,7 +64,7 @@ internal class AuthenticationActivity : BaseContainerActivity() {
     }
 
     override fun onBackPressed() {
-        when (supportFragmentManager.findFragmentById(R.id.layout_container)) {
+        when (supportFragmentManager.findFragmentById(R.id.layout_container_multipay_sdk)) {
             is LoginFragment -> {
                 setResult(RESULT_OK)
                 finish()

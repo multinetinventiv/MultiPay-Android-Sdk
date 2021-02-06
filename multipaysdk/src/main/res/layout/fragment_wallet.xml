@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_description"
+        android:id="@+id/text_description_multipay_sdk"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
@@ -19,20 +19,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_wallets"
+        android:id="@+id/list_wallets_multipay_sdk"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="?android:colorBackground"
         android:theme="@style/ThemeOverlay.MultiPaySdk.ListBackground"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/button_add_wallet"
+        app:layout_constraintBottom_toTopOf="@+id/button_add_wallet_multipay_sdk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_description"
+        app:layout_constraintTop_toBottomOf="@+id/text_description_multipay_sdk"
         tools:listitem="@layout/item_wallet_single_select" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_add_wallet"
+        android:id="@+id/button_add_wallet_multipay_sdk"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
@@ -40,13 +40,13 @@
         android:layout_marginTop="@dimen/margin_normal"
         android:layout_marginBottom="@dimen/margin_small"
         android:text="@string/wallet_add_wallet"
-        app:layout_constraintBottom_toTopOf="@+id/button_match"
+        app:layout_constraintBottom_toTopOf="@+id/button_match_multipay_sdk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_wallets" />
+        app:layout_constraintTop_toBottomOf="@+id/list_wallets_multipay_sdk" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_match"
+        android:id="@+id/button_match_multipay_sdk"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
         android:layout_marginHorizontal="@dimen/margin_normal"
@@ -58,15 +58,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <include
-        android:id="@+id/text_wallet_list_empty"
+        android:id="@+id/text_wallet_list_empty_multipay_sdk"
         layout="@layout/layout_list_empty"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_description" />
+        app:layout_constraintTop_toBottomOf="@+id/text_description_multipay_sdk" />
 
     <include
-        android:id="@+id/wallet_progress"
+        android:id="@+id/wallet_progress_multipay_sdk"
         layout="@layout/layout_progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

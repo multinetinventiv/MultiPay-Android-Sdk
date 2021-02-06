@@ -162,13 +162,13 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     }
 
     private fun setWalletUI() {
-        (walletItem.findViewById(R.id.text_wallet_name) as TextView).text =
+        (walletItem.findViewById(R.id.text_wallet_name_multipay_sdk) as TextView).text =
             walletResponse?.name
-        (walletItem.findViewById(R.id.text_wallet_balance) as TextView).text =
+        (walletItem.findViewById(R.id.text_wallet_balance_multipay_sdk) as TextView).text =
             walletResponse?.balance
-        (walletItem.findViewById(R.id.text_wallet_number) as TextView).text =
+        (walletItem.findViewById(R.id.text_wallet_number_multipay_sdk) as TextView).text =
             walletResponse?.maskedNumber
-        val walletImageView = (walletItem.findViewById(R.id.image_wallet) as ImageView)
+        val walletImageView = (walletItem.findViewById(R.id.image_wallet_multipay_sdk) as ImageView)
         Glide.with(this).load(walletResponse?.imageUrl).into(walletImageView)
     }
 
@@ -185,7 +185,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     }
 
     private fun onCardDeleteClicked() {
-        MultiPaySdk.deleteWallet(walletResponse?.token!!, multiPaySdkListener)
+        MultiPaySdk.unselectWallet(walletResponse?.token!!, multiPaySdkListener)
     }
 
     private fun onConfirmPaymentClicked() {

@@ -101,7 +101,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         password = arguments?.getString(ARG_PASSWORD)
         otpNavigationArgs = arguments?.getParcelable(ARG_OTP_NAVIGATION)
         otpDirectionFrom = arguments?.getParcelable(ARG_OTP_DIRECTION_FROM)
-        requireBinding().viewPin.addTextChangedListener(simpleTextWatcher)
+        requireBinding().viewPinMultipaySdk.addTextChangedListener(simpleTextWatcher)
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
@@ -109,13 +109,13 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
             R.string.otp_description,
             Formatter.formatPhoneNumber(otpNavigationArgs?.gsmNumber, true)
         )
-        requireBinding().textTitle.text =
+        requireBinding().textTitleMultipaySdk.text =
             HtmlCompat.fromHtml(textOtpDescription, HtmlCompat.FROM_HTML_MODE_LEGACY)
-        requireBinding().viewPin.showKeyboard()
+        requireBinding().viewPinMultipaySdk.showKeyboard()
         setupAndStartCountDownTimer()
-        requireBinding().buttonResend.setOnClickListener {
+        requireBinding().buttonResendMultipaySdk.setOnClickListener {
             viewModel.login(emailOrGsm!!, password!!)
-            requireBinding().buttonResend.visibility = View.GONE
+            requireBinding().buttonResendMultipaySdk.visibility = View.GONE
         }
     }
 
@@ -128,11 +128,11 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
                         getString(R.string.otp_remaining_time),
                         (millisUntilFinished / 1000)
                     )
-                requireBinding().textRemainingTime.text = formattedTimerText
+                requireBinding().textRemainingTimeMultipaySdk.text = formattedTimerText
             }
 
             override fun onFinish() {
-                requireBinding().buttonResend.visibility = View.VISIBLE
+                requireBinding().buttonResendMultipaySdk.visibility = View.VISIBLE
             }
         }
         countDownTimer.start()
@@ -192,11 +192,11 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().otpProgress.layoutProgress.visibility = visibility
+        requireBinding().otpProgressMultipaySdk.layoutProgressMultipaySdk.visibility = visibility
     }
 
     override fun onDestroyView() {
-        requireBinding().viewPin.removeTextChangedListener(simpleTextWatcher)
+        requireBinding().viewPinMultipaySdk.removeTextChangedListener(simpleTextWatcher)
         countDownTimer.cancel()
         super.onDestroyView()
     }
