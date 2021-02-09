@@ -136,7 +136,7 @@ internal class PinEntryEditText : AppCompatEditText {
             mLinesPaint!!.strokeWidth = mLineStrokeSelected
             mLinesPaint!!.color = Color.LTGRAY
             if (next) {
-                mLinesPaint!!.color = ContextCompat.getColor(context, R.color.keppel)
+                mLinesPaint!!.color = ContextCompat.getColor(context, R.color.keppel_multipay_sdk)
             }
         } else {
             mLinesPaint!!.strokeWidth = mLineStroke

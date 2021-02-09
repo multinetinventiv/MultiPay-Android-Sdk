@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.App" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.Theme.App.MultiPaySdk" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
 
         <item name="android:statusBarColor" tools:ignore="NewApi">
             ?android:attr/colorBackground
@@ -33,26 +33,26 @@
         <item name="textAppearanceOverline">@style/TextAppearance.MultiPaySdk.Overline</item>
     </style>
 
-    <style name="Base.Theme.MultiPaySdk" parent="Base.Theme.App">
+    <style name="Base.Theme.MultiPaySdk" parent="Base.Theme.App.MultiPaySdk">
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
-        <item name="colorPrimary">@color/keppel</item>
-        <item name="colorPrimaryVariant">@color/como</item>
-        <item name="colorSecondary">@color/blackcurrant</item>
-        <item name="colorSecondaryVariant">@color/dark_green</item>
-        <item name="android:colorBackground">@color/white</item>
-        <item name="colorSurface">@color/white</item>
-        <item name="colorError">@color/carmine</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorOnSecondary">@color/white</item>
-        <item name="colorOnBackground">@color/black</item>
-        <item name="colorOnSurface">@color/black</item>
-        <item name="colorOnError">@color/white</item>
-        <item name="colorControlHighlight">@color/clear_day</item>
+        <item name="colorPrimary">@color/keppel_multipay_sdk</item>
+        <item name="colorPrimaryVariant">@color/como_multipay_sdk</item>
+        <item name="colorSecondary">@color/blackcurrant_multipay_sdk</item>
+        <item name="colorSecondaryVariant">@color/dark_green_multipay_sdk</item>
+        <item name="android:colorBackground">@color/white_multipay_sdk</item>
+        <item name="colorSurface">@color/white_multipay_sdk</item>
+        <item name="colorError">@color/carmine_multipay_sdk</item>
+        <item name="colorOnPrimary">@color/white_multipay_sdk</item>
+        <item name="colorOnSecondary">@color/white_multipay_sdk</item>
+        <item name="colorOnBackground">@color/black_multipay_sdk</item>
+        <item name="colorOnSurface">@color/black_multipay_sdk</item>
+        <item name="colorOnError">@color/white_multipay_sdk</item>
+        <item name="colorControlHighlight">@color/clear_day_multipay_sdk</item>
     </style>
 
     <style name="Base.ThemeOverlay.MultiPaySdk.ListBackground" parent="Base.Theme.MultiPaySdk">
-        <item name="android:colorBackground">@color/white_blur</item>
+        <item name="android:colorBackground">@color/white_blur_multipay_sdk</item>
     </style>
 
 </resources>

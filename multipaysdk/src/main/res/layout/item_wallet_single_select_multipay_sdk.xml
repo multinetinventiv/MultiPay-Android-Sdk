@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/layout_wallet_item_multipay_sdk"
-    android:paddingTop="@dimen/margin_normal"
-    android:paddingBottom="@dimen/margin_normal"
-    android:paddingStart="@dimen/margin_normal"
-    android:paddingEnd="@dimen/margin_small">
+    android:paddingTop="@dimen/margin_normal_multipay_sdk"
+    android:paddingBottom="@dimen/margin_normal_multipay_sdk"
+    android:paddingStart="@dimen/margin_normal_multipay_sdk"
+    android:paddingEnd="@dimen/margin_small_multipay_sdk">
 
     <com.inventiv.multipaysdk.view.MultiPayNetworkImageView
         android:id="@+id/image_wallet_multipay_sdk"
@@ -21,7 +21,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_small_multipay_sdk"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/radiobtn_wallet_multipay_sdk"
         app:layout_constraintStart_toEndOf="@+id/image_wallet_multipay_sdk"
@@ -31,7 +31,7 @@
             android:id="@+id/text_wallet_name_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_micro"
+            android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBody1"
@@ -41,7 +41,7 @@
             android:id="@+id/text_wallet_number_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_micro"
+            android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBody2"
@@ -51,7 +51,7 @@
             android:id="@+id/text_wallet_balance_multipay_sdk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_micro"
+            android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBody1"

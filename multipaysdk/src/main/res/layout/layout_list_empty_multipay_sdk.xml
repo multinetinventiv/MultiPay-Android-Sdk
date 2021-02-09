@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingHorizontal="@dimen/margin_normal"
+        android:paddingHorizontal="@dimen/margin_normal_multipay_sdk"
         android:gravity="center"
         android:ellipsize="end"
         android:maxLines="2"

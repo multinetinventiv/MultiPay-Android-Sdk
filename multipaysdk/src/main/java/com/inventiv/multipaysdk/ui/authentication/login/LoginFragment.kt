@@ -62,7 +62,7 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeLogin()
-        val maskPhone = getString(R.string.mask_phone)
+        val maskPhone = getString(R.string.mask_phone_multipay_sdk)
         maskWatcher = MaskWatcher(requireBinding().textInputEditEmailOrGsmMultipaySdk, maskPhone)
         requireBinding().textInputEditEmailOrGsmMultipaySdk.addTextChangedListener(maskWatcher)
         requireBinding().buttonLoginMultipaySdk.setOnClickListener {

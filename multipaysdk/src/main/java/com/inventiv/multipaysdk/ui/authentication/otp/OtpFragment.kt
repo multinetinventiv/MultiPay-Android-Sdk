@@ -58,7 +58,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         override fun afterTextChanged(s: Editable?) {
             val otpCode = s.toString()
             val otpLength = otpCode.length
-            if (otpLength == resources.getInteger(R.integer.otp_length)) {
+            if (otpLength == resources.getInteger(R.integer.otp_length_multipay_sdk)) {
                 viewModel.confirmOtp(otpNavigationArgs?.verificationCode, otpCode)
             }
         }

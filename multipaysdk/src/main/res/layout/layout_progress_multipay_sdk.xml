@@ -5,7 +5,7 @@
     android:id="@+id/layout_progress_multipay_sdk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorProgressDim"
+    android:background="@color/colorProgressDim_multipay_sdk"
     android:clickable="true"
     android:focusable="true"
     android:visibility="gone"
@@ -13,8 +13,8 @@
 
     <ProgressBar
         style="?android:attr/progressBarStyleSmall"
-        android:layout_width="@dimen/progress_size"
-        android:layout_height="@dimen/progress_size"
+        android:layout_width="@dimen/progress_size_multipay_sdk"
+        android:layout_height="@dimen/progress_size_multipay_sdk"
         android:indeterminate="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

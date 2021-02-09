@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_huge">32dp</dimen>
-    <dimen name="margin_big">24dp</dimen>
-    <dimen name="margin_normal">16dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="margin_micro">4dp</dimen>
+    <dimen name="margin_huge_multipay_sdk">32dp</dimen>
+    <dimen name="margin_big_multipay_sdk">24dp</dimen>
+    <dimen name="margin_normal_multipay_sdk">16dp</dimen>
+    <dimen name="margin_small_multipay_sdk">8dp</dimen>
+    <dimen name="margin_micro_multipay_sdk">4dp</dimen>
 </resources>

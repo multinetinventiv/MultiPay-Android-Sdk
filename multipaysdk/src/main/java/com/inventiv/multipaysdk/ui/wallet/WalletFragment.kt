@@ -102,7 +102,8 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
         viewModel.selectedWallet.observe(viewLifecycleOwner, Observer { walletResponse ->
             requireBinding().buttonMatchMultipaySdk.visibility = View.VISIBLE
             if (listAdapter.currentList.find { it.isChecked } == null) {
-                val animSlideUp = AnimationUtils.loadAnimation(context, R.anim.anim_slide_up)
+                val animSlideUp =
+                    AnimationUtils.loadAnimation(context, R.anim.anim_slide_up_multipay_sdk)
                 requireBinding().buttonMatchMultipaySdk.startAnimation(animSlideUp)
             }
             val newWalletItemList: MutableList<WalletListItem> = mutableListOf()
