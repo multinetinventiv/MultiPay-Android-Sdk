@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="keppel">#5db185</color>
-    <color name="como">#457E5B</color>
-    <color name="clear_day">#E6F3ED</color>
-    <color name="blackcurrant">#18163d</color>
-    <color name="dark_green">#000118</color>
-    <color name="solitude">#e7e7ef</color>
-    <color name="white">#ffffff</color>
-    <color name="carmine">#b00020</color>
-    <color name="black">#000000</color>
-    <color name="colorProgressDim">#33000000</color>
-    <color name="paua">#242554</color>
-    <color name="deep_koamaru">#33366B</color>
-    <color name="white_blur">#fafafa</color>
+    <color name="keppel_multipay_sdk">#5db185</color>
+    <color name="como_multipay_sdk">#457E5B</color>
+    <color name="clear_day_multipay_sdk">#E6F3ED</color>
+    <color name="blackcurrant_multipay_sdk">#18163d</color>
+    <color name="dark_green_multipay_sdk">#000118</color>
+    <color name="solitude_multipay_sdk">#e7e7ef</color>
+    <color name="white_multipay_sdk">#ffffff</color>
+    <color name="carmine_multipay_sdk">#b00020</color>
+    <color name="black_multipay_sdk">#000000</color>
+    <color name="colorProgressDim_multipay_sdk">#33000000</color>
+    <color name="paua_multipay_sdk">#242554</color>
+    <color name="deep_koamaru_multipay_sdk">#33366B</color>
+    <color name="white_blur_multipay_sdk">#fafafa</color>
 </resources>

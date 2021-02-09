@@ -14,6 +14,17 @@ internal fun FragmentActivity.addFragment(fragment: Fragment, frameId: Int) {
     fragmentTransaction.commit()
 }
 
+internal fun FragmentActivity.replaceFragment(
+    fragment: Fragment,
+    frameId: Int,
+    tag: String? = null
+) {
+    val fragmentTransaction = supportFragmentManager.beginTransaction()
+    fragmentTransaction.replace(frameId, fragment, fragment.javaClass.simpleName)
+    fragmentTransaction.addToBackStack(tag)
+    fragmentTransaction.commit()
+}
+
 internal fun Intent.putParcelableExtra(name: String, value: Parcelable) {
     putExtra(name, value)
 }

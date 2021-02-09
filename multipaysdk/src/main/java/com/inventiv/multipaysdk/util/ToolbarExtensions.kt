@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.R
 
-fun Fragment.toolbar() = requireActivity().findViewById<Toolbar>(R.id.toolbar)!!
+fun Fragment.toolbar() = requireActivity().findViewById<Toolbar>(R.id.toolbar_multipay_sdk)!!
 
 fun Fragment.title(strId: Int) {
     toolbar().title = context?.getString(strId)
@@ -22,7 +22,7 @@ fun Fragment.toolbarColor(colorId: Int) {
 }
 
 fun Fragment.toolbarClose() {
-    toolbarIcon(R.drawable.ic_nav_close)
+    toolbarIcon(R.drawable.ic_nav_close_multipay_sdk)
 }
 
 fun Fragment.hideToolbarBack() {
@@ -30,7 +30,7 @@ fun Fragment.hideToolbarBack() {
 }
 
 fun Fragment.toolbarBack() {
-    toolbarIcon(R.drawable.ic_nav_back)
+    toolbarIcon(R.drawable.ic_nav_back_multipay_sdk)
 }
 
 fun Fragment.toolbarIcon(drawableId: Int) {

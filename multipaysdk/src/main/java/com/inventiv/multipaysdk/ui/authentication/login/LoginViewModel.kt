@@ -1,4 +1,4 @@
-package com.inventiv.multipaysdk.ui.login
+package com.inventiv.multipaysdk.ui.authentication.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

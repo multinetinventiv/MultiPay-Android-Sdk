@@ -1,4 +1,4 @@
-package com.inventiv.multipaysdk.ui.otp
+package com.inventiv.multipaysdk.ui.authentication.otp
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -8,14 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
-import com.inventiv.multipaysdk.databinding.FragmentOtpBinding
+import com.inventiv.multipaysdk.databinding.FragmentOtpMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.repository.OtpRepository
 import com.inventiv.multipaysdk.ui.wallet.WalletActivity
@@ -23,7 +23,7 @@ import com.inventiv.multipaysdk.util.*
 import com.inventiv.multipaysdk.view.listener.SimpleTextWatcher
 import java.util.concurrent.TimeUnit
 
-internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
+internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
 
     private var emailOrGsm: String? = null
     private var password: String? = null
@@ -32,13 +32,9 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
 
     private lateinit var countDownTimer: CountDownTimer
 
-    private val viewModel: OtpViewModel by viewModels {
-        val apiService = MultiPaySdk.getComponent().apiService()
-        OtpViewModelFactory(
-            OtpRepository(apiService),
-            AuthenticationRepository(apiService)
-        )
-    }
+    private val apiService = MultiPaySdk.getComponent().apiService()
+
+    private lateinit var viewModel: OtpViewModel
 
     companion object {
         fun newInstance(
@@ -62,7 +58,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         override fun afterTextChanged(s: Editable?) {
             val otpCode = s.toString()
             val otpLength = otpCode.length
-            if (otpLength == resources.getInteger(R.integer.otp_length)) {
+            if (otpLength == resources.getInteger(R.integer.otp_length_multipay_sdk)) {
                 viewModel.confirmOtp(otpNavigationArgs?.verificationCode, otpCode)
             }
         }
@@ -80,7 +76,23 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentOtpBinding = FragmentOtpBinding.inflate(inflater, container, false)
+    ): FragmentOtpMultipaySdkBinding =
+        FragmentOtpMultipaySdkBinding.inflate(inflater, container, false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val viewModelFactory = OtpViewModelFactory(
+            OtpRepository(apiService),
+            AuthenticationRepository(apiService)
+        )
+        viewModel =
+            ViewModelProvider(this@OtpFragment, viewModelFactory).get(OtpViewModel::class.java)
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -90,8 +102,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         password = arguments?.getString(ARG_PASSWORD)
         otpNavigationArgs = arguments?.getParcelable(ARG_OTP_NAVIGATION)
         otpDirectionFrom = arguments?.getParcelable(ARG_OTP_DIRECTION_FROM)
-        requireBinding().viewPin.addTextChangedListener(simpleTextWatcher)
-        // TODO : login ve otp sayfası tek activity'e çekildikten sonra bu kod silinmeli
+        requireBinding().viewPinMultipaySdk.addTextChangedListener(simpleTextWatcher)
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
@@ -99,13 +110,13 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
             R.string.otp_description,
             Formatter.formatPhoneNumber(otpNavigationArgs?.gsmNumber, true)
         )
-        requireBinding().textTitle.text =
+        requireBinding().textTitleMultipaySdk.text =
             HtmlCompat.fromHtml(textOtpDescription, HtmlCompat.FROM_HTML_MODE_LEGACY)
-        requireBinding().viewPin.showKeyboard()
+        requireBinding().viewPinMultipaySdk.showKeyboard()
         setupAndStartCountDownTimer()
-        requireBinding().buttonResend.setOnClickListener {
+        requireBinding().buttonResendMultipaySdk.setOnClickListener {
             viewModel.login(emailOrGsm!!, password!!)
-            requireBinding().buttonResend.visibility = View.GONE
+            requireBinding().buttonResendMultipaySdk.visibility = View.GONE
         }
     }
 
@@ -118,11 +129,11 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
                         getString(R.string.otp_remaining_time),
                         (millisUntilFinished / 1000)
                     )
-                requireBinding().textRemainingTime.text = formattedTimerText
+                requireBinding().textRemainingTimeMultipaySdk.text = formattedTimerText
             }
 
             override fun onFinish() {
-                requireBinding().buttonResend.visibility = View.VISIBLE
+                requireBinding().buttonResendMultipaySdk.visibility = View.VISIBLE
             }
         }
         countDownTimer.start()
@@ -182,11 +193,11 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().otpProgress.layoutProgress.visibility = visibility
+        requireBinding().otpProgressMultipaySdk.layoutProgressMultipaySdk.visibility = visibility
     }
 
     override fun onDestroyView() {
-        requireBinding().viewPin.removeTextChangedListener(simpleTextWatcher)
+        requireBinding().viewPinMultipaySdk.removeTextChangedListener(simpleTextWatcher)
         countDownTimer.cancel()
         super.onDestroyView()
     }

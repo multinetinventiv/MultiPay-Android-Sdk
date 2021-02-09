@@ -34,3 +34,15 @@ internal fun Fragment.showSnackBarConfirm(message: String? = ApiError.GENERAL_ER
     )
     SnackBarUtil.confirm(snackbar).show()
 }
+
+
+internal fun Fragment.replaceFragment(
+    fragment: Fragment,
+    frameId: Int,
+    tag: String? = null
+) {
+    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+    fragmentTransaction.replace(frameId, fragment, fragment.javaClass.simpleName)
+    fragmentTransaction.addToBackStack(tag)
+    fragmentTransaction.commit()
+}

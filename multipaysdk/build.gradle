@@ -38,18 +38,24 @@ android {
     kotlinOptions {
         jvmTarget = 1.8.toString()
     }
+
+    sourceSets {
+        main.res.srcDirs = [
+                'src/main/res',
+                'src/main/res-public'
+        ]
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation deps.kotlin.stdlib
-    implementation deps.androidx.app_compat
     implementation deps.androidx.ktx
+    implementation deps.androidx.app_compat
     implementation deps.ui.constraint
     implementation deps.ui.material
     implementation deps.network.volley
     implementation deps.network.gson
-    implementation deps.androidx.fragment
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_viewmodel
     testImplementation 'junit:junit:4.13.1'

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">"MultiPay SDK"</string>
+    <string name="app_name_multipay_sdk">"MultiPay SDK"</string>
 
     <!-- SYSTEM -->
     <string name="Error.1005">"Bağlantı ayarlarınızı kontrol ediniz."</string>

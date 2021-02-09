@@ -51,7 +51,7 @@ object MultiPaySdk {
     }
 
     @JvmStatic
-    fun deleteWallet(walletToken: String, listener: MultiPaySdkListener) {
+    fun unselectWallet(walletToken: String, listener: MultiPaySdkListener) {
         multiPaySdkComponent.unselectWallet(walletToken, listener)
     }
 

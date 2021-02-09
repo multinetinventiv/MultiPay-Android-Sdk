@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.inventiv.multipaysdk.R
 
-class PinEntryEditText : AppCompatEditText {
+internal class PinEntryEditText : AppCompatEditText {
 
     private var mSpace = 8f //24 dp by default, space between the lines
     private var mCharSize = 0f
@@ -136,7 +136,7 @@ class PinEntryEditText : AppCompatEditText {
             mLinesPaint!!.strokeWidth = mLineStrokeSelected
             mLinesPaint!!.color = Color.LTGRAY
             if (next) {
-                mLinesPaint!!.color = ContextCompat.getColor(context, R.color.keppel)
+                mLinesPaint!!.color = ContextCompat.getColor(context, R.color.keppel_multipay_sdk)
             }
         } else {
             mLinesPaint!!.strokeWidth = mLineStroke

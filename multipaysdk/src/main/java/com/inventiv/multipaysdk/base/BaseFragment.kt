@@ -11,7 +11,7 @@ internal abstract class BaseFragment<V : ViewBinding> : Fragment() {
 
     private var binding: V? = null
 
-    final override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
