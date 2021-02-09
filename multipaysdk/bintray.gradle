@@ -12,7 +12,7 @@ ext {
     siteUrl = 'https://github.com/multinetinventiv/MultiPay-Android-Sdk'    // git repo url
     gitUrl = 'https://github.com/multinetinventiv/MultiPay-Android-Sdk.git' // git repo vcs url
 
-    libraryVersion = '1.0.4'      // library version
+    libraryVersion = '1.0.5'      // library version
 
     developerId = 'inventiv'                // This is your bintray username
     developerName = 'Multinet Inventiv'              // Developer's name

@@ -51,7 +51,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         btnDeleteInfos = findViewById(R.id.btn_delete_infos)
         btnStartSdk = findViewById(R.id.btn_start_sdk)
 
-        sampleReceiver = SampleReceiver(multiPaySdkListener)
+        sampleReceiver = SampleReceiver(multiPaySdkListener!!)
         val intentFilter = IntentFilter()
         intentFilter.addAction("com.inventiv.multipaysdk.intent.TOKEN_RECEIVED")
         intentFilter.addAction("com.inventiv.multipaysdk.intent.SDK_CLOSED")
@@ -68,7 +68,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         val strWalletToken = getSharedPref().getString(PREF_WALLET_TOKEN, String())
         if (!strWalletToken.isNullOrEmpty()) {
             walletToken = strWalletToken
-            getCardInfo(walletToken!!, multiPaySdkListener)
+            getCardInfo(walletToken!!, multiPaySdkListener!!)
         }
 
         bindOnClickEvents()
@@ -89,7 +89,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
                 )
             ),
             sign = paymentInfos.sign,
-            listener = multiPaySdkListener
+            listener = multiPaySdkListener!!
         )
     }
 
@@ -115,7 +115,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         }
     }
 
-    private val multiPaySdkListener = object : MultiPaySdkListener {
+    private var multiPaySdkListener: MultiPaySdkListener? = object : MultiPaySdkListener {
         override fun onTokenReceived(token: String) {
             Log.i(TAG, "${info.environment.name} onTokenReceived: $token")
             walletToken = token
@@ -185,7 +185,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     }
 
     private fun onCardDeleteClicked() {
-        MultiPaySdk.unselectWallet(walletResponse?.token!!, multiPaySdkListener)
+        MultiPaySdk.unselectWallet(walletResponse?.token!!, multiPaySdkListener!!)
     }
 
     private fun onConfirmPaymentClicked() {
@@ -196,12 +196,16 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     }
 
     private fun onDeleteInfosClicked() {
+        walletResponse?.token?.let { token ->
+            MultiPaySdk.unselectWallet(token, multiPaySdkListener!!)
+        }
         getSharedPref().edit().clear().apply()
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
     override fun onDestroy() {
+        multiPaySdkListener = null
         unregisterReceiver(sampleReceiver)
         super.onDestroy()
     }
