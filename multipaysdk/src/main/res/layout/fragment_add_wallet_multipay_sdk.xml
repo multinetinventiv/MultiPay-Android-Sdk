@@ -107,6 +107,6 @@
 
     <include
         android:id="@+id/add_card_progress_multipay_sdk"
-        layout="@layout/layout_progress" />
+        layout="@layout/layout_progress_multipay_sdk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,14 +17,14 @@ import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
-import com.inventiv.multipaysdk.databinding.FragmentWalletBinding
+import com.inventiv.multipaysdk.databinding.FragmentWalletMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.WalletRepository
 import com.inventiv.multipaysdk.ui.addwallet.AddWalletActivity
 import com.inventiv.multipaysdk.ui.splash.SplashActivity
 import com.inventiv.multipaysdk.util.*
 
 
-internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
+internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>() {
 
     companion object {
         fun newInstance() = WalletFragment()
@@ -47,7 +47,8 @@ internal class WalletFragment : BaseFragment<FragmentWalletBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentWalletBinding = FragmentWalletBinding.inflate(inflater, container, false)
+    ): FragmentWalletMultipaySdkBinding =
+        FragmentWalletMultipaySdkBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,

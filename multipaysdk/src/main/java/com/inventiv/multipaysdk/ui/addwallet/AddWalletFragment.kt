@@ -11,13 +11,13 @@ import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
-import com.inventiv.multipaysdk.databinding.FragmentAddWalletBinding
+import com.inventiv.multipaysdk.databinding.FragmentAddWalletMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.WalletRepository
 import com.inventiv.multipaysdk.util.*
 import com.inventiv.multipaysdk.view.listener.MaskCardNumberWatcher
 import com.inventiv.multipaysdk.view.listener.MaskCardNumberWatcherView
 
-internal class AddWalletFragment : BaseFragment<FragmentAddWalletBinding>(),
+internal class AddWalletFragment : BaseFragment<FragmentAddWalletMultipaySdkBinding>(),
     MaskCardNumberWatcherView {
 
     private lateinit var viewModel: AddWalletViewModel
@@ -37,7 +37,8 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletBinding>(),
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentAddWalletBinding = FragmentAddWalletBinding.inflate(inflater, container, false)
+    ): FragmentAddWalletMultipaySdkBinding =
+        FragmentAddWalletMultipaySdkBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,

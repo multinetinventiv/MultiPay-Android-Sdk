@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
-import com.inventiv.multipaysdk.databinding.FragmentSplashBinding
+import com.inventiv.multipaysdk.databinding.FragmentSplashMultipaySdkBinding
 import com.inventiv.multipaysdk.ui.authentication.AuthenticationActivity
 import com.inventiv.multipaysdk.ui.wallet.WalletActivity
 import com.inventiv.multipaysdk.util.SPLASH_ACTVITY_REQUEST_CODE
 
-internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
+internal class SplashFragment : BaseFragment<FragmentSplashMultipaySdkBinding>() {
 
     companion object {
         fun newInstance(): SplashFragment = SplashFragment()
@@ -21,7 +21,8 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentSplashBinding = FragmentSplashBinding.inflate(inflater, container, false)
+    ): FragmentSplashMultipaySdkBinding =
+        FragmentSplashMultipaySdkBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

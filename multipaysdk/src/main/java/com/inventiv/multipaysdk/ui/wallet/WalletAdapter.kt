@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.data.model.response.WalletResponse
-import com.inventiv.multipaysdk.databinding.ItemWalletSingleSelectBinding
+import com.inventiv.multipaysdk.databinding.ItemWalletSingleSelectMultipaySdkBinding
 import com.inventiv.multipaysdk.util.themeColor
 
 internal class WalletAdapter(private val clickListener: WalletListener) :
@@ -23,7 +23,7 @@ internal class WalletAdapter(private val clickListener: WalletListener) :
         holder.bind(walletItem, clickListener)
     }
 
-    class ViewHolder private constructor(private val binding: ItemWalletSingleSelectBinding) :
+    class ViewHolder private constructor(private val binding: ItemWalletSingleSelectMultipaySdkBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(walletListItem: WalletListItem, clickListener: WalletListener) {
@@ -54,7 +54,7 @@ internal class WalletAdapter(private val clickListener: WalletListener) :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemWalletSingleSelectBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemWalletSingleSelectMultipaySdkBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(binding)
             }

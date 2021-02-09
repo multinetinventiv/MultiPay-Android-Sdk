@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
-import com.inventiv.multipaysdk.databinding.ActivityCommonBinding
+import com.inventiv.multipaysdk.databinding.ActivityCommonMultipaySdkBinding
 import com.inventiv.multipaysdk.util.addFragment
 import com.inventiv.multipaysdk.util.updateBaseContextLocale
 
 internal abstract class BaseContainerActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCommonBinding
+    private lateinit var binding: ActivityCommonMultipaySdkBinding
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase == null) {
@@ -29,7 +29,7 @@ internal abstract class BaseContainerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCommonBinding.inflate(layoutInflater)
+        binding = ActivityCommonMultipaySdkBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val fragment = supportFragmentManager.findFragmentById(R.id.layout_container_multipay_sdk)
         if (fragment == null) {

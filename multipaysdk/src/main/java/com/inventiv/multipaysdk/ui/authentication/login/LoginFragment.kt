@@ -11,7 +11,7 @@ import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
-import com.inventiv.multipaysdk.databinding.FragmentLoginBinding
+import com.inventiv.multipaysdk.databinding.FragmentLoginMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
@@ -22,7 +22,7 @@ import com.inventiv.multipaysdk.util.showToolbar
 import com.inventiv.multipaysdk.view.listener.MaskWatcher
 
 
-internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
+internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
 
     private lateinit var maskWatcher: MaskWatcher
     private lateinit var emailOrGsm: String
@@ -43,7 +43,8 @@ internal class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false)
+    ): FragmentLoginMultipaySdkBinding =
+        FragmentLoginMultipaySdkBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,

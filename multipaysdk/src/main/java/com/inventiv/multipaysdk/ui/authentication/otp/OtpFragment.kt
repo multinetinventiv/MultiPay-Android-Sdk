@@ -15,7 +15,7 @@ import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
-import com.inventiv.multipaysdk.databinding.FragmentOtpBinding
+import com.inventiv.multipaysdk.databinding.FragmentOtpMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.repository.OtpRepository
 import com.inventiv.multipaysdk.ui.wallet.WalletActivity
@@ -23,7 +23,7 @@ import com.inventiv.multipaysdk.util.*
 import com.inventiv.multipaysdk.view.listener.SimpleTextWatcher
 import java.util.concurrent.TimeUnit
 
-internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
+internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
 
     private var emailOrGsm: String? = null
     private var password: String? = null
@@ -76,7 +76,8 @@ internal class OtpFragment : BaseFragment<FragmentOtpBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentOtpBinding = FragmentOtpBinding.inflate(inflater, container, false)
+    ): FragmentOtpMultipaySdkBinding =
+        FragmentOtpMultipaySdkBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,

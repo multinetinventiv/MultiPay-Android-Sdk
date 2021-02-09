@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_description_multipay_sdk"
-        tools:listitem="@layout/item_wallet_single_select" />
+        tools:listitem="@layout/item_wallet_single_select_multipay_sdk" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_add_wallet_multipay_sdk"
@@ -59,7 +59,7 @@
 
     <include
         android:id="@+id/text_wallet_list_empty_multipay_sdk"
-        layout="@layout/layout_list_empty"
+        layout="@layout/layout_list_empty_multipay_sdk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +67,6 @@
 
     <include
         android:id="@+id/wallet_progress_multipay_sdk"
-        layout="@layout/layout_progress" />
+        layout="@layout/layout_progress_multipay_sdk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
