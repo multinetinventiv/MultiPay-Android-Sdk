@@ -109,7 +109,17 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     }
 
     override fun onPaymentRollback(paymentRollback: PaymentRollback) {
-        // TODO : make rollback request here
+        MultiPaySdk.rollbackPayment(
+            requestId = paymentRollback.requestId,
+            sign = paymentRollback.sign,
+            merchantReferenceNumber = paymentRollback.merchantReferenceNumber,
+            terminalReferenceNumber = paymentRollback.terminalReferenceNumber,
+            rollbackReferenceNumber = paymentRollback.rollbackReferenceNumber,
+            reason = paymentRollback.reason,
+            referenceNumberType = paymentRollback.referenceNumberType,
+            referenceNumber = paymentRollback.referenceNumber,
+            listener = multiPaySdkListener!!
+        )
     }
 
     private fun bindOnClickEvents() {
@@ -185,6 +195,16 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
                 "${info.environment.name} onConfirmPaymentReceived: $sign  $transferServerRefNo"
             )
             getCardInfo(walletToken!!, this)
+        }
+
+        override fun onRollbackPaymentReceived(
+            sign: String,
+            rollbackServerReferenceNumber: String
+        ) {
+            Log.d(
+                TAG,
+                "${info.environment.name} onRollbackPaymentReceived: $sign  $rollbackServerReferenceNumber"
+            )
         }
     }
 

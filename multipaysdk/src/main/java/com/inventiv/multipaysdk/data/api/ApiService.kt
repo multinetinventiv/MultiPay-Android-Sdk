@@ -146,4 +146,32 @@ internal class ApiService(private val networkManager: NetworkManager) {
             networkCallback = networkCallback
         )
     }
+
+    fun rollbackPaymentRequest(
+        requestId: String,
+        sign: String,
+        merchantReferenceNumber: String,
+        terminalReferenceNumber: String,
+        rollbackReferenceNumber: String,
+        reason: Int,
+        referenceNumberType: Int,
+        referenceNumber: String,
+        networkCallback: NetworkCallback<Result>
+    ) {
+        networkManager.sendRequest(
+            request = RollbackPaymentRequest(
+                requestId = requestId,
+                sign = sign,
+                merchantReferenceNumber = merchantReferenceNumber,
+                terminalReferenceNumber = terminalReferenceNumber,
+                rollbackReferenceNumber = rollbackReferenceNumber,
+                reason = reason,
+                referenceNumberType = referenceNumberType,
+                referenceNumber = referenceNumber,
+            ),
+            requestPath = "payment/rollback",
+            responseModel = Result::class.java,
+            networkCallback = networkCallback
+        )
+    }
 }

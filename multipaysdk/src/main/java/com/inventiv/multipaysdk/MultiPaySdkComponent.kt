@@ -9,10 +9,7 @@ import com.inventiv.multipaysdk.data.api.VolleyManager
 import com.inventiv.multipaysdk.data.api.callback.NetworkCallback
 import com.inventiv.multipaysdk.data.api.error.ApiError
 import com.inventiv.multipaysdk.data.model.request.TransactionDetail
-import com.inventiv.multipaysdk.data.model.response.ConfirmPaymentResponse
-import com.inventiv.multipaysdk.data.model.response.Result
-import com.inventiv.multipaysdk.data.model.response.SingleWalletResponse
-import com.inventiv.multipaysdk.data.model.response.UnselectWalletResponse
+import com.inventiv.multipaysdk.data.model.response.*
 import com.inventiv.multipaysdk.data.model.type.Language
 import com.inventiv.multipaysdk.util.Logger
 import com.inventiv.multipaysdk.util.getLanguage
@@ -132,8 +129,46 @@ internal class MultiPaySdkComponent(
                         ConfirmPaymentResponse::class.java
                     )
                     listener.onConfirmPaymentReceived(
-                        confirmPaymentResponse.sign ?: "",
-                        confirmPaymentResponse.transferServerRefNo ?: ""
+                        confirmPaymentResponse.sign,
+                        confirmPaymentResponse.transferServerRefNo
+                    )
+                }
+
+                override fun onError(error: ApiError) {
+                    listener.onServiceError(error.message, error.errorCode)
+                }
+            })
+    }
+
+    fun rollbackPayment(
+        requestId: String,
+        sign: String,
+        merchantReferenceNumber: String,
+        terminalReferenceNumber: String,
+        rollbackReferenceNumber: String,
+        reason: Int,
+        referenceNumberType: Int,
+        referenceNumber: String,
+        listener: MultiPaySdkListener
+    ) {
+        apiService.rollbackPaymentRequest(
+            requestId,
+            sign,
+            merchantReferenceNumber,
+            terminalReferenceNumber,
+            rollbackReferenceNumber,
+            reason,
+            referenceNumberType,
+            referenceNumber,
+            object : NetworkCallback<Result> {
+                override fun onSuccess(response: Result?) {
+                    val rollbackPaymentResponse = gson().fromJson<RollbackPaymentResponse>(
+                        response?.result,
+                        RollbackPaymentResponse::class.java
+                    )
+                    listener.onRollbackPaymentReceived(
+                        rollbackPaymentResponse.sign,
+                        rollbackPaymentResponse.rollbackServerReferenceNumber
                     )
                 }
 
