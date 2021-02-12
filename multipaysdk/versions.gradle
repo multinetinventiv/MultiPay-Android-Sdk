@@ -33,7 +33,6 @@ def android = [:]
 android.app_id = "com.inventiv.multipaysdk"
 android.min_sdk = 19
 android.target_sdk = 30
-android.build_tools = "29.0.3"
 deps.android = android
 
 def androidx = [:]

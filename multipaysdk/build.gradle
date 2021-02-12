@@ -7,7 +7,6 @@ apply from: 'publish.gradle'
 
 android {
     compileSdkVersion deps.android.target_sdk
-    buildToolsVersion deps.android.build_tools
 
     defaultConfig {
         minSdkVersion deps.android.min_sdk

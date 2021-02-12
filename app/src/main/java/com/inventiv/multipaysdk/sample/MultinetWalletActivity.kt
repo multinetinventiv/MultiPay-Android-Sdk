@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.MultiPaySdkListener
 import com.inventiv.multipaysdk.data.model.request.TransactionDetail
@@ -20,7 +21,8 @@ import com.inventiv.multipaysdk.data.model.response.SingleWalletResponse
 import com.inventiv.multipaysdk.data.model.response.UnselectWalletResponse
 import com.inventiv.multipaysdk.data.model.response.WalletResponse
 
-class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener {
+class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener,
+    PaymentRollbackDialogListener {
 
     companion object {
         const val EXTRA_INFOS = "extra_infos"
@@ -33,6 +35,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     }
 
     private lateinit var walletItem: ConstraintLayout
+    private lateinit var paymentItem: ConstraintLayout
     private lateinit var btnDeleteInfos: Button
     private lateinit var btnStartSdk: Button
 
@@ -40,6 +43,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     private lateinit var info: Infos
     private var walletToken: String? = null
     private var walletResponse: WalletResponse? = null
+    private var latestPaymentInfos: PaymentInfos? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +54,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         walletItem = findViewById(R.id.included_wallet_item)
         btnDeleteInfos = findViewById(R.id.btn_delete_infos)
         btnStartSdk = findViewById(R.id.btn_start_sdk)
+        paymentItem = findViewById(R.id.included_payment_item)
 
         sampleReceiver = SampleReceiver(multiPaySdkListener!!)
         val intentFilter = IntentFilter()
@@ -71,10 +76,20 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
             getCardInfo(walletToken!!, multiPaySdkListener!!)
         }
 
+        val strPaymentInfos = getSharedPref().getString(PREF_PAYMENT_INFOS, String())
+        if (!strPaymentInfos.isNullOrEmpty()) {
+            latestPaymentInfos = Gson().fromJson(strPaymentInfos, PaymentInfos::class.java)
+            latestPaymentInfos?.let {
+                showLatestPayment(it)
+            }
+        }
+
         bindOnClickEvents()
     }
 
     override fun onConfirmPayment(paymentInfos: PaymentInfos) {
+        latestPaymentInfos = paymentInfos
+
         MultiPaySdk.confirmPayment(
             walletToken = walletToken!!,
             requestId = paymentInfos.requestId,
@@ -91,6 +106,10 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
             sign = paymentInfos.sign,
             listener = multiPaySdkListener!!
         )
+    }
+
+    override fun onPaymentRollback(paymentRollback: PaymentRollback) {
+        // TODO : make rollback request here
     }
 
     private fun bindOnClickEvents() {
@@ -153,12 +172,51 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         }
 
         override fun onConfirmPaymentReceived(sign: String, transferServerRefNo: String) {
+            // Save payment info for later use on refund
+            latestPaymentInfos?.let {
+                it.transferServerRefNo = transferServerRefNo
+                val strInfos = Gson().toJson(it)
+                getSharedPref().edit().putString(PREF_PAYMENT_INFOS, strInfos).apply()
+                showLatestPayment(it)
+            }
+
             Log.d(
                 TAG,
                 "${info.environment.name} onConfirmPaymentReceived: $sign  $transferServerRefNo"
             )
             getCardInfo(walletToken!!, this)
         }
+    }
+
+    private fun showLatestPayment(paymentInfos: PaymentInfos) {
+        (paymentItem.findViewById(R.id.text_payment_transfer_reference_number) as TextView).text =
+            "TransferReferenceNumber : ${paymentInfos.transferReferenceNumber}"
+        (paymentItem.findViewById(R.id.text_payment_amount) as TextView).text =
+            "Amount : ${paymentInfos.amount}"
+        (paymentItem.findViewById(R.id.text_payment_product_id) as TextView).text =
+            "ProductId : ${paymentInfos.productId}"
+
+        (paymentItem.findViewById(R.id.button_payment_cancel) as Button).setOnClickListener {
+            paymentInfos.reason = RollbackPaymentType.CANCEL.code
+            showPaymentRollbackDialog(paymentInfos)
+        }
+        (paymentItem.findViewById(R.id.button_payment_refund) as Button).setOnClickListener {
+            paymentInfos.reason = RollbackPaymentType.REFUND.code
+            showPaymentRollbackDialog(paymentInfos)
+        }
+        (paymentItem.findViewById(R.id.button_payment_reversal) as Button).setOnClickListener {
+            paymentInfos.reason = RollbackPaymentType.REVERSAL.code
+            showPaymentRollbackDialog(paymentInfos)
+        }
+
+        paymentItem.visibility = View.VISIBLE
+    }
+
+    private fun showPaymentRollbackDialog(paymentInfos: PaymentInfos) {
+        PaymentRollbackDialogFragment.newInstance(paymentInfos).show(
+            supportFragmentManager,
+            "FRAGMENT_PAYMENT_ROLLBACK_DIALOG"
+        )
     }
 
     private fun setWalletUI() {
