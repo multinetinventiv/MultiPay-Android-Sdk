@@ -4,15 +4,13 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class PaymentInfos(
+data class PaymentRollback(
     val requestId: String,
-    val transferReferenceNumber: String,
     val terminalReferenceNumber: String,
     val merchantReferenceNumber: String,
-    val amount: String,
-    val productId: String,
+    val rollbackReferenceNumber: String,
+    val reason: Int,
+    val referenceNumberType: Int,
     val referenceNumber: String,
-    val sign: String,
-    var transferServerRefNo: String? = null,
-    var reason: Int? = null
+    val sign: String
 ) : Parcelable

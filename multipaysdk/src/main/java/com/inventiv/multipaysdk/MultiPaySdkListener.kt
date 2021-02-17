@@ -10,4 +10,5 @@ interface MultiPaySdkListener {
     fun onServiceError(error: String?, code: Int) {}
     fun onMultiPaySdkClosed() {}
     fun onConfirmPaymentReceived(sign: String, transferServerRefNo: String) {}
+    fun onRollbackPaymentReceived(sign: String, rollbackServerReferenceNumber: String) {}
 }

@@ -77,4 +77,29 @@ object MultiPaySdk {
             listener
         )
     }
+
+    @JvmStatic
+    fun rollbackPayment(
+        requestId: String,
+        sign: String,
+        merchantReferenceNumber: String,
+        terminalReferenceNumber: String,
+        rollbackReferenceNumber: String,
+        reason: Int,
+        referenceNumberType: Int,
+        referenceNumber: String,
+        listener: MultiPaySdkListener
+    ) {
+        multiPaySdkComponent.rollbackPayment(
+            requestId,
+            sign,
+            merchantReferenceNumber,
+            terminalReferenceNumber,
+            rollbackReferenceNumber,
+            reason,
+            referenceNumberType,
+            referenceNumber,
+            listener
+        )
+    }
 }
