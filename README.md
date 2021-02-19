@@ -2,7 +2,7 @@
 
 [ ![Download](https://api.bintray.com/packages/inventiv/MultiPay-Android-SDK/com.inventiv.multipaysdk/images/download.svg?version=1.0.6) ](https://bintray.com/inventiv/MultiPay-Android-SDK/com.inventiv.multipaysdk/1.0.6/link)
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://developer.android.com/studio/releases/platforms#4.4)
-![AndroidX](https://img.shields.io/badge/androidX-✓-blueviolet)
+[![AndroidX](https://img.shields.io/badge/androidX-✓-blueviolet)](#)
 [![GitHub license](https://img.shields.io/github/license/multinetinventiv/MultiPay-Android-Sdk)](https://github.com/multinetinventiv/MultiPay-Android-Sdk/blob/main/LICENSE)
 
 MultiPay Sdk kütüphanesidir. Multinet cüzdan ile ödeme almak için kullanılır.
@@ -41,6 +41,6 @@ buildscript {
 
 Entegrasyon dokümanı için :
 
-[Multinet Sdk Doküman](https://docs.multinet.com.tr/multipay)
+[Multinet Sdk Doküman](https://docs.multinet.com.tr/multipay/integration)
 
 sitesini ziyaret edebilirsiniz.
