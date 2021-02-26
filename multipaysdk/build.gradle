@@ -5,6 +5,8 @@ apply from: 'versions.gradle'
 apply from: 'bintray.gradle'
 apply from: 'publish.gradle'
 
+apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"
+
 android {
     compileSdkVersion deps.android.target_sdk
 
