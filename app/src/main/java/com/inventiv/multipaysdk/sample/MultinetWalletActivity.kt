@@ -179,6 +179,9 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
                 "onServiceError : $error",
                 Toast.LENGTH_LONG
             ).show()
+            latestPaymentInfos?.let {
+                showLatestPayment(it)
+            }
         }
 
         override fun onConfirmPaymentReceived(sign: String, transferServerRefNo: String) {
@@ -205,6 +208,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
                 TAG,
                 "${info.environment.name} onRollbackPaymentReceived: $sign  $rollbackServerReferenceNumber"
             )
+            getCardInfo(walletToken!!, this)
         }
     }
 

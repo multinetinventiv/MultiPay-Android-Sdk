@@ -29,7 +29,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textStyle="bold"
-            android:text="SON YAPILAN ÖDEME" />
+            android:text="SON ÖDEME İŞLEMİ" />
 
         <TextView
             android:id="@+id/text_payment_transfer_reference_number"
