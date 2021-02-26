@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.MultiPaySdk" parent="Base.Theme.App.MultiPaySdk">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+        <item name="colorPrimary">@color/keppel_multipay_sdk</item>
+        <item name="colorPrimaryVariant">@color/como_multipay_sdk</item>
+        <item name="colorSecondary">@color/white_multipay_sdk</item>
+        <item name="colorSecondaryVariant">@color/white_multipay_sdk</item>
+        <item name="android:colorBackground">@color/blackcurrant_multipay_sdk</item>
+        <item name="colorSurface">@color/blackcurrant_multipay_sdk</item>
+        <item name="colorError">@color/carmine_multipay_sdk</item>
+        <item name="colorOnPrimary">@color/white_multipay_sdk</item>
+        <item name="colorOnSecondary">@color/black_multipay_sdk</item>
+        <item name="colorOnBackground">@color/white_multipay_sdk</item>
+        <item name="colorOnSurface">@color/white_multipay_sdk</item>
+        <item name="colorOnError">@color/white_multipay_sdk</item>
+        <item name="colorControlHighlight">@color/deep_koamaru_multipay_sdk</item>
+    </style>
+
+    <style name="Base.ThemeOverlay.MultiPaySdk.ListBackground" parent="Base.Theme.MultiPaySdk">
+        <item name="android:colorBackground">@color/paua_multipay_sdk</item>
+    </style>
+
+</resources>

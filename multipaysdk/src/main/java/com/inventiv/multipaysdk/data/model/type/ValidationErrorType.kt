@@ -1,0 +1,8 @@
+package com.inventiv.multipaysdk.data.model.type
+
+internal enum class ValidationErrorType {
+    ALL, NAME, SURNAME, EMAIL, GSM, EMAIL_GSM, PASSWORD, PASSWORD_NEW,
+    PASSWORD_OLD, PASSWORD_NEW_REPEAT, PASSWORDS_NOT_MATCH, PIN, NAME_SURNAME,
+    TOP_UP_AMOUNT, TOP_UP_CARD_NUMBER, TOP_UP_CVV, TOP_UP_EXPIRE_DATE,
+    ALIAS, ACTIVATION_CODE
+}

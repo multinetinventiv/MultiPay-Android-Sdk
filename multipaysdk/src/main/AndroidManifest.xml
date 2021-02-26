@@ -1,0 +1,38 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.inventiv.multipaysdk">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MultiPaySdk" />
+
+        <activity
+            android:name=".ui.authentication.AuthenticationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MultiPaySdk"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.wallet.WalletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MultiPaySdk"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.addwallet.AddWalletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MultiPaySdk"
+            android:windowSoftInputMode="adjustResize" />
+
+    </application>
+
+</manifest>
+
+

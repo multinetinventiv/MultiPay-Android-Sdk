@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_wallet_item_multipay_sdk"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:background="@drawable/bg_wallet_item"
+    android:paddingStart="@dimen/margin_normal_multipay_sdk"
+    android:paddingTop="@dimen/margin_normal_multipay_sdk"
+    android:paddingEnd="@dimen/margin_small_multipay_sdk"
+    android:paddingBottom="@dimen/margin_normal_multipay_sdk">
+
+    <ImageView
+        android:id="@+id/image_wallet_multipay_sdk"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_wallet_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_small_multipay_sdk"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_wallet_multipay_sdk"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_wallet_name_multipay_sdk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Multinet" />
+
+        <TextView
+            android:id="@+id/text_wallet_number_multipay_sdk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="3213 **** **** 4123" />
+
+        <TextView
+            android:id="@+id/text_wallet_balance_multipay_sdk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="32,03 TL" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_confirm_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:textSize="10sp"
+        android:text="Ödeme Yap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_change_wallet"
+        app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
+
+    <Button
+        android:id="@+id/button_change_wallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="10sp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:text="Kart Değiştir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_delete_wallet"
+        app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
+
+    <Button
+        android:id="@+id/button_delete_wallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="10sp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Kartı Sil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

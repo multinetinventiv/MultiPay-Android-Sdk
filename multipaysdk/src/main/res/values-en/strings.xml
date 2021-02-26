@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_multipay_sdk">"MultiPay SDK"</string>
+
+    <!-- SYSTEM -->
+    <string name="Error.1005">"Bağlantı ayarlarınızı kontrol ediniz."</string>
+    <string name="Error.1001">"Bağlantı zaman aşımına uğradı."</string>
+    <string name="Error.Http">"Bağlantı başarısız."</string>
+    <string name="Error.System">"Sistem Hatası"</string>
+
+    <!-- COMMON -->
+    <string name="Common.ContinueButton">"DEVAM"</string>
+    <string name="Common.SaveButton">"KAYDET"</string>
+    <string name="Common.CancelButton">"İPTAL"</string>
+    <string name="Common.CancelButton2">"VAZGEÇ"</string>
+    <string name="Common.ClearButton">"SİL"</string>
+    <string name="Common.OkButton">"TAMAM"</string>
+    <string name="Common.DoneButton">"Tamam"</string>
+    <string name="Common.SendButton">"GÖNDER"</string>
+    <string name="Common.OtherButton">"Diğer"</string>
+    <string name="Common.CloseButton">"KAPAT"</string>
+    <string name="Common.Succes">"Başarılı"</string>
+    <string name="Common.Info">"Bilgi"</string>
+    <string name="Common.Warning">"Uyarı"</string>
+    <string name="Common.WarningCaps">"UYARI"</string>
+    <string name="Common.Error">"Hata"</string>
+    <string name="Common.Error.Message">"Hatalı alan %@"</string>
+    <string name="Common.Retry">"TEKRAR DENEYİN"</string>
+    <string name="Common.Showcase.Button">"DEVAM ET"</string>
+    <string name="Common.AskNotification">"Gönder"</string>
+    <string name="Common.Settings">"Ayarlar"</string>
+    <string name="Common.Info.NoDataFound">"Görüntülenecek kayıt bulunamadı"</string>
+    <string name="Common.Info.NoDataFoundShort">"Kayıt Bulunamadı"</string>
+    <string name="api_error_connection_timeout">"Lütfen internet bağlantınızı kontrol ediniz."</string>
+
+    <!-- ALERT_VIEW -->
+    <string name="Alert.Continue">"Devam"</string>
+    <string name="Alert.Done">"Tamam"</string>
+    <string name="Alert.Cancel">"Vazgeç"</string>
+
+    <!-- VALIDATION -->
+    <string name="validation_email_or_gsm">"E-postanızın / GSM numaranızın geçerli olduğunu kontrol ediniz."</string>
+    <string name="validation_email">"E-postanızın geçerli olduğunu kontrol ediniz."</string>
+    <string name="validation_password">"Lütfen şifrenizi en az bir rakam ve bir harf içerecek şekilde, en az 8 karakter uzunluğunda giriniz."</string>
+    <string name="validation_gsm">"Cep telefonu hatalıdır. Lütfen cep telefonu numaranızı başında sıfır olmadan ve 10 rakam uzunluğunda giriniz."</string>
+    <string name="validation_name">"Lütfen adınızı kontrol ediniz."</string>
+    <string name="validation_surname">"Lütfen soyadınızı kontrol ediniz."</string>
+    <string name="Validation.CardNumber">"Lütfen kart numaranızı kontrol ediniz."</string>
+    <string name="Validation.TC">"T.C. Kimlik numaranızı kontrol ediniz."</string>
+    <string name="Validation.Contract">"Kullanıcı sözleşmesini onaylayınız."</string>
+    <string name="Validation.KVKK">"KVKK sözleşmesini onaylayınız."</string>
+    <string name="Validation.OTP">"Lütfen şifrenizi kontrol ediniz."</string>
+    <string name="Validation.Birthdate">"Lütfen doğum tarihinizi kontrol ediniz."</string>
+    <string name="Validation.Amount">"Lütfen tutar alanını kontrol ediniz."</string>
+    <string name="Validation.CVV">"Lütfen CVV alanını kontrol ediniz."</string>
+    <string name="Validation.Expire">"Lütfen son kullanma tarihini kontrol ediniz."</string>
+    <string name="Validation.Alias">"Lütfen kart takma adınızı kontrol ediniz"</string>
+
+    <!-- LOGIN -->
+    <string name="Login.TopTitle">"MultiPay ile Giriş Yap"</string>
+    <string name="Login.InfoTitle">"Ödeme Altyapımız Multinet |Up tarafından sağlanmaktadır ve işlem güvenliğiniz Multinet | Up güvencesi altındadır."</string>
+    <string name="login_email_or_gsm">"E-POSTA veya CEP TELEFONU"</string>
+    <string name="login_password">"ŞİFRENİZ"</string>
+    <string name="login_button">"GİRİŞ YAP"</string>
+    <string name="Login.Register">"KAYIT OL"</string>
+    <string name="login_forget_password_text">"Şifrenizi unuttuysanız buraya &lt;b&gt;tıklayarak&lt;/b&gt; tekrar şifre oluşturabilirsiniz."</string>
+    <string name="login_activation_text">"Aktivasyon Koduyla Gir"</string>
+
+    <!-- REGISTER -->
+    <string name="Register.Header">"ÜYE OL"</string>
+    <string name="Register.Name">"ADINIZ"</string>
+    <string name="Register.Lastname">"SOYADINIZ"</string>
+    <string name="Register.Email">"E-POSTA ADRESİNİZ"</string>
+    <string name="Register.GSM">"CEP TELEFONU NUMARANIZ"</string>
+    <string name="Register.Password">"ŞİFRENİZ"</string>
+    <string name="Register.Contract">"Kullanıcı Sözleşmesi"</string>
+    <string name="Register.ContractText">"MultiPay kullanıcı sözleşme koşullarını kabul ediyor ve onaylıyorum."</string>
+    <string name="Register.Facebook">"BİLGİLERİMİ FACEBOOK'TAN AL"</string>
+    <string name="Register.Inform.Header.Label">"Bilgilendirme"</string>
+    <string name="Register.Inform.Text.Label">"MultiPay’in, kampanyaları tanıtma, hatırlatma ve bilgilendirme amaçlı SMS veya e-posta yolu ile benimle iletişime geçmesine izin veriyorum."</string>
+    <string name="Register.Kvkk.Header.Label">"Aydınlatma Metni"</string>
+    <string name="Register.Kvkk.Text.Label">"Kişisel verilerin korunması kanunu kapsamında, Multinet Kurumsal Hizmetler A.Ş. tarafından yayınlanan 'Aydınlatma Metni'nindeki hüküm ve şartları kabul ediyorum."</string>
+    <string name="Register.PersonalInfoLabel.Text">"Kişisel Bilgiler"</string>
+    <string name="Register.SecurityInfoLabel.Text">"Güvenlik Bilgileri"</string>
+
+    <!-- FORGOT PASSWORD -->
+    <string name="ForgotPassword.Header">"ŞİFREMİ UNUTTUM"</string>
+    <string name="ForgotPassword.Description">"E-Posta adresinizi veya cep telefonunuzu girerek şifrenizi sıfırlama işlemine başlayabilirsiniz"</string>
+    <string name="ForgotPassword.Error.EmailorGSM">"E-postanızın / GSM numaranızın geçerli olduğunu kontrol ediniz."</string>
+    <string name="ForgotPassword.Button">"ŞİFREMİ DEĞİŞTİR"</string>
+
+    <!-- OTP -->
+    <string name="otp_description">"&lt;b&gt;%1$s&lt;/b&gt; numaralı cep telefonuna SMS olarak gönderilen tek kullanımlık şifreyi girin."</string>
+    <string name="OTP.SMSCode">"SMS Kod"</string>
+    <string name="otp_remaining_time">"%1$s saniye kaldı"</string>
+    <string name="otp_resend">"TEKRAR SMS GÖNDER"</string>
+    <string name="OTP.ApproveLabel">"ONAY KODU"</string>
+    <string name="otp_navigation_title">"Aktivasyon"</string>
+
+    <!-- SDK WALLET -->
+    <string name="wallet_description">"Ödeme yapabileceğin cüzdanları listeledik. Ödeme yapmak istediğin cüzdanı seçerek, ödemeyi yapacağın uygulama ile eşleştirebilirsin."</string>
+    <string name="wallet_navigation_title">"Lütfen Cüzdan Seçin"</string>
+    <string name="wallet_match">"EŞLEŞTİR"</string>
+    <string name="wallet_add_wallet">"KART EKLE"</string>
+    <string name="wallet_item_balance_description">"Toplam Kullanılabilir bakiye"</string>
+    <string name="wallet_list_no_wallet">"Henüz tanımlı bir kartınız bulunmamaktadır."</string>
+    <string name="Wallet.AddCard.CVVInfo">"Kartınızın CVV numarasını giriniz"</string>
+
+    <!-- ADD CARD -->
+    <string name="add_card_navigation_title">"MULTINET KART EKLE"</string>
+    <string name="add_card_card_cvv">"CVV"</string>
+    <string name="add_card_button_continue">"Devam"</string>
+    <string name="add_card_card_number">"KART NUMARANIZ"</string>
+    <string name="add_card_card_alias">"Multinet Kartım"</string>
+    <string name="add_card_card_description">"Kartınızın arka yüzündeki 3 haneli CVV kodunu giriniz. Kartınızın CVV kodu yoksa, CVV kodu alanını boş bırakınız."</string>
+
+    <string name="api_error_general">"Bir hata oluştu"</string>
+    <string name="api_error_network">"Bağlantı ile ilgili bir hata oluştu"</string>
+    <string name="api_error_no_network">"Lütfen internet bağlantınızı kontrol ediniz."</string>
+    <string name="api_error_invalid_response">"Servis cevabı ile ilgili bir hata oluştu"</string>
+</resources>

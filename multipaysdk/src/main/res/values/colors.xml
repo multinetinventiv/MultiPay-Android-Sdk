@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="keppel_multipay_sdk">#5db185</color>
+    <color name="como_multipay_sdk">#457E5B</color>
+    <color name="clear_day_multipay_sdk">#E6F3ED</color>
+    <color name="blackcurrant_multipay_sdk">#18163d</color>
+    <color name="dark_green_multipay_sdk">#000118</color>
+    <color name="solitude_multipay_sdk">#e7e7ef</color>
+    <color name="white_multipay_sdk">#ffffff</color>
+    <color name="carmine_multipay_sdk">#b00020</color>
+    <color name="black_multipay_sdk">#000000</color>
+    <color name="colorProgressDim_multipay_sdk">#33000000</color>
+    <color name="paua_multipay_sdk">#242554</color>
+    <color name="deep_koamaru_multipay_sdk">#33366B</color>
+    <color name="white_blur_multipay_sdk">#fafafa</color>
+</resources>

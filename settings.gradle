@@ -1,0 +1,3 @@
+include ':multipaysdk'
+include ':app'
+rootProject.name = "MultiPay SDK Sample"

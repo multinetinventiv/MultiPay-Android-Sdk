@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="digit_number_multipay_sdk" translatable="false">0123456789</string>
+    <string name="digit_number_with_space_multipay_sdk" translatable="false">0123456789\u0020</string>
+</resources>
