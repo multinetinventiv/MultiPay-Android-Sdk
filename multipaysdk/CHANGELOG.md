@@ -17,4 +17,6 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 ### Fixed
 -
 
+## [1.0.0] - 2021-02-26
+
 [Unreleased]: https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.0...HEAD
