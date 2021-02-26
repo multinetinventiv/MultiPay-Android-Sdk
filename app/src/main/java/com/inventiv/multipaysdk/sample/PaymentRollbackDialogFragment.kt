@@ -89,7 +89,8 @@ class PaymentRollbackDialogFragment : DialogFragment() {
             rollbackReferenceNumber = rollbackReferenceNumber,
             reason = paymentInfos.reason!!,
             referenceNumberType = referenceNumberType,
-            referenceNumber = if (referenceNumberType == 0) paymentInfos.transferReferenceNumber else paymentInfos.transferServerRefNo!!,
+            referenceNumber = if (referenceNumberType == 0) paymentInfos.transferReferenceNumber else paymentInfos.transferServerRefNo
+                ?: "",
             sign = sign
         )
         dismiss()
