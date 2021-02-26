@@ -111,9 +111,6 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletMultipaySdkBind
             requireBinding().textInputEditCardAliasMultipaySdk.text.toString().isNotEmpty()
         val validCardNumber =
             requireBinding().textInputEditCardNumberMultipaySdk.text.toString().isValidCardNumber()
-        val validCardCvv =
-            requireBinding().textInputEditCardCvvMultipaySdk.text.toString().isValidCvv()
-        requireBinding().buttonContinueMultipaySdk.isEnabled =
-            (validCardAlias && validCardNumber && validCardCvv)
+        requireBinding().buttonContinueMultipaySdk.isEnabled = (validCardAlias && validCardNumber)
     }
 }
