@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/wallet_item_balance_description"
+            android:text="@string/wallet_item_balance_description_multipay_sdk"
             android:textAppearance="?attr/textAppearanceBody2" />
 
     </LinearLayout>

@@ -40,7 +40,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
         super.onResume()
         showToolbar()
         hideToolbarBack()
-        title(R.string.wallet_navigation_title)
+        title(R.string.wallet_navigation_title_multipay_sdk)
     }
 
     override fun createBinding(
@@ -171,7 +171,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
             if (isShow) View.VISIBLE else View.GONE
         requireBinding().listWalletsMultipaySdk.visibility = if (isShow) View.GONE else View.VISIBLE
         requireBinding().textWalletListEmptyMultipaySdk.textCommonEmptyListMultipaySdk.text =
-            getString(R.string.wallet_list_no_wallet)
+            getString(R.string.wallet_list_no_wallet_multipay_sdk)
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {

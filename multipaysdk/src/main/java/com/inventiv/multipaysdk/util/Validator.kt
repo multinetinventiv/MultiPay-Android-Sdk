@@ -51,22 +51,25 @@ internal object Validator {
     fun getValidationError(type: ValidationErrorType): String {
         when {
             type === ValidationErrorType.NAME -> {
-                return MultiPaySdk.getComponent().getString(R.string.validation_name)
+                return MultiPaySdk.getComponent().getString(R.string.validation_name_multipay_sdk)
             }
             type === ValidationErrorType.SURNAME -> {
-                return MultiPaySdk.getComponent().getString(R.string.validation_surname)
+                return MultiPaySdk.getComponent()
+                    .getString(R.string.validation_surname_multipay_sdk)
             }
             type === ValidationErrorType.EMAIL -> {
-                return MultiPaySdk.getComponent().getString(R.string.validation_email)
+                return MultiPaySdk.getComponent().getString(R.string.validation_email_multipay_sdk)
             }
             type === ValidationErrorType.PASSWORD -> {
-                return MultiPaySdk.getComponent().getString(R.string.validation_password)
+                return MultiPaySdk.getComponent()
+                    .getString(R.string.validation_password_multipay_sdk)
             }
             type === ValidationErrorType.GSM -> {
-                return MultiPaySdk.getComponent().getString(R.string.validation_gsm)
+                return MultiPaySdk.getComponent().getString(R.string.validation_gsm_multipay_sdk)
             }
             type === ValidationErrorType.EMAIL_GSM -> {
-                return MultiPaySdk.getComponent().getString(R.string.validation_email_or_gsm)
+                return MultiPaySdk.getComponent()
+                    .getString(R.string.validation_email_or_gsm_multipay_sdk)
             }
             else -> return StringUtils.EMPTY
         }
