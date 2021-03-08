@@ -2,8 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: 'versions.gradle'
-apply from: 'bintray.gradle'
-apply from: 'publish.gradle'
 
 apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"
 
@@ -66,7 +64,7 @@ dependencies {
 
 @SuppressWarnings("GrMethodMayBeStatic")
 private Integer generateVersionCode() {
-    return deps.android.target_sdk * 1000000 +
+    return deps.android.min_sdk * 1000000 +
             deps.app_version.major * 10000 +
             deps.app_version.minor * 100 +
             deps.app_version.patch
