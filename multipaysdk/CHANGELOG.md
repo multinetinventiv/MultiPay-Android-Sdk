@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 
-## [Unreleased]
+## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.2...HEAD)
 
 ### Added
 -
@@ -17,6 +17,9 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 ### Fixed
 -
 
-## [1.0.0] - 2021-02-26
+## [1.0.2](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.0...1.0.2) - 2021-02-26
 
-[Unreleased]: https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.0...HEAD
+### Fixed
+- SDK build error which occurs on maven implementation
+
+## [1.0.0] - 2021-02-26
