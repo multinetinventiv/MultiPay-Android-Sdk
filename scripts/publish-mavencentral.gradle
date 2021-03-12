@@ -142,6 +142,13 @@ publishing {
     }
 }
 
+nexusStaging {
+    packageGroup = deps.maven.PUBLISH_GROUP_ID
+    stagingProfileId = sonatypeStagingProfileId
+    username = ossrhUsername
+    password = ossrhPassword
+}
+
 signing {
     sign publishing.publications
 }
