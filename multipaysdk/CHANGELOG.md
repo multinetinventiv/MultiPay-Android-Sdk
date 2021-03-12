@@ -9,13 +9,7 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 ## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.2...HEAD)
 
 ### Added
--
-
-### Changed
--
-
-### Fixed
--
+- Github action maven deployment [#109755](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/109755)
 
 ## [1.0.2](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.0...1.0.2) - 2021-02-26
 
