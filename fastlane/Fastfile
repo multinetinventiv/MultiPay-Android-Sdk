@@ -49,13 +49,37 @@ platform :android do
      end
 
 
+    lane :get_sdk_version_name do |options|
+        sdk_version = get_properties_value(
+                path:"multipaysdk/versions.gradle",
+                key:"maven.PUBLISH_VERSION"
+        )
+    end
+
+
     lane :app_center_upload do |options|
+
+        version_name = get_sdk_version_name()
+        UI.message("\n=====================================\n sdk version : "+ version_name +"\n=====================================")
+
+        section_identifier = '[Unreleased]'
+        if options[:isReleaseBranch] != nil && options[:isReleaseBranch] == true
+            section_identifier = '['+version_name+']'
+        end
+
+        changeLogEntries = read_changelog(
+            changelog_path: './multipaysdk/CHANGELOG.md',
+            section_identifier: section_identifier
+        )
+        UI.message("\n=====================================\n changeLogEntries : "+ changeLogEntries +"\n=====================================")
+
         appcenter_upload(
             api_token: options[:app_center_api_token],
             owner_name: "inventiv",
             owner_type: "organization",
             app_name: ENV["APP_NAME"],
             file: "app/build/outputs/apk/"+options[:build_type]+"/app-"+options[:build_type]+".apk",
+            release_notes: changeLogEntries,
             destinations: "MultiPay%20SDK%20Android%20Testers",
             destination_type: "group",
             notify_testers: options[:sendNotification]
@@ -76,7 +100,8 @@ platform :android do
         app_center_upload(
             app_center_api_token: options[:app_center_api_token],
             build_type: options[:build_type],
-            sendNotification: options[:sendNotification]
+            sendNotification: options[:sendNotification],
+            isReleaseBranch: options[:isReleaseBranch]
         )
 
     end

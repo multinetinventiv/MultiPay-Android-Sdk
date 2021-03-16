@@ -45,4 +45,4 @@ jobs:
         run: |
           echo "${{ secrets.TEST_KEYSTORE }}" > test.keystore.asc
           gpg -d --passphrase "${{ secrets.TEST_KEYSTORE_PASSWORD }}" --batch test.keystore.asc > test.keystore
-          fastlane generate_and_upload_apk_to_app_center build_type:${{ github.event.inputs.build_type }} keystore_path:$(echo $(pwd)/test.keystore) store_password:${{ secrets.TEST_STORE_PASSWORD }} key_alias:${{ secrets.TEST_KEY_ALIAS }} key_password:${{ secrets.TEST_KEY_PASSWORD }} app_center_api_token:${{ secrets.app_center_api_token }} sendNotification:${{ github.event.inputs.send_email }}
+          fastlane generate_and_upload_apk_to_app_center build_type:${{ github.event.inputs.build_type }} keystore_path:$(echo $(pwd)/test.keystore) store_password:${{ secrets.TEST_STORE_PASSWORD }} key_alias:${{ secrets.TEST_KEY_ALIAS }} key_password:${{ secrets.TEST_KEY_PASSWORD }} app_center_api_token:${{ secrets.app_center_api_token }} sendNotification:${{ github.event.inputs.send_email }} isReleaseBranch:${{ contains(github.ref, 'release/') }}

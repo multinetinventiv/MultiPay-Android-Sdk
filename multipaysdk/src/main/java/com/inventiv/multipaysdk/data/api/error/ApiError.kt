@@ -33,14 +33,16 @@ internal class ApiError : Exception {
         const val ERROR_SERVER = 4
         const val ERROR_NETWORK_TIMEOUT = 5
 
-        val GENERAL_ERROR_MESSAGE = MultiPaySdk.getComponent().getString(R.string.api_error_general)
-        val NETWORK_ERROR_MESSAGE = MultiPaySdk.getComponent().getString(R.string.api_error_network)
+        val GENERAL_ERROR_MESSAGE =
+            MultiPaySdk.getComponent().getString(R.string.api_error_general_multipay_sdk)
+        val NETWORK_ERROR_MESSAGE =
+            MultiPaySdk.getComponent().getString(R.string.api_error_network_multipay_sdk)
         val NETWORK_TIMEOUT_ERROR_MESSAGE =
-            MultiPaySdk.getComponent().getString(R.string.api_error_connection_timeout)
+            MultiPaySdk.getComponent().getString(R.string.api_error_connection_timeout_multipay_sdk)
         val NO_NETWORK_ERROR_MESSAGE =
-            MultiPaySdk.getComponent().getString(R.string.api_error_no_network)
+            MultiPaySdk.getComponent().getString(R.string.api_error_no_network_multipay_sdk)
         val INVALID_RESPONSE_MESSAGE =
-            MultiPaySdk.getComponent().getString(R.string.api_error_invalid_response)
+            MultiPaySdk.getComponent().getString(R.string.api_error_invalid_response_multipay_sdk)
 
         @JvmOverloads
         fun generalInstance(errorMessage: String = GENERAL_ERROR_MESSAGE): ApiError {
