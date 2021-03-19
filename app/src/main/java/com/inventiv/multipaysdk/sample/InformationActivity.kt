@@ -25,6 +25,7 @@ class InformationActivity : AppCompatActivity() {
 
     private lateinit var editWalletAppToken: AppCompatEditText
     private lateinit var editPaymentAppToken: AppCompatEditText
+    private lateinit var editSaltKey: AppCompatEditText
     private lateinit var editUserID: AppCompatEditText
 
     private lateinit var buttonSave: MaterialButton
@@ -37,18 +38,21 @@ class InformationActivity : AppCompatActivity() {
 
         editWalletAppToken = findViewById(R.id.edit_wallet_app_token)
         editPaymentAppToken = findViewById(R.id.edit_payment_app_token)
+        editSaltKey = findViewById(R.id.edit_salt_key)
         editUserID = findViewById(R.id.edit_user_id)
         buttonSave = findViewById(R.id.button_save)
 
         buttonSave.setOnClickListener {
             val walletApptoken = editWalletAppToken.text.toString()
             val paymentAppToken = editPaymentAppToken.text.toString()
+            val saltKey = editSaltKey.text.toString()
             val userID = editUserID.text.toString()
 
             val infos = Infos(
                 environment,
                 walletApptoken,
                 paymentAppToken,
+                saltKey,
                 userID
             )
 

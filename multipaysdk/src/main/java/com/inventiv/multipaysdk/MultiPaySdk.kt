@@ -2,9 +2,11 @@ package com.inventiv.multipaysdk
 
 import android.content.Context
 import com.inventiv.multipaysdk.data.model.request.TransactionDetail
+import com.inventiv.multipaysdk.data.model.singleton.MultiPaySdkException
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
 import com.inventiv.multipaysdk.data.model.type.Language
 import com.inventiv.multipaysdk.ui.splash.SplashActivity
+import com.inventiv.multipaysdk.util.AESHelper
 
 object MultiPaySdk {
 
@@ -18,10 +20,18 @@ object MultiPaySdk {
         context: Context,
         walletAppToken: String,
         paymentAppToken: String,
+        saltKey: String,
         userId: String = String(),
         environment: Environment = Environment.PRODUCTION,
-        language: Language? = null
+        language: Language? = null,
     ) {
+        try {
+            environment.baseUrl = AESHelper.decrypt(environment.encryptedBaseUrl, saltKey)!!
+            environment.apiServicePath =
+                AESHelper.decrypt(environment.encryptedApiServicePath, saltKey)!!
+        } catch (exception: Exception) {
+            throw MultiPaySdkException.SecurityException(context.getString(R.string.security_exception_message))
+        }
         this.multiPaySdkComponent =
             MultiPaySdkComponent(
                 context,
@@ -35,6 +45,9 @@ object MultiPaySdk {
 
     @JvmStatic
     fun setLanguage(language: Language) = getComponent().setLanguage(language)
+
+    @JvmStatic
+    fun setUserId(userId: String) = getComponent().setClientReferenceNo(userId)
 
     @JvmStatic
     fun start(

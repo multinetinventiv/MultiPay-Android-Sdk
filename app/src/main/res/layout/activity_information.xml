@@ -43,17 +43,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/edit_wallet_app_token" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edit_user_id"
+                android:id="@+id/edit_salt_key"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="UserID"
+                android:hint="SaltKey"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:maxLines="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_payment_app_token" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_user_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="UserID"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_salt_key" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_save"
