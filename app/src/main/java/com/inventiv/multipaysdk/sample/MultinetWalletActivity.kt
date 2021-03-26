@@ -20,6 +20,7 @@ import com.inventiv.multipaysdk.data.model.request.TransactionDetail
 import com.inventiv.multipaysdk.data.model.response.SingleWalletResponse
 import com.inventiv.multipaysdk.data.model.response.UnselectWalletResponse
 import com.inventiv.multipaysdk.data.model.response.WalletResponse
+import com.inventiv.multipaysdk.data.model.singleton.MultiPaySdkException
 
 class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener,
     PaymentRollbackDialogListener {
@@ -62,13 +63,25 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         intentFilter.addAction("com.inventiv.multipaysdk.intent.SDK_CLOSED")
         registerReceiver(sampleReceiver, intentFilter)
 
-        MultiPaySdk.init(
-            context = this.applicationContext,
-            walletAppToken = info.walletApptoken,
-            paymentAppToken = info.paymentAppToken,
-            environment = info.environment,
-            userId = info.userID,
-        )
+        try {
+            MultiPaySdk.init(
+                context = this.applicationContext,
+                walletAppToken = info.walletApptoken,
+                paymentAppToken = info.paymentAppToken,
+                saltKey = info.saltKey,
+                environment = info.environment,
+                userId = info.userID
+            )
+        } catch (exception: MultiPaySdkException) {
+            Toast.makeText(
+                this@MultinetWalletActivity,
+                "multipaySdkError : ${exception.message}",
+                Toast.LENGTH_LONG
+            ).show()
+            onDeleteInfosClicked()
+            return@onCreate
+        }
+
 
         val strWalletToken = getSharedPref().getString(PREF_WALLET_TOKEN, String())
         if (!strWalletToken.isNullOrEmpty()) {

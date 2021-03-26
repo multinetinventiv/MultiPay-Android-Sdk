@@ -1,18 +1,20 @@
 package com.inventiv.multipaysdk.sample
 
 import android.app.Application
-import com.inventiv.multipaysdk.MultiPaySdk
-import com.inventiv.multipaysdk.data.model.type.Language
 
 class SampleApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        MultiPaySdk.init(
+
+        // NORMALLY MultiPaySdk.init method should be called here in Application onCreate method.
+        // But it is moved to MultinetWalletActivity in this sample app for demonstration purposes
+        /*MultiPaySdk.init(
             context = this,
             walletAppToken = "",
             paymentAppToken = "",
+            saltKey = "",
             language = Language.TR
-        )
+        )*/
     }
 }

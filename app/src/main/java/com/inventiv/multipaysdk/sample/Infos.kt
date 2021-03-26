@@ -9,5 +9,6 @@ data class Infos(
     val environment: Environment,
     val walletApptoken: String,
     val paymentAppToken: String,
+    val saltKey: String,
     val userID: String
 ) : Parcelable

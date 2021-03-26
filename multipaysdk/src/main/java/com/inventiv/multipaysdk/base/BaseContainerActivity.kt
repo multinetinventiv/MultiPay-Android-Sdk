@@ -3,6 +3,7 @@ package com.inventiv.multipaysdk.base
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
@@ -29,6 +30,7 @@ internal abstract class BaseContainerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         binding = ActivityCommonMultipaySdkBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val fragment = supportFragmentManager.findFragmentById(R.id.layout_container_multipay_sdk)
