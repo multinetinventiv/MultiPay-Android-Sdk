@@ -20,27 +20,26 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
 
     private val loginResult = MediatorLiveData<Event<Resource<LoginResponse>>>()
 
-    fun login(emailOrGsm: String, password: String): LiveData<Event<Resource<LoginResponse>>> {
+    fun login(emailOrGsm: String): LiveData<Event<Resource<LoginResponse>>> {
 
         val validEmail: Boolean = Validator.validEmail(emailOrGsm)
         val validGsm: Boolean = Validator.validGsmWithMask(emailOrGsm)
-        val validPassword: Boolean = Validator.validPassword(password)
         val loginInputType: Int = Validator.getInputType(emailOrGsm)
 
         val loginRequest = if (loginInputType == Validator.INPUT_TYPE_GSM) {
-            LoginGsm(Formatter.servicePhoneNumber(emailOrGsm), password)
+            LoginGsm(Formatter.servicePhoneNumber(emailOrGsm))
         } else {
-            LoginEmail(emailOrGsm, password)
+            LoginEmail(emailOrGsm)
         }
 
-        if ((validEmail || validGsm) && validPassword) {
+        if ((validEmail || validGsm)) {
 
             loginResult.postValue(Event(Resource.Loading()))
 
             apiService.loginRequest(loginRequest, object : NetworkCallback<Result> {
                 override fun onSuccess(response: Result?) {
                     val gson = MultiPaySdk.getComponent().gson()
-                    val otpResponse = gson.fromJson<LoginResponse>(
+                    val otpResponse = gson.fromJson(
                         response?.result,
                         LoginResponse::class.java
                     )
@@ -56,9 +55,6 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
 
             var type: ValidationErrorType = ValidationErrorType.ALL
 
-            if (!validPassword) {
-                type = ValidationErrorType.PASSWORD
-            }
             if (loginInputType == Validator.INPUT_TYPE_GSM && !validGsm) {
                 type = ValidationErrorType.GSM
             }

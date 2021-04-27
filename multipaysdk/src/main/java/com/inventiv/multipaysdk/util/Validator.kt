@@ -60,10 +60,6 @@ internal object Validator {
             type === ValidationErrorType.EMAIL -> {
                 return MultiPaySdk.getComponent().getString(R.string.validation_email_multipay_sdk)
             }
-            type === ValidationErrorType.PASSWORD -> {
-                return MultiPaySdk.getComponent()
-                    .getString(R.string.validation_password_multipay_sdk)
-            }
             type === ValidationErrorType.GSM -> {
                 return MultiPaySdk.getComponent().getString(R.string.validation_gsm_multipay_sdk)
             }

@@ -26,7 +26,6 @@ import java.util.concurrent.TimeUnit
 internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
 
     private var emailOrGsm: String? = null
-    private var password: String? = null
     private var otpNavigationArgs: OtpNavigationArgs? = null
     private var otpDirectionFrom: OtpDirectionFrom? = null
 
@@ -39,14 +38,12 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
     companion object {
         fun newInstance(
             emailOrGsm: String,
-            password: String,
             otpNavigationArgs: OtpNavigationArgs,
             otpDirectionFrom: OtpDirectionFrom
         ): OtpFragment =
             OtpFragment().apply {
                 val args = Bundle().apply {
                     putString(ARG_EMAIL_OR_GSM, emailOrGsm)
-                    putString(ARG_PASSWORD, password)
                     putParcelable(ARG_OTP_NAVIGATION, otpNavigationArgs)
                     putParcelable(ARG_OTP_DIRECTION_FROM, otpDirectionFrom)
                 }
@@ -99,7 +96,6 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         subscribeConfirmOtp()
         subscribeResendOtp()
         emailOrGsm = arguments?.getString(ARG_EMAIL_OR_GSM)
-        password = arguments?.getString(ARG_PASSWORD)
         otpNavigationArgs = arguments?.getParcelable(ARG_OTP_NAVIGATION)
         otpDirectionFrom = arguments?.getParcelable(ARG_OTP_DIRECTION_FROM)
         requireBinding().viewPinMultipaySdk.addTextChangedListener(simpleTextWatcher)
@@ -115,7 +111,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         requireBinding().viewPinMultipaySdk.showKeyboard()
         setupAndStartCountDownTimer()
         requireBinding().buttonResendMultipaySdk.setOnClickListener {
-            viewModel.login(emailOrGsm!!, password!!)
+            viewModel.login(emailOrGsm!!)
             requireBinding().buttonResendMultipaySdk.visibility = View.GONE
         }
     }

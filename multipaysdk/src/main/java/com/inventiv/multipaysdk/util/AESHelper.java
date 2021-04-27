@@ -1,6 +1,7 @@
 package com.inventiv.multipaysdk.util;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -21,7 +22,7 @@ public class AESHelper {
         Cipher cipher = null;
         cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secret);
-        byte[] cipherText = cipher.doFinal(message.getBytes("UTF-8"));
+        byte[] cipherText = cipher.doFinal(message.getBytes(StandardCharsets.UTF_8));
         return cipherText;
     }
 
@@ -32,7 +33,7 @@ public class AESHelper {
         Cipher cipher = null;
         cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.DECRYPT_MODE, secret);
-        String decryptString = new String(cipher.doFinal(cipherText), "UTF-8");
+        String decryptString = new String(cipher.doFinal(cipherText), StandardCharsets.UTF_8);
         return decryptString;
     }
 }

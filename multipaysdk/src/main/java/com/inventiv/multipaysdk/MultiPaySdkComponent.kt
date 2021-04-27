@@ -75,7 +75,7 @@ internal class MultiPaySdkComponent(
     fun singleWallet(walletToken: String, listener: MultiPaySdkListener) {
         apiService.singleWalletRequest(walletToken, object : NetworkCallback<Result> {
             override fun onSuccess(response: Result?) {
-                val singleWalletResponse = gson().fromJson<SingleWalletResponse>(
+                val singleWalletResponse = gson().fromJson(
                     response?.result,
                     SingleWalletResponse::class.java
                 )
@@ -91,7 +91,7 @@ internal class MultiPaySdkComponent(
     fun unselectWallet(walletToken: String, listener: MultiPaySdkListener) {
         apiService.unselectWalletRequest(walletToken, object : NetworkCallback<Result> {
             override fun onSuccess(response: Result?) {
-                val unselectWalletResponse = gson().fromJson<UnselectWalletResponse>(
+                val unselectWalletResponse = gson().fromJson(
                     response?.result,
                     UnselectWalletResponse::class.java
                 )
@@ -124,7 +124,7 @@ internal class MultiPaySdkComponent(
             sign,
             object : NetworkCallback<Result> {
                 override fun onSuccess(response: Result?) {
-                    val confirmPaymentResponse = gson().fromJson<ConfirmPaymentResponse>(
+                    val confirmPaymentResponse = gson().fromJson(
                         response?.result,
                         ConfirmPaymentResponse::class.java
                     )
@@ -162,7 +162,7 @@ internal class MultiPaySdkComponent(
             referenceNumber,
             object : NetworkCallback<Result> {
                 override fun onSuccess(response: Result?) {
-                    val rollbackPaymentResponse = gson().fromJson<RollbackPaymentResponse>(
+                    val rollbackPaymentResponse = gson().fromJson(
                         response?.result,
                         RollbackPaymentResponse::class.java
                     )

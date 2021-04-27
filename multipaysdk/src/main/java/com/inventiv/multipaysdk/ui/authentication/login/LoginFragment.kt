@@ -26,7 +26,6 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
 
     private lateinit var maskWatcher: MaskWatcher
     private lateinit var emailOrGsm: String
-    private lateinit var password: String
 
     private lateinit var viewModel: LoginViewModel
 
@@ -85,7 +84,6 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
                     val loginResponse = resource.data
                     val otpFragment = OtpFragment.newInstance(
                         emailOrGsm,
-                        password,
                         OtpNavigationArgs(
                             loginResponse?.verificationCode,
                             loginResponse?.gsm,
@@ -110,9 +108,7 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
 
     private fun loginClicked() {
         requireBinding().textInputEditEmailOrGsmMultipaySdk.hideKeyboard()
-        requireBinding().textInputEditPasswordMultipaySdk.hideKeyboard()
         emailOrGsm = requireBinding().textInputEditEmailOrGsmMultipaySdk.text.toString().trim()
-        password = requireBinding().textInputEditPasswordMultipaySdk.text.toString().trim()
-        viewModel.login(emailOrGsm, password)
+        viewModel.login(emailOrGsm)
     }
 }

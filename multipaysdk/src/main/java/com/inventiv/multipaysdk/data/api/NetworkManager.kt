@@ -1,6 +1,7 @@
 package com.inventiv.multipaysdk.data.api
 
 import com.google.gson.JsonSyntaxException
+import com.inventiv.multipaysdk.Environment
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.data.api.callback.NetworkCallback
 import com.inventiv.multipaysdk.data.api.error.ApiError
@@ -8,7 +9,6 @@ import com.inventiv.multipaysdk.data.model.request.BaseRequest
 import com.inventiv.multipaysdk.data.model.response.BaseResponse
 import com.inventiv.multipaysdk.data.model.response.Result
 import com.inventiv.multipaysdk.data.model.type.RequestMethod
-import com.inventiv.multipaysdk.Environment
 import java.util.concurrent.TimeUnit
 
 internal class NetworkManager(private val volleyManager: VolleyManager, environment: Environment) {
