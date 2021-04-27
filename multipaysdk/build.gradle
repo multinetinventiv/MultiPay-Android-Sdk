@@ -57,7 +57,7 @@ dependencies {
     implementation deps.network.gson
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_viewmodel
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
