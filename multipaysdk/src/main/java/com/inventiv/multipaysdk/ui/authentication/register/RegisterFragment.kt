@@ -11,6 +11,8 @@ import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.databinding.FragmentRegisterMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.util.*
+import com.inventiv.multipaysdk.view.listener.PhoneNumberTextWatcher
+import com.inventiv.multipaysdk.view.listener.SimpleTextWatcher
 
 
 internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBinding>() {
@@ -20,6 +22,7 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
     }
 
     private lateinit var viewModel: RegisterViewModel
+    private lateinit var maskWatcher: PhoneNumberTextWatcher
 
     private var walletToken: String? = null
 
@@ -62,6 +65,16 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
+
+        maskWatcher = PhoneNumberTextWatcher(
+            requireBinding().testTextInputEditText,
+            object : SimpleTextWatcher{
+
+            }
+        )
+        requireBinding().testTextInputEditText.addTextChangedListener(maskWatcher)
+        requireBinding().testTextInputEditText.setText("05072103350")
+
         /*subscribeWallet()
         subscribeMatchWallet()
 

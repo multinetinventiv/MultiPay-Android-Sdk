@@ -56,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_description_register_multipay_sdk" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_name_multipay_sdk"
+                android:id="@+id/testTextInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -64,6 +64,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_register_personal_info_multipay_sdk">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/testTextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cep Telefonu Numaranız"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:padding="@dimen/margin_normal_multipay_sdk"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_name_multipay_sdk"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/testTextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_input_edit_name_multipay_sdk"
