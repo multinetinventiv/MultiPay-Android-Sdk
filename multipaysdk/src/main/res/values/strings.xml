@@ -109,4 +109,6 @@
     <string name="api_error_no_network_multipay_sdk">"Lütfen internet bağlantınızı kontrol ediniz"</string>
     <string name="api_error_invalid_response_multipay_sdk">"Servis cevabı ile ilgili bir hata oluştu"</string>
 
+    <string name="register_button_multipay_sdk">"HESAP OLUŞTUR"</string>
+
 </resources>
