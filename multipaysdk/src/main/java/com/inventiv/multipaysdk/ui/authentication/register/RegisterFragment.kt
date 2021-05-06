@@ -24,8 +24,6 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
     private lateinit var viewModel: RegisterViewModel
     private lateinit var maskWatcher: PhoneNumberTextWatcher
 
-    private var walletToken: String? = null
-
     override fun onResume() {
         super.onResume()
         showToolbar()
@@ -66,109 +64,40 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
             requireActivity().onBackPressed()
         }
 
-        maskWatcher = PhoneNumberTextWatcher(
-            requireBinding().testTextInputEditText,
-            object : SimpleTextWatcher{
+        registerTextChangeListeners()
 
+    }
+
+    private fun registerTextChangeListeners() {
+        requireBinding().textInputEditNameMultipaySdk.onTextChanged { editText, text ->
+            editText.checkSpaces(text)
+        }
+        requireBinding().textInputEditSurnameMultipaySdk.onTextChanged { editText, text ->
+            editText.checkSpaces(text)
+        }
+        requireBinding().textInputEditNameMultipaySdk.afterTextChanged {
+            validate()
+        }
+        requireBinding().textInputEditSurnameMultipaySdk.afterTextChanged {
+            validate()
+        }
+
+        maskWatcher = PhoneNumberTextWatcher(
+            requireBinding().textInputEditGsmMultipaySdk,
+            object : SimpleTextWatcher {
             }
         )
-        requireBinding().testTextInputEditText.addTextChangedListener(maskWatcher)
-        requireBinding().testTextInputEditText.setText("05072103350")
+        requireBinding().textInputEditGsmMultipaySdk.addTextChangedListener(maskWatcher)
 
-        /*subscribeWallet()
-        subscribeMatchWallet()
-
-        requireBinding().buttonAddWalletMultipaySdk.setOnClickListener {
-            startActivityForResult(
-                AddWalletActivity.newIntent(requireActivity()),
-                ADD_CARD_ACTVITY_REQUEST_CODE
-            )
-        }
-        requireBinding().buttonMatchMultipaySdk.setOnClickListener {
-            walletToken =
-                listAdapter.currentList.find { walletListItem -> walletListItem.isChecked }?.walletResponse?.token
-            walletToken?.let { viewModel.matchWallet(it) }
-        }*/
     }
 
-    /*private fun subscribeSelectedWallet() {
-        viewModel.selectedWallet.observe(viewLifecycleOwner, Observer { walletResponse ->
-            requireBinding().buttonMatchMultipaySdk.visibility = View.VISIBLE
-            if (listAdapter.currentList.find { it.isChecked } == null) {
-                val animSlideUp =
-                    AnimationUtils.loadAnimation(context, R.anim.anim_slide_up_multipay_sdk)
-                requireBinding().buttonMatchMultipaySdk.startAnimation(animSlideUp)
-            }
-            val newWalletItemList: MutableList<WalletListItem> = mutableListOf()
-            listAdapter.currentList.forEach {
-                newWalletItemList.add(
-                    WalletListItem(
-                        it.walletResponse,
-                        it.walletResponse.token == walletResponse.token
-                    )
-                )
-            }
-            listAdapter.submitList(newWalletItemList)
-        })
-    }
-
-    private fun subscribeWallet() {
-        viewModel.walletsListItemResult.observe(viewLifecycleOwner, EventObserver { resource ->
-            when (resource) {
-                is Resource.Loading -> {
-                    setLayoutProgressVisibility(View.VISIBLE)
-                }
-                is Resource.Success -> {
-                    val walletList = resource.data
-                    setLayoutProgressVisibility(View.GONE)
-                    listAdapter.submitList(walletList?.toMutableList())
-                    subscribeSelectedWallet()
-                    showHideEmptyListText(walletList?.isEmpty() ?: false)
-                }
-                is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
-                    setLayoutProgressVisibility(View.GONE)
-                    showHideEmptyListText(true)
-                }
-            }
-        })
-    }
-
-    private fun subscribeMatchWallet() {
-        viewModel.matchWalletResult.observe(viewLifecycleOwner, EventObserver { resource ->
-            when (resource) {
-                is Resource.Loading -> {
-                    setLayoutProgressVisibility(View.VISIBLE)
-                }
-                is Resource.Success -> {
-                    val matchWalletResponse = resource.data
-                    MultiPayUser.walletToken = walletToken
-                    setLayoutProgressVisibility(View.GONE)
-                    requireActivity().sendBroadcast(
-                        Intent(TOKEN_RECEIVED).apply {
-                            putExtra(EXTRA_TOKEN_RECEIVED, walletToken)
-                        }
-                    )
-                    startActivity(SplashActivity.newIntent(requireActivity(), isCancelled = true))
-                }
-                is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
-                    setLayoutProgressVisibility(View.GONE)
-                }
-            }
-        })
+    private fun validate() {
+        // TODO : fill
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().walletProgressMultipaySdk.layoutProgressMultipaySdk.visibility = visibility
+        requireBinding().registerProgressMultipaySdk.layoutProgressMultipaySdk.visibility =
+            visibility
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_CARD_ACTVITY_REQUEST_CODE) {
-            if (resultCode == AppCompatActivity.RESULT_OK) {
-                viewModel.walletsListItem()
-            }
-        }
-    }*/
 }

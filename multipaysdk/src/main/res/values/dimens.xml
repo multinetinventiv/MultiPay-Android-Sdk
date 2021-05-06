@@ -3,4 +3,8 @@
     <dimen name="button_height_multipay_sdk">56dp</dimen>
     <dimen name="progress_size_multipay_sdk">32dp</dimen>
     <dimen name="elevation_toolbar_multipay_sdk">2dp</dimen>
+
+    <dimen name="text_appearance_size_headline_5">16sp</dimen>
+    <dimen name="text_appearance_size_body_1">14sp</dimen>
+    <dimen name="text_appearance_size_body_2">12sp</dimen>
 </resources>

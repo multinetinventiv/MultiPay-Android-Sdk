@@ -17,7 +17,10 @@ internal const val SNACKBAR_DURATION = 5000
 internal const val SPLASH_ACTVITY_REQUEST_CODE = 1996
 internal const val ADD_CARD_ACTVITY_REQUEST_CODE = 1989
 
-
 internal const val TOKEN_RECEIVED = "com.inventiv.multipaysdk.intent.TOKEN_RECEIVED"
 internal const val EXTRA_TOKEN_RECEIVED = "extra_token_received"
 internal const val SDK_CLOSED = "com.inventiv.multipaysdk.intent.SDK_CLOSED"
+
+internal const val SPACE = " "
+internal const val DOUBLE_SPACE = "  "
+internal const val EMPTY = ""
