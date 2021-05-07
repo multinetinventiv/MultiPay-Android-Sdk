@@ -112,7 +112,6 @@
     <string name="register_button_multipay_sdk">"HESAP OLUŞTUR"</string>
     <string name="register_content_title_multipay_sdk">"MultiPay’e Üye Ol"</string>
     <string name="register_content_description_multipay_sdk">"Ödeme altyapımız Multinet|Up tarafından sağlanmaktadır ve işlem güvenliğiniz Multinet|Up güvencesi altındadır."</string>
-    <string name="register_password_info_multipay_sdk">"*Yeni şifrenizde en az; 1 rakam, 1 harf bulunup en az 8 karakter olması gerekmektedir."</string>
     <string name="register_user_agreement_checkbox_text_multipay_sdk">"<b>Kullanıcı Sözleşmesi</b>\n<u>MultiPay kullanıcı sözleşme koşullarını kabul ediyor ve onaylıyorum.</u>"</string>
     <string name="register_gdpr_checkbox_text_multipay_sdk">"<b>Aydınlatma Metni</b>\n<u>Kişisel verilerin korunması kanunu kapsamında, Multinet Kurumsal Hizmetler A.Ş. tarafından yayınlanan ’Aydınlatma Metni’ndeki hüküm ve şartları kabul ediyorum.</u>"</string>
     <string name="register_notification_checkbox_text_multipay_sdk">"<b>Bilgilendirme</b>\nMultipay’in, kampanyaları tanıtma, hatırlatma ve bilgilendirme amaçlı SMS veya e-posta yolu ile benimle iletişime geçmesine izin veriyorum."</string>

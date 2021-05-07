@@ -3,5 +3,4 @@
     <integer name="otp_length_multipay_sdk">6</integer>
     <integer name="multinet_card_length_multipay_sdk">19</integer>
     <integer name="multinet_card_cvv_length_multipay_sdk">4</integer>
-    <integer name="password_max_chars_multipay_sdk">20</integer>
 </resources>

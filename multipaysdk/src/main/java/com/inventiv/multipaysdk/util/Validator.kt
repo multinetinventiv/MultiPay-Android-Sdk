@@ -10,6 +10,7 @@ internal object Validator {
     const val INPUT_TYPE_EMAIL = 0
     const val INPUT_TYPE_GSM = 1
     const val INPUT_TYPE_UNDEFINED = 2
+    const val NAME_INPUT_MIN_LENGTH = 2
     private const val PASSWORD_MIN = 8
     private const val PASSWORD_MAX = 20
     private const val MASKED_LENGTH_PHONE = 16

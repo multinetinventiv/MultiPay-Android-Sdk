@@ -7,10 +7,16 @@ internal const val EXTRA_OTP_DIRECTION_FROM = "extra_otp_direction_from"
 internal const val EXTRA_EMAIL_OR_GSM = "extra_email_or_gsm"
 internal const val EXTRA_SPLASH = "extra_splash"
 internal const val EXTRA_AUTHENTICATION_TYPE = "extra_authentication_type"
+internal const val EXTRA_WEB_TITLE = "extra_web_title"
+internal const val EXTRA_WEB_URL = "extra_web_url"
+internal const val EXTRA_BUTTON_VISIBILITY = "extra_button_visibility"
 
 internal const val ARG_OTP_NAVIGATION = "arg_otp_navigation"
 internal const val ARG_OTP_DIRECTION_FROM = "arg_otp_direction_from"
 internal const val ARG_EMAIL_OR_GSM = "arg_email_or_gsm"
+internal const val ARG_WEB_TITLE = "arg_web_title"
+internal const val ARG_WEB_URL = "arg_web_url"
+internal const val ARG_BUTTON_VISIBILITY = "arg_button_visibility"
 
 internal const val SNACKBAR_DURATION = 5000
 
