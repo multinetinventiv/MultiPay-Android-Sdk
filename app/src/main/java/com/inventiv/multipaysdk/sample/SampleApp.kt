@@ -1,8 +1,8 @@
 package com.inventiv.multipaysdk.sample
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 
-class SampleApp : Application() {
+class SampleApp : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
