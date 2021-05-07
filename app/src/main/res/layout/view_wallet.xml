@@ -66,8 +66,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:backgroundTint="@android:color/holo_green_dark"
-        android:textSize="10sp"
         android:text="Ödeme Yap"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_change_wallet"
         app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
@@ -78,9 +78,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        android:textSize="10sp"
         android:backgroundTint="@android:color/darker_gray"
         android:text="Kart Değiştir"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_delete_wallet"
         app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
@@ -90,9 +90,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="10sp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:text="Kartı Sil"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
