@@ -68,7 +68,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         super.onResume()
         showToolbar()
         toolbarBack()
-        title(R.string.otp_navigation_title)
+        title(R.string.otp_navigation_title_multipay_sdk)
 
     }
 
@@ -107,7 +107,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
             requireActivity().onBackPressed()
         }
         val textOtpDescription = getString(
-            R.string.otp_description,
+            R.string.otp_description_multipay_sdk,
             Formatter.formatPhoneNumber(otpNavigationArgs?.gsmNumber, true)
         )
         requireBinding().textTitleMultipaySdk.text =
@@ -126,7 +126,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
             override fun onTick(millisUntilFinished: Long) {
                 val formattedTimerText =
                     String.format(
-                        getString(R.string.otp_remaining_time),
+                        getString(R.string.otp_remaining_time_multipay_sdk),
                         (millisUntilFinished / 1000)
                     )
                 requireBinding().textRemainingTimeMultipaySdk.text = formattedTimerText

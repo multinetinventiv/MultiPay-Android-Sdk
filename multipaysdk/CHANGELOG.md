@@ -6,7 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 
-## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.3...HEAD)
+## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...HEAD)
+
+## [1.0.4](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.3...1.0.4) - 2021-03-26
+
+### Added
+- Endcrypt endpoint urls [#111527](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/111527)
+
+### Changed
+- Add suffix to string resources [#109848](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/109848)
 
 ## [1.0.3](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.2...1.0.3) - 2021-03-13
 

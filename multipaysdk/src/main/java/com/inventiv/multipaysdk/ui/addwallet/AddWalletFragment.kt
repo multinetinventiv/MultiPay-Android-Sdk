@@ -30,7 +30,7 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletMultipaySdkBind
         super.onResume()
         showToolbar()
         toolbarBack()
-        title(R.string.add_card_navigation_title)
+        title(R.string.add_card_navigation_title_multipay_sdk)
     }
 
     override fun createBinding(

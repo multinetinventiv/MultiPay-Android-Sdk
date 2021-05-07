@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/otp_description" />
+        tools:text="@string/otp_description_multipay_sdk" />
 
     <com.inventiv.multipaysdk.view.PinEntryEditText
         android:id="@+id/view_pin_multipay_sdk"
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height_multipay_sdk"
         android:layout_marginHorizontal="@dimen/margin_normal_multipay_sdk"
-        android:text="@string/otp_resend"
+        android:text="@string/otp_resend_multipay_sdk"
         android:textAllCaps="false"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
