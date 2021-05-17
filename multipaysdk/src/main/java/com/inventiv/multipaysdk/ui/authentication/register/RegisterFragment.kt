@@ -118,7 +118,9 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
             requireBinding().textInputEditNameMultipaySdk.setText(MultiPayUser.userPreset?.name)
             requireBinding().textInputEditSurnameMultipaySdk.setText(MultiPayUser.userPreset?.surname)
             requireBinding().textInputEditEmailMultipaySdk.setText(MultiPayUser.userPreset?.email)
-            requireBinding().textInputEditGsmMultipaySdk.setText(MultiPayUser.userPreset?.gsm)
+            if (!MultiPayUser.userPreset?.gsm.isNullOrEmpty()) {
+                requireBinding().textInputEditGsmMultipaySdk.setText(MultiPayUser.userPreset?.gsm)
+            }
         }
     }
 
