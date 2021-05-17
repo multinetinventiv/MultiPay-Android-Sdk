@@ -15,6 +15,7 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
+import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
 import com.inventiv.multipaysdk.databinding.FragmentRegisterMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.ui.authentication.contract.ContractActivity
@@ -94,6 +95,7 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
             Toast.makeText(requireContext(), "Register button clicked.", Toast.LENGTH_SHORT).show()
         }
         validate()
+        populateUserPreset()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -108,6 +110,15 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                     requireBinding().checkboxGdprMultipaySdk.isChecked = true
                 }
             }
+        }
+    }
+
+    private fun populateUserPreset() {
+        if (MultiPayUser.userPreset != null) {
+            requireBinding().textInputEditNameMultipaySdk.setText(MultiPayUser.userPreset?.name)
+            requireBinding().textInputEditSurnameMultipaySdk.setText(MultiPayUser.userPreset?.surname)
+            requireBinding().textInputEditEmailMultipaySdk.setText(MultiPayUser.userPreset?.email)
+            requireBinding().textInputEditGsmMultipaySdk.setText(MultiPayUser.userPreset?.gsm)
         }
     }
 
