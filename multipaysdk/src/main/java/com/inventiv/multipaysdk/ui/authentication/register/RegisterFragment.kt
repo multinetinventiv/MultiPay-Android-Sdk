@@ -8,17 +8,21 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.inventiv.multipaysdk.MultiPaySdk
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
+import com.inventiv.multipaysdk.data.model.EventObserver
+import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
+import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.databinding.FragmentRegisterMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.ui.authentication.contract.ContractActivity
+import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
+import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
 import com.inventiv.multipaysdk.util.*
 import com.inventiv.multipaysdk.util.Validator.NAME_INPUT_MIN_LENGTH
 import com.inventiv.multipaysdk.view.listener.PhoneNumberTextWatcher
@@ -76,6 +80,7 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
+        subscribeRegister()
         registerTextChangeListeners()
 
         //TODO: title and url values were assigned as dummy, then these will be changed.
@@ -92,7 +97,16 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
             "https://statictest.ipara.com/opy/terms/acik_riza.html"
         )
         requireBinding().buttonRegisterMultipaySdk.setOnClickListener {
-            Toast.makeText(requireContext(), "Register button clicked.", Toast.LENGTH_SHORT).show()
+            requireBinding().apply {
+                val name = textInputEditNameMultipaySdk.text.toString().trim()
+                val surname = textInputEditSurnameMultipaySdk.text.toString().trim()
+                val email = textInputEditEmailMultipaySdk.text.toString().trim()
+                val gsm = textInputEditGsmMultipaySdk.text.toString().trim()
+                val gsmForService = Formatter.servicePhoneNumber(gsm)
+                val isNotificationAccepted = checkboxNotificationMultipaySdk.isChecked
+                viewModel.register(name, surname, email, gsmForService, isNotificationAccepted)
+            }
+
         }
         validate()
         populateUserPreset()
@@ -111,6 +125,35 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                 }
             }
         }
+    }
+
+    private fun subscribeRegister() {
+        viewModel.registerResult.observe(viewLifecycleOwner, EventObserver { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    setLayoutProgressVisibility(View.VISIBLE)
+                }
+                is Resource.Success -> {
+                    resource.data?.apply {
+                        val otpFragment = OtpFragment.newInstance(
+                            gsm!!,
+                            OtpNavigationArgs(
+                                verificationCode,
+                                gsm,
+                                remainingTime
+                            ),
+                            OtpDirectionFrom.REGISTER
+                        )
+                        replaceFragment(otpFragment, R.id.layout_container_multipay_sdk)
+                        setLayoutProgressVisibility(View.GONE)
+                    }
+                }
+                is Resource.Failure -> {
+                    showSnackBarAlert(resource.message)
+                    setLayoutProgressVisibility(View.GONE)
+                }
+            }
+        })
     }
 
     private fun populateUserPreset() {

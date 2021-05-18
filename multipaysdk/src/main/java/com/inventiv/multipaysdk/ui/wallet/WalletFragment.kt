@@ -27,7 +27,15 @@ import com.inventiv.multipaysdk.util.*
 internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>() {
 
     companion object {
-        fun newInstance() = WalletFragment()
+        fun newInstance(openAddCard: Boolean): WalletFragment {
+            val bundle = Bundle()
+            bundle.putBoolean(EXTRA_WALLET_OPEN_ADD_CARD, openAddCard)
+
+            val fragment = WalletFragment()
+            fragment.arguments = bundle
+
+            return fragment
+        }
     }
 
     private lateinit var viewModel: WalletViewModel
@@ -62,6 +70,13 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
             this@WalletFragment,
             viewModelFactory
         ).get(WalletViewModel::class.java)
+
+        if (requireArguments().getBoolean(EXTRA_WALLET_OPEN_ADD_CARD, false)) {
+            startActivityForResult(
+                AddWalletActivity.newIntent(requireActivity()),
+                ADD_CARD_ACTVITY_REQUEST_CODE
+            )
+        }
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
@@ -99,7 +114,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
     }
 
     private fun subscribeSelectedWallet() {
-        viewModel.selectedWallet.observe(viewLifecycleOwner, Observer { walletResponse ->
+        viewModel.selectedWallet.observe(viewLifecycleOwner, { walletResponse ->
             requireBinding().buttonMatchMultipaySdk.visibility = View.VISIBLE
             if (listAdapter.currentList.find { it.isChecked } == null) {
                 val animSlideUp =

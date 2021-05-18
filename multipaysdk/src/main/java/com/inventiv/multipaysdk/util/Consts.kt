@@ -10,6 +10,7 @@ internal const val EXTRA_AUTHENTICATION_TYPE = "extra_authentication_type"
 internal const val EXTRA_WEB_TITLE = "extra_web_title"
 internal const val EXTRA_WEB_URL = "extra_web_url"
 internal const val EXTRA_BUTTON_VISIBILITY = "extra_button_visibility"
+internal const val EXTRA_WALLET_OPEN_ADD_CARD = "extra_wallet_open_add_card"
 
 internal const val ARG_OTP_NAVIGATION = "arg_otp_navigation"
 internal const val ARG_OTP_DIRECTION_FROM = "arg_otp_direction_from"

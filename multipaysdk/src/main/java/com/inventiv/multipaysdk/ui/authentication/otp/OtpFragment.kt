@@ -144,13 +144,16 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                 is Resource.Success -> {
                     when (otpDirectionFrom) {
                         OtpDirectionFrom.LOGIN -> {
-                            requireActivity().finish()
                             startActivity(
-                                WalletActivity.newIntent(requireActivity())
+                                WalletActivity.newIntent(requireActivity(), false)
                             )
+                            requireActivity().finish()
                         }
-                        OtpDirectionFrom.CREATE_CARD -> {
-                            // TODO : manage navigation
+                        OtpDirectionFrom.REGISTER -> {
+                            startActivity(
+                                WalletActivity.newIntent(requireActivity(), true)
+                            )
+                            requireActivity().finish()
                         }
                     }
                     setLayoutProgressVisibility(View.GONE)
