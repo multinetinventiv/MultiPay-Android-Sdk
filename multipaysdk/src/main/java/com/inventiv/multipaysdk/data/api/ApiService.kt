@@ -32,6 +32,17 @@ internal class ApiService(private val networkManager: NetworkManager) {
         )
     }
 
+    fun agreementsRequest(
+        networkCallback: NetworkCallback<Result>
+    ) {
+        networkManager.sendRequest(
+            request = BaseRequest(),
+            requestPath = "common/list_agreements",
+            responseModel = Result::class.java,
+            networkCallback = networkCallback
+        )
+    }
+
     fun confirmOtpRequest(
         confirmOtp: ConfirmOtp,
         networkCallback: NetworkCallback<Result>

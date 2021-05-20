@@ -80,22 +80,11 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
+        subscribeAgreements()
+        viewModel.agreements()
         subscribeRegister()
         registerTextChangeListeners()
 
-        //TODO: title and url values were assigned as dummy, then these will be changed.
-        checkboxClicked(
-            REQUEST_CODE_USER_AGREEMENT,
-            requireBinding().checkboxUserAgreementMultipaySdk,
-            "userAgreement",
-            "https://statictest.ipara.com/opy/terms/term-l1-ch31-t2-v1.0.html"
-        )
-        checkboxClicked(
-            REQUEST_CODE_GDPR,
-            requireBinding().checkboxGdprMultipaySdk,
-            "gdpr",
-            "https://statictest.ipara.com/opy/terms/acik_riza.html"
-        )
         requireBinding().buttonRegisterMultipaySdk.setOnClickListener {
             requireBinding().apply {
                 val name = textInputEditNameMultipaySdk.text.toString().trim()
@@ -125,6 +114,41 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                 }
             }
         }
+    }
+
+    private fun subscribeAgreements() {
+        viewModel.agreementsResult.observe(viewLifecycleOwner, EventObserver { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    setLayoutProgressVisibility(View.VISIBLE)
+                }
+                is Resource.Success -> {
+                    setLayoutProgressVisibility(View.GONE)
+
+                    requireBinding().checkboxUserAgreementMultipaySdk.isClickable = true
+                    requireBinding().checkboxGdprMultipaySdk.isClickable = true
+
+                    resource.data?.let {
+                        checkboxClicked(
+                            REQUEST_CODE_USER_AGREEMENT,
+                            requireBinding().checkboxUserAgreementMultipaySdk,
+                            getString(R.string.register_contract_multipay_sdk),
+                            it.userAgreementUrl
+                        )
+                        checkboxClicked(
+                            REQUEST_CODE_GDPR,
+                            requireBinding().checkboxGdprMultipaySdk,
+                            getString(R.string.register_kvkk_header_label_multipay_sdk),
+                            it.gdprUrl
+                        )
+                    }
+                }
+                is Resource.Failure -> {
+                    setLayoutProgressVisibility(View.GONE)
+                    showSnackBarAlert(resource.message)
+                }
+            }
+        })
     }
 
     private fun subscribeRegister() {

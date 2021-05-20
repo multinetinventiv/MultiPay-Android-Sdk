@@ -11,6 +11,7 @@ import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.request.LoginEmail
 import com.inventiv.multipaysdk.data.model.request.LoginGsm
 import com.inventiv.multipaysdk.data.model.request.RegisterRequest
+import com.inventiv.multipaysdk.data.model.response.AgreementsResponse
 import com.inventiv.multipaysdk.data.model.response.LoginResponse
 import com.inventiv.multipaysdk.data.model.response.RegisterResponse
 import com.inventiv.multipaysdk.data.model.response.Result
@@ -23,6 +24,8 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
     private val loginResult = MediatorLiveData<Event<Resource<LoginResponse>>>()
 
     private val registerResult = MediatorLiveData<Event<Resource<RegisterResponse>>>()
+
+    private val agreementsResult = MediatorLiveData<Event<Resource<AgreementsResponse>>>()
 
     fun login(emailOrGsm: String): LiveData<Event<Resource<LoginResponse>>> {
 
@@ -95,5 +98,27 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
         })
 
         return registerResult
+    }
+
+    fun agreements(): LiveData<Event<Resource<AgreementsResponse>>> {
+
+        agreementsResult.postValue(Event(Resource.Loading()))
+
+        apiService.agreementsRequest(object : NetworkCallback<Result> {
+            override fun onSuccess(response: Result?) {
+                val gson = MultiPaySdk.getComponent().gson()
+                val otpResponse = gson.fromJson(
+                    response?.result,
+                    AgreementsResponse::class.java
+                )
+                agreementsResult.postValue(Event(Resource.Success(otpResponse)))
+            }
+
+            override fun onError(error: ApiError) {
+                agreementsResult.postValue(Event(Resource.Failure(error.message)))
+            }
+        })
+
+        return agreementsResult
     }
 }
