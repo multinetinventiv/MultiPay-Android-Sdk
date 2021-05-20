@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="security_exception_message" translatable="false">Exception occurred on decryption process. Such issues can arise if bad salt key is used during decryption</string>
-
 </resources>

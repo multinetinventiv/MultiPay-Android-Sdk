@@ -40,7 +40,6 @@
     <!-- VALIDATION -->
     <string name="validation_email_or_gsm_multipay_sdk">"E-postanızın / GSM numaranızın geçerli olduğunu kontrol ediniz."</string>
     <string name="validation_email_multipay_sdk">"E-postanızın geçerli olduğunu kontrol ediniz."</string>
-    <string name="validation_password_multipay_sdk">"Lütfen şifrenizi en az bir rakam ve bir harf içerecek şekilde, en az 8 karakter uzunluğunda giriniz."</string>
     <string name="validation_gsm_multipay_sdk">"Cep telefonu hatalıdır. Lütfen cep telefonu numaranızı başında sıfır olmadan ve 10 rakam uzunluğunda giriniz."</string>
     <string name="validation_name_multipay_sdk">"Lütfen adınızı kontrol ediniz."</string>
     <string name="validation_surname_multipay_sdk">"Lütfen soyadınızı kontrol ediniz."</string>
@@ -59,10 +58,8 @@
     <string name="login_top_title_multipay_sdk">"MultiPay ile Giriş Yap"</string>
     <string name="login_info_title_multipay_sdk">"Ödeme Altyapımız Multinet |Up tarafından sağlanmaktadır ve işlem güvenliğiniz Multinet | Up güvencesi altındadır."</string>
     <string name="login_email_or_gsm_multipay_sdk">"E-POSTA veya CEP TELEFONU"</string>
-    <string name="login_password_multipay_sdk">"ŞİFRENİZ"</string>
     <string name="login_button_multipay_sdk">"GİRİŞ YAP"</string>
     <string name="login_register_multipay_sdk">"KAYIT OL"</string>
-    <string name="login_forget_password_text_multipay_sdk">"Şifrenizi unuttuysanız buraya &lt;b&gt;tıklayarak&lt;/b&gt; tekrar şifre oluşturabilirsiniz."</string>
     <string name="login_activation_text_multipay_sdk">"Aktivasyon Koduyla Gir"</string>
 
     <!-- REGISTER -->
@@ -71,7 +68,6 @@
     <string name="register_lastname_multipay_sdk">"SOYADINIZ"</string>
     <string name="register_email_multipay_sdk">"E-POSTA ADRESİNİZ"</string>
     <string name="register_gsm_multipay_sdk">"CEP TELEFONU NUMARANIZ"</string>
-    <string name="register_password_multipay_sdk">"ŞİFRENİZ"</string>
     <string name="register_contract_multipay_sdk">"Kullanıcı Sözleşmesi"</string>
     <string name="register_contract_text_multipay_sdk">"MultiPay kullanıcı sözleşme koşullarını kabul ediyor ve onaylıyorum."</string>
     <string name="register_facebook_multipay_sdk">"BİLGİLERİMİ FACEBOOK'TAN AL"</string>
@@ -81,12 +77,6 @@
     <string name="register_kvkk_text_label_multipay_sdk">"Kişisel verilerin korunması kanunu kapsamında, Multinet Kurumsal Hizmetler A.Ş. tarafından yayınlanan 'Aydınlatma Metni'nindeki hüküm ve şartları kabul ediyorum."</string>
     <string name="register_personal_info_label_text_multipay_sdk">"Kişisel Bilgiler"</string>
     <string name="register_security_info_label_text_multipay_sdk">"Güvenlik Bilgileri"</string>
-
-    <!-- FORGOT PASSWORD -->
-    <string name="forgot_password_header_multipay_sdk">"ŞİFREMİ UNUTTUM"</string>
-    <string name="forgot_password_description_multipay_sdk">"E-Posta adresinizi veya cep telefonunuzu girerek şifrenizi sıfırlama işlemine başlayabilirsiniz"</string>
-    <string name="forgot_password_error_emailorgsm">"E-postanızın / GSM numaranızın geçerli olduğunu kontrol ediniz."</string>
-    <string name="forgot_password_button_multipay_sdk">"ŞİFREMİ DEĞİŞTİR"</string>
 
     <!-- OTP -->
     <string name="otp_description_multipay_sdk">"&lt;b&gt;%1$s&lt;/b&gt; numaralı cep telefonuna SMS olarak gönderilen tek kullanımlık şifreyi girin."</string>

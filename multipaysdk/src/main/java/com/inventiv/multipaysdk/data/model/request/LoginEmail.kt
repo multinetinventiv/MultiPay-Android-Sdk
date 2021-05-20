@@ -9,8 +9,6 @@ import java.util.*
 internal data class LoginEmail(
     @field:SerializedName("email")
     var email: String,
-    @field:SerializedName("password")
-    var password: String,
     @field:SerializedName("requestId")
     var requestId: String = UUID.randomUUID().toString()
 ) : LoginRequest(), Parcelable

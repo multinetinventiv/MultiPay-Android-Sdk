@@ -8,6 +8,9 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 
 ## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...HEAD)
 
+### Changed
+- Login with OTP [#103725](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/103725)
+
 ## [1.0.4](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.3...1.0.4) - 2021-03-26
 
 ### Added

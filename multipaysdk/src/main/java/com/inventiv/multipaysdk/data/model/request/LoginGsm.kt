@@ -9,8 +9,6 @@ import java.util.*
 internal data class LoginGsm(
     @field:SerializedName("gsm")
     var gsm: String,
-    @field:SerializedName("password")
-    var password: String,
     @field:SerializedName("requestId")
     var requestId: String = UUID.randomUUID().toString()
 ) : LoginRequest(), Parcelable

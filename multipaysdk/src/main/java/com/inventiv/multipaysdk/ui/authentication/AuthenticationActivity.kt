@@ -24,14 +24,12 @@ internal class AuthenticationActivity : BaseContainerActivity() {
         fun startOtp(
             context: Context,
             emailOrGsm: String,
-            password: String,
             otpNavigationArgs: OtpNavigationArgs,
             otpDirectionFrom: OtpDirectionFrom
         ): Intent {
             return Intent(context, AuthenticationActivity::class.java).apply {
                 putExtra(EXTRA_AUTHENTICATION_TYPE, AuthenticationType.OTP)
                 putExtra(EXTRA_EMAIL_OR_GSM, emailOrGsm)
-                putExtra(EXTRA_PASSWORD, password)
                 putExtra(EXTRA_OTP_NAVIGATION, otpNavigationArgs)
                 putParcelableExtra(EXTRA_OTP_DIRECTION_FROM, otpDirectionFrom)
             }
@@ -48,14 +46,12 @@ internal class AuthenticationActivity : BaseContainerActivity() {
             }
             AuthenticationType.OTP -> {
                 val emailOrGsm = intent.getStringExtra(EXTRA_EMAIL_OR_GSM)
-                val password = intent.getStringExtra(EXTRA_PASSWORD)
                 val otpNavigationArgs: OtpNavigationArgs? =
                     intent.getParcelableExtra(EXTRA_OTP_NAVIGATION)
                 val otpDirectionFrom: OtpDirectionFrom? =
                     intent.getParcelableExtra(EXTRA_OTP_DIRECTION_FROM)
                 OtpFragment.newInstance(
                     emailOrGsm!!,
-                    password!!,
                     otpNavigationArgs!!,
                     otpDirectionFrom!!
                 )
