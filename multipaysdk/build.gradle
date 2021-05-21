@@ -1,9 +1,13 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply from: 'versions.gradle'
-
-apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"
+plugins{
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
+apply {
+    from("versions.gradle")
+    from("${rootProject.projectDir}/scripts/publish-mavencentral.gradle")
+}
 
 android {
     compileSdkVersion deps.android.target_sdk
@@ -29,15 +33,6 @@ android {
         viewBinding true
     }
 
-    compileOptions {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
-    }
-
-    kotlinOptions {
-        jvmTarget = 1.8.toString()
-    }
-
     sourceSets {
         main.res.srcDirs = [
                 'src/main/res',
@@ -48,7 +43,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation deps.kotlin.stdlib
     implementation deps.androidx.ktx
     implementation deps.androidx.app_compat
     implementation deps.ui.constraint
@@ -57,7 +51,7 @@ dependencies {
     implementation deps.network.gson
     implementation deps.androidx.lifecycle_livedata
     implementation deps.androidx.lifecycle_viewmodel
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
