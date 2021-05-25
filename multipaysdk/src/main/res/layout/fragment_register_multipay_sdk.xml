@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="64dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_normal_multipay_sdk">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_register_logo_multipay_sdk"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_logo_no_text_multipay_sdk" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_title_register_multipay_sdk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal_multipay_sdk"
+                    android:text="@string/register_content_title_multipay_sdk"
+                    android:textAppearance="?attr/textAppearanceHeadline5"
+                    android:textColor="@null"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_register_logo_multipay_sdk"
+                    app:layout_constraintTop_toTopOf="@+id/image_register_logo_multipay_sdk" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_description_register_multipay_sdk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_multipay_sdk"
+                    android:text="@string/register_content_description_multipay_sdk"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/text_title_register_multipay_sdk"
+                    app:layout_constraintTop_toBottomOf="@+id/text_title_register_multipay_sdk" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier_top_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="text_description_register_multipay_sdk,image_register_logo_multipay_sdk" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_register_personal_info_multipay_sdk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    android:text="@string/register_personal_info_label_text_multipay_sdk"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/barrier_top_content" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_name_multipay_sdk"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_register_personal_info_multipay_sdk">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_name_multipay_sdk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/digit_alphabets_with_space"
+                        android:hint="@string/register_name_multipay_sdk"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:padding="@dimen/margin_normal_multipay_sdk"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_surname_multipay_sdk"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_multipay_sdk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_input_name_multipay_sdk">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_surname_multipay_sdk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/digit_alphabets_with_space"
+                        android:hint="@string/register_lastname_multipay_sdk"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:padding="@dimen/margin_normal_multipay_sdk"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_email_multipay_sdk"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_multipay_sdk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_input_surname_multipay_sdk">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_email_multipay_sdk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/register_email_multipay_sdk"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:padding="@dimen/margin_normal_multipay_sdk"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text_register_security_info_multipay_sdk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    android:text="@string/register_security_info_label_text_multipay_sdk"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_input_email_multipay_sdk" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_gsm_multipay_sdk"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small_multipay_sdk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_register_security_info_multipay_sdk">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_gsm_multipay_sdk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="@string/digit_phone_number"
+                        android:hint="@string/register_gsm_multipay_sdk"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:padding="@dimen/margin_normal_multipay_sdk"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox_user_agreement_multipay_sdk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    android:gravity="top"
+                    android:clickable="false"
+                    android:paddingStart="@dimen/margin_small_multipay_sdk"
+                    android:paddingTop="@dimen/margin_micro_multipay_sdk"
+                    android:text="@string/register_user_agreement_checkbox_text_multipay_sdk"
+                    app:buttonTint="@color/keppel_multipay_sdk"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_input_gsm_multipay_sdk"
+                    tools:ignore="RtlSymmetry" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox_gdpr_multipay_sdk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    android:gravity="top"
+                    android:clickable="false"
+                    android:paddingStart="@dimen/margin_small_multipay_sdk"
+                    android:paddingTop="@dimen/margin_micro_multipay_sdk"
+                    android:text="@string/register_gdpr_checkbox_text_multipay_sdk"
+                    app:buttonTint="@color/keppel_multipay_sdk"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox_user_agreement_multipay_sdk"
+                    tools:ignore="RtlSymmetry" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox_notification_multipay_sdk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
+                    android:gravity="top"
+                    android:paddingStart="@dimen/margin_small_multipay_sdk"
+                    android:paddingTop="@dimen/margin_micro_multipay_sdk"
+                    android:text="@string/register_notification_checkbox_text_multipay_sdk"
+                    app:buttonTint="@color/keppel_multipay_sdk"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox_gdpr_multipay_sdk"
+                    tools:ignore="RtlSymmetry" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_register_multipay_sdk"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height_multipay_sdk"
+        android:layout_marginHorizontal="@dimen/margin_normal_multipay_sdk"
+        android:layout_marginVertical="@dimen/margin_small_multipay_sdk"
+        android:text="@string/register_button_multipay_sdk"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/register_progress_multipay_sdk"
+        layout="@layout/layout_progress_multipay_sdk" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

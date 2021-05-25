@@ -39,6 +39,8 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
     private lateinit var paymentItem: ConstraintLayout
     private lateinit var btnDeleteInfos: Button
     private lateinit var btnStartSdk: Button
+    private lateinit var btnStartSdkWithUserPreset: Button
+
 
     private lateinit var sampleReceiver: SampleReceiver
     private lateinit var info: Infos
@@ -55,6 +57,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
         walletItem = findViewById(R.id.included_wallet_item)
         btnDeleteInfos = findViewById(R.id.btn_delete_infos)
         btnStartSdk = findViewById(R.id.btn_start_sdk)
+        btnStartSdkWithUserPreset = findViewById(R.id.btn_start_sdk_with_user_preset)
         paymentItem = findViewById(R.id.included_payment_item)
 
         sampleReceiver = SampleReceiver(multiPaySdkListener!!)
@@ -144,6 +147,10 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
             callStartSdkMethod()
         }
 
+        btnStartSdkWithUserPreset.setOnClickListener {
+            callStartWithUserPresetSdkMethod()
+        }
+
         (walletItem.findViewById(R.id.button_change_wallet) as Button).setOnClickListener {
             onCardChangeClicked()
         }
@@ -175,6 +182,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
             setWalletUI()
             walletItem.visibility = View.VISIBLE
             btnStartSdk.visibility = View.GONE
+            btnStartSdkWithUserPreset.visibility = View.GONE
         }
 
         override fun onUnSelectWalletReceived(unSelectWallet: UnselectWalletResponse?) {
@@ -183,6 +191,7 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
             walletItem.visibility = View.GONE
             getSharedPref().edit().remove(PREF_WALLET_TOKEN).apply()
             btnStartSdk.visibility = View.VISIBLE
+            btnStartSdkWithUserPreset.visibility = View.VISIBLE
         }
 
         override fun onServiceError(error: String?, code: Int) {
@@ -269,6 +278,13 @@ class MultinetWalletActivity : AppCompatActivity(), ConfirmPaymentDialogListener
 
     private fun callStartSdkMethod() {
         MultiPaySdk.start(this, null)
+    }
+
+    private fun callStartWithUserPresetSdkMethod() {
+        UserPresetDialog().show(
+            supportFragmentManager,
+            null
+        )
     }
 
     private fun onCardChangeClicked() {

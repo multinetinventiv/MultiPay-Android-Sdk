@@ -58,6 +58,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_input_email_or_gsm_multipay_sdk" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_register_multipay_sdk"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height_multipay_sdk"
+                android:layout_marginTop="@dimen/margin_micro_multipay_sdk"
+                android:text="@string/login_register_multipay_sdk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_login_multipay_sdk" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_activation_code_multipay_sdk"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
@@ -68,7 +79,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_login_multipay_sdk"
+                app:layout_constraintTop_toBottomOf="@+id/button_register_multipay_sdk"
                 app:layout_constraintVertical_bias="0.957" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
