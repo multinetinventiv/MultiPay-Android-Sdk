@@ -19,6 +19,8 @@
 
     <style name="TextAppearance.MultiPaySdk.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_appearance_size_headline_5</item>
     </style>
 
     <style name="TextAppearance.MultiPaySdk.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
@@ -34,11 +36,11 @@
     </style>
 
     <style name="TextAppearance.MultiPaySdk.Body1" parent="TextAppearance.MaterialComponents.Body1">
-        <!--Your custom type style here-->
+        <item name="android:textSize">@dimen/text_appearance_size_body_1</item>
     </style>
 
     <style name="TextAppearance.MultiPaySdk.Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <!--Your custom type style here-->
+        <item name="android:textSize">@dimen/text_appearance_size_body_2</item>
     </style>
 
     <style name="TextAppearance.MultiPaySdk.Button" parent="TextAppearance.MaterialComponents.Button">

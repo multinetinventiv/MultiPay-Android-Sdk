@@ -8,6 +8,9 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 
 ## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...HEAD)
 
+### Added
+- Register Screen design [#118267](http://192.168.100.209:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/118267)
+
 ### Changed
 - Login with OTP [#103725](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/103725)
 

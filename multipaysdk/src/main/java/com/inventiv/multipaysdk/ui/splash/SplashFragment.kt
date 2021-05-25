@@ -35,7 +35,8 @@ internal class SplashFragment : BaseFragment<FragmentSplashMultipaySdkBinding>()
         } else {
             requireActivity().startActivityForResult(
                 WalletActivity.newIntent(
-                    requireActivity()
+                    requireActivity(),
+                    false
                 ), SPLASH_ACTVITY_REQUEST_CODE
             )
         }

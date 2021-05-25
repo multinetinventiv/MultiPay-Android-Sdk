@@ -10,6 +10,7 @@ import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.ui.authentication.login.LoginFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
+import com.inventiv.multipaysdk.ui.authentication.register.RegisterFragment
 import com.inventiv.multipaysdk.util.*
 
 internal class AuthenticationActivity : BaseContainerActivity() {
@@ -66,6 +67,9 @@ internal class AuthenticationActivity : BaseContainerActivity() {
                 finish()
             }
             is OtpFragment -> {
+                super.onBackPressed()
+            }
+            is RegisterFragment -> {
                 super.onBackPressed()
             }
         }

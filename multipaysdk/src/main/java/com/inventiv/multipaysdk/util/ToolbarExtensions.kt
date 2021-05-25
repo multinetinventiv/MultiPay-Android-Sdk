@@ -12,6 +12,10 @@ fun Fragment.title(strId: Int) {
     toolbar().title = context?.getString(strId)
 }
 
+fun Fragment.title(text: String) {
+    toolbar().title = text
+}
+
 fun Fragment.toolbarBackground(resId: Int) {
     val drawable = ContextCompat.getDrawable(requireContext(), resId)
     toolbar().background = drawable
