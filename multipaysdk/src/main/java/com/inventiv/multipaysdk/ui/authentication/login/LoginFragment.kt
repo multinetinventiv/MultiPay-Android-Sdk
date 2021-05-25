@@ -118,7 +118,6 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
 
     private fun registerClicked() {
         requireBinding().textInputEditEmailOrGsmMultipaySdk.hideKeyboard()
-        requireBinding().textInputEditPasswordMultipaySdk.hideKeyboard()
         replaceFragment(RegisterFragment.newInstance(), R.id.layout_container_multipay_sdk)
     }
 
