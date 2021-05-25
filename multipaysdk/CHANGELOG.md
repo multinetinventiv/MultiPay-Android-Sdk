@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 
-## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...HEAD)
+## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.5...HEAD)
+
+## [1.0.5](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...1.0.5) - 2021-05-25
 
 ### Added
 - Register Screen design [#118267](http://192.168.100.209:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/118267)
