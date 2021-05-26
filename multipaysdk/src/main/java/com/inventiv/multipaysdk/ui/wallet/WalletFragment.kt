@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -148,7 +147,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
                     showHideEmptyListText(walletList?.isEmpty() ?: false)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                     showHideEmptyListText(true)
                 }
@@ -174,7 +173,7 @@ internal class WalletFragment : BaseFragment<FragmentWalletMultipaySdkBinding>()
                     startActivity(SplashActivity.newIntent(requireActivity(), isCancelled = true))
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }

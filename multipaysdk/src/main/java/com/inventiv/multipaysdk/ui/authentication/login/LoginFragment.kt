@@ -99,7 +99,7 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }

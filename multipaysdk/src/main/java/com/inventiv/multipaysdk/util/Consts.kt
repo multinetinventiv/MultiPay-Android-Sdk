@@ -31,3 +31,5 @@ internal const val SDK_CLOSED = "com.inventiv.multipaysdk.intent.SDK_CLOSED"
 internal const val SPACE = " "
 internal const val DOUBLE_SPACE = "  "
 internal const val EMPTY = ""
+
+internal const val SERVICE_GET_OTP_AGAIN = 20201
