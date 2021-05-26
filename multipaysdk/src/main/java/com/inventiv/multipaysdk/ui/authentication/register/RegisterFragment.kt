@@ -144,8 +144,8 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                     }
                 }
                 is Resource.Failure -> {
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
-                    showSnackBarAlert(resource.message)
                 }
             }
         })
@@ -173,7 +173,7 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                     }
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }

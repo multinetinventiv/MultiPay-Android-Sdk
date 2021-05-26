@@ -41,7 +41,7 @@ internal class WalletRepository(private val apiService: ApiService) {
             }
 
             override fun onError(error: ApiError) {
-                addWalletResult.postValue(Event(Resource.Failure(error.message)))
+                addWalletResult.postValue(Event(Resource.Failure(error)))
             }
         })
 
@@ -65,7 +65,7 @@ internal class WalletRepository(private val apiService: ApiService) {
             }
 
             override fun onError(error: ApiError) {
-                walletsResult.postValue(Event(Resource.Failure(error.message)))
+                walletsResult.postValue(Event(Resource.Failure(error)))
             }
         })
 
@@ -102,7 +102,7 @@ internal class WalletRepository(private val apiService: ApiService) {
             }
 
             override fun onError(error: ApiError) {
-                matchWalletResult.postValue(Event(Resource.Failure(error.message)))
+                matchWalletResult.postValue(Event(Resource.Failure(error)))
             }
         })
 

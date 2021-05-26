@@ -84,7 +84,7 @@ internal class AddWalletFragment : BaseFragment<FragmentAddWalletMultipaySdkBind
                     requireActivity().finish()
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }

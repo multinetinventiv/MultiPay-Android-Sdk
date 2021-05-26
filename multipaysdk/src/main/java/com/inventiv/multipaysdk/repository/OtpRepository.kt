@@ -26,7 +26,7 @@ internal class OtpRepository(private val apiService: ApiService) {
         apiService.confirmOtpRequest(confirmOtp, object : NetworkCallback<Result> {
             override fun onSuccess(response: Result?) {
                 val gson = MultiPaySdk.getComponent().gson()
-                val confirmOtpResponse = gson.fromJson<ConfirmOtpResponse>(
+                val confirmOtpResponse = gson.fromJson(
                     response?.result,
                     ConfirmOtpResponse::class.java
                 )
@@ -35,9 +35,10 @@ internal class OtpRepository(private val apiService: ApiService) {
             }
 
             override fun onError(error: ApiError) {
-                confirmOtpResult.postValue(Event(Resource.Failure(error.message)))
+                confirmOtpResult.postValue(Event(Resource.Failure(error)))
             }
         })
+
         return confirmOtpResult
     }
 }

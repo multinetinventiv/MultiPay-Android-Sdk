@@ -43,6 +43,7 @@
         android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
         android:gravity="center"
         android:padding="@dimen/margin_normal_multipay_sdk"
+        tools:text="179 saniye kaldı"
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,7 @@
         android:text="@string/otp_resend_multipay_sdk"
         android:textAllCaps="false"
         android:visibility="gone"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +67,7 @@
 
     <include
         android:id="@+id/otp_progress_multipay_sdk"
-        layout="@layout/layout_progress_multipay_sdk" />
+        layout="@layout/layout_progress_multipay_sdk"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
