@@ -54,7 +54,7 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
                 }
 
                 override fun onError(error: ApiError) {
-                    loginResult.postValue(Event(Resource.Failure(error.message)))
+                    loginResult.postValue(Event(Resource.Failure(error)))
                 }
             })
 
@@ -72,7 +72,7 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
                 type = ValidationErrorType.EMAIL_GSM
             }
             val message: String = Validator.getValidationError(type)
-            loginResult.postValue(Event(Resource.Failure(message)))
+            loginResult.postValue(Event(Resource.Failure(ApiError.generalInstance(message))))
         }
 
         return loginResult
@@ -93,7 +93,7 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
             }
 
             override fun onError(error: ApiError) {
-                registerResult.postValue(Event(Resource.Failure(error.message)))
+                registerResult.postValue(Event(Resource.Failure(error)))
             }
         })
 
@@ -115,7 +115,7 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
             }
 
             override fun onError(error: ApiError) {
-                agreementsResult.postValue(Event(Resource.Failure(error.message)))
+                agreementsResult.postValue(Event(Resource.Failure(error)))
             }
         })
 

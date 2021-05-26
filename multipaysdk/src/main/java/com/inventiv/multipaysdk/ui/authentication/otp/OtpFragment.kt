@@ -118,6 +118,9 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
 
     private fun setupAndStartCountDownTimer() {
         val seconds = otpNavigationArgs?.remainingTime?.toLong() ?: 100L
+        if (::countDownTimer.isInitialized) {
+            countDownTimer.cancel()
+        }
         countDownTimer = object : CountDownTimer(TimeUnit.SECONDS.toMillis(seconds), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val formattedTimerText =
@@ -159,8 +162,13 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
+                    //TODO this is not true must be change after service
+                    if (resource.error.statusCode == SERVICE_GET_OTP_AGAIN) {
+                        setupAndStartCountDownTimer()
+                        requireBinding().buttonResendMultipaySdk.visibility = View.VISIBLE
+                    }
                 }
             }
         })
@@ -184,7 +192,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }
