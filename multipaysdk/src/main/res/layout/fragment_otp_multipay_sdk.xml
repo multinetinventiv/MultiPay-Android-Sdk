@@ -43,11 +43,11 @@
         android:layout_marginTop="@dimen/margin_normal_multipay_sdk"
         android:gravity="center"
         android:padding="@dimen/margin_normal_multipay_sdk"
-        tools:text="179 saniye kaldı"
         android:textAppearance="?attr/textAppearanceBody2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_pin_multipay_sdk" />
+        app:layout_constraintTop_toBottomOf="@+id/view_pin_multipay_sdk"
+        tools:text="179 saniye kaldı" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_resend_multipay_sdk"
@@ -58,12 +58,12 @@
         android:text="@string/otp_resend_multipay_sdk"
         android:textAllCaps="false"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_remaining_time_multipay_sdk"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.957"
+        tools:visibility="visible" />
 
     <include
         android:id="@+id/otp_progress_multipay_sdk"

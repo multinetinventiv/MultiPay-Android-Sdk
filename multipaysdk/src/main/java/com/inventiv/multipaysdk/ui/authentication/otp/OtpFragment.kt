@@ -164,9 +164,9 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                 is Resource.Failure -> {
                     showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
-                    //TODO this is not true must be change after service
                     if (resource.error.statusCode == SERVICE_GET_OTP_AGAIN) {
-                        setupAndStartCountDownTimer()
+                        countDownTimer.cancel()
+                        requireBinding().viewPinMultipaySdk.hideKeyboard()
                         requireBinding().buttonResendMultipaySdk.visibility = View.VISIBLE
                     }
                 }
