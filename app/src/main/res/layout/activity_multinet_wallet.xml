@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:padding="8dp">
 
     <com.google.android.material.button.MaterialButton
@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Bilgileri Sıfırla"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start_sdk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/btn_start_sdk" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_sdk"
@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="SDK'yı başlat"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start_sdk_with_user_preset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_delete_infos"
-        app:layout_constraintBottom_toTopOf="@+id/btn_start_sdk_with_user_preset" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_delete_infos" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_sdk_with_user_preset"
@@ -35,10 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Kullanıcı bilgileri ile SDK'yı başlat"
+        app:layout_constraintBottom_toTopOf="@+id/included_wallet_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_sdk"
-        app:layout_constraintBottom_toTopOf="@+id/included_wallet_item" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_sdk" />
 
     <include
         android:id="@+id/included_wallet_item"
@@ -46,24 +46,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/included_payment_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:visibility="visible" />
 
     <include
         android:id="@+id/included_payment_item"
         layout="@layout/view_payment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:visibility="visible"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/included_wallet_item" />
+        app:layout_constraintTop_toBottomOf="@+id/included_wallet_item"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

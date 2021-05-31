@@ -53,10 +53,10 @@
         android:layout_marginBottom="@dimen/margin_normal_multipay_sdk"
         android:text="@string/wallet_match_multipay_sdk"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
     <include
         android:id="@+id/text_wallet_list_empty_multipay_sdk"
