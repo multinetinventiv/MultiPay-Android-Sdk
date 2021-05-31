@@ -112,6 +112,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         setupAndStartCountDownTimer()
         requireBinding().buttonResendMultipaySdk.setOnClickListener {
             viewModel.login(emailOrGsm!!)
+            requireBinding().viewPinMultipaySdk.setText("")
             requireBinding().buttonResendMultipaySdk.visibility = View.GONE
         }
     }
