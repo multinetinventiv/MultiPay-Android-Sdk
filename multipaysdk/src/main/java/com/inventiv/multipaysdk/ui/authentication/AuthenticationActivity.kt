@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseContainerActivity
 import com.inventiv.multipaysdk.data.model.type.AuthenticationType
-import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.ui.authentication.login.LoginFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
-import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
 import com.inventiv.multipaysdk.ui.authentication.register.RegisterFragment
-import com.inventiv.multipaysdk.util.*
+import com.inventiv.multipaysdk.util.EXTRA_AUTHENTICATION_TYPE
 
 internal class AuthenticationActivity : BaseContainerActivity() {
 
@@ -22,6 +20,7 @@ internal class AuthenticationActivity : BaseContainerActivity() {
             }
         }
 
+        /*
         fun startOtp(
             context: Context,
             emailOrGsm: String,
@@ -35,6 +34,7 @@ internal class AuthenticationActivity : BaseContainerActivity() {
                 putParcelableExtra(EXTRA_OTP_DIRECTION_FROM, otpDirectionFrom)
             }
         }
+         */
     }
 
     override fun fragment(): Fragment {
@@ -45,6 +45,7 @@ internal class AuthenticationActivity : BaseContainerActivity() {
             AuthenticationType.LOGIN -> {
                 LoginFragment.newInstance()
             }
+            /*
             AuthenticationType.OTP -> {
                 val emailOrGsm = intent.getStringExtra(EXTRA_EMAIL_OR_GSM)
                 val otpNavigationArgs: OtpNavigationArgs? =
@@ -56,6 +57,10 @@ internal class AuthenticationActivity : BaseContainerActivity() {
                     otpNavigationArgs!!,
                     otpDirectionFrom!!
                 )
+            }
+             */
+            else -> {
+                return Fragment()
             }
         }
     }

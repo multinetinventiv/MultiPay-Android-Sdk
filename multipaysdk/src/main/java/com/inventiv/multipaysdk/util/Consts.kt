@@ -14,6 +14,7 @@ internal const val EXTRA_WALLET_OPEN_ADD_CARD = "extra_wallet_open_add_card"
 
 internal const val ARG_OTP_NAVIGATION = "arg_otp_navigation"
 internal const val ARG_OTP_DIRECTION_FROM = "arg_otp_direction_from"
+internal const val ARG_OTP_REGISTER_MODEL = "arg_otp_register_model"
 internal const val ARG_EMAIL_OR_GSM = "arg_email_or_gsm"
 internal const val ARG_WEB_TITLE = "arg_web_title"
 internal const val ARG_WEB_URL = "arg_web_url"
