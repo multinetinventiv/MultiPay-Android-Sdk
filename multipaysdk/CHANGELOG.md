@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 
-## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...HEAD)
+## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.5...HEAD)
+
+## [1.0.5](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...1.0.5) - 2021-05-25
 
 ### Added
 - Resend confirmation code after failing three times [#119576](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/119576)
