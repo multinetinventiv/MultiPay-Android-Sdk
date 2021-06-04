@@ -9,6 +9,7 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 ## [Unreleased](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.4...HEAD)
 
 ### Added
+- Resend confirmation code after failing three times [#119576](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/119576)
 - Register Screen design [#118267](http://192.168.100.209:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/118267)
 
 ### Changed
@@ -17,7 +18,7 @@ Tags: [Added, Changed, Deprecated, Removed, Fixed, Security]
 ## [1.0.4](https://github.com/multinetinventiv/MultiPay-Android-Sdk/compare/v1.0.3...1.0.4) - 2021-03-26
 
 ### Added
-- Endcrypt endpoint urls [#111527](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/111527)
+- Encrypt endpoint urls [#111527](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/111527)
 
 ### Changed
 - Add suffix to string resources [#109848](http://isttfs02:8080/tfs/MultinetCollection/Prj%20-%20%C4%B0sfanbul/_workitems/edit/109848)
