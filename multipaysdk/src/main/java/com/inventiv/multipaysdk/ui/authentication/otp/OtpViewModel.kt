@@ -18,7 +18,7 @@ internal class OtpViewModel(
 ) : ViewModel() {
 
     private val _confirmOtp = MutableLiveData<Event<ConfirmOtp>>()
-    private val _login = MutableLiveData<Pair<String, String>>()
+    private val _login = MutableLiveData<String>()
 
     val confirmOtpResult: LiveData<Event<Resource<ConfirmOtpResponse>>> =
         Transformations
@@ -29,14 +29,14 @@ internal class OtpViewModel(
     val loginResult: LiveData<Event<Resource<LoginResponse>>> =
         Transformations
             .switchMap(_login) {
-                authenticationRepository.login(it.first, it.second)
+                authenticationRepository.login(it)
             }
 
     fun confirmOtp(verificationCode: String?, otpCode: String) {
         _confirmOtp.value = Event(ConfirmOtp(verificationCode, otpCode))
     }
 
-    fun login(emailOrGsm: String, password: String) {
-        _login.value = Pair(emailOrGsm, password)
+    fun login(emailOrGsm: String) {
+        _login.value = emailOrGsm
     }
 }

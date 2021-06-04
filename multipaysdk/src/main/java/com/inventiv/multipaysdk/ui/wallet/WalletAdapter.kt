@@ -54,7 +54,8 @@ internal class WalletAdapter(private val clickListener: WalletListener) :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemWalletSingleSelectMultipaySdkBinding.inflate(layoutInflater, parent, false)
+                val binding =
+                    ItemWalletSingleSelectMultipaySdkBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(binding)
             }

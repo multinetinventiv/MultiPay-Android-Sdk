@@ -28,8 +28,8 @@
             android:layout_marginBottom="@dimen/margin_micro_multipay_sdk"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textStyle="bold"
-            android:text="SON ÖDEME İŞLEMİ" />
+            android:text="SON ÖDEME İŞLEMİ"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_payment_transfer_reference_number"
@@ -66,11 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="10sp"
         android:text="Cancel"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_payment_reversal"
-        app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
+        app:layout_constraintEnd_toStartOf="@+id/button_payment_reversal" />
 
     <Button
         android:id="@+id/button_payment_reversal"
@@ -78,19 +77,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="10sp"
         android:text="Reversal"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_payment_refund"
-        app:layout_constraintTop_toBottomOf="@+id/layout_wallet_description" />
+        app:layout_constraintEnd_toStartOf="@+id/button_payment_refund" />
 
     <Button
         android:id="@+id/button_payment_refund"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="10sp"
         android:text="Refund"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_payment_description" />

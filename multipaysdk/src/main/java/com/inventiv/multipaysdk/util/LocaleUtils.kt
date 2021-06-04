@@ -30,7 +30,7 @@ internal fun updateResourcesLocale(
 internal fun updateResourcesLocaleLegacy(
     context: Context,
     locale: Locale
-): Context? {
+): Context {
     val resources = context.resources
     val configuration: Configuration = resources.configuration
     configuration.locale = locale

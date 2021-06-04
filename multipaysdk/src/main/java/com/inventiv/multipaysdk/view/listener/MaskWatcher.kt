@@ -7,12 +7,11 @@ import android.text.TextWatcher
 import android.widget.EditText
 import java.util.*
 
-internal class MaskWatcher(editText: EditText, mask: String) : TextWatcher {
+internal class MaskWatcher(private val editText: EditText, private val mask: String) : TextWatcher {
+
     private var isSpecialCharsReplaced = false
     private var isRunning = false
     private var isDeleting = false
-    private val mask: String
-    private val editText: EditText
     private val defaultFilter: Array<InputFilter>
     private val maskFilter: Array<InputFilter>
 
@@ -21,9 +20,6 @@ internal class MaskWatcher(editText: EditText, mask: String) : TextWatcher {
     }
 
     init {
-        val res = editText.context.resources
-        this.mask = mask
-        this.editText = editText
         val defaultLength = 200
         defaultFilter = arrayOf(LengthFilter(defaultLength))
         maskFilter = arrayOf(LengthFilter(mask.length))
@@ -67,17 +63,23 @@ internal class MaskWatcher(editText: EditText, mask: String) : TextWatcher {
         } else {
             isSpecialCharsReplaced = false
             editText.filters = maskFilter
-            val editableLength = editable.length
+            val editableLength = editable.length // => 0(5
             if (editableLength < mask.length && editableLength != 0) {
                 if (mask[editableLength - 1] != MASK_CHAR) {
-                    val unmaskedChars =
-                        getSequentialUnmaskedChars(editableLength - 1)
-                    val lastUnMaskedChars = unmaskedChars[unmaskedChars.length - 1]
+                    val unmaskedChars = getSequentialUnmaskedChars(editableLength - 1) // 0(5
+                    val lastUnMaskedChars = unmaskedChars[unmaskedChars.length - 1] // 5
                     if (lastUnMaskedChars == editable[editableLength - 1]) {
                         val length = unmaskedChars.length
-                        val unmaskedCharWithoutLast =
-                            unmaskedChars.substring(0, length - 1)
+                        val unmaskedCharWithoutLast = unmaskedChars.substring(0, length - 1) // 0(
                         editable.insert(editableLength - 1, unmaskedCharWithoutLast)
+                    } else if (editable.toString() == "0") {
+                        val length = unmaskedChars.length // 0(
+                        val unmaskedCharWithoutLast = unmaskedChars.substring(0, length - 1)
+                        editable.replace(
+                            editableLength - 1,
+                            editableLength,
+                            unmaskedCharWithoutLast
+                        )
                     } else {
                         editable.insert(editableLength - 1, unmaskedChars)
                     }

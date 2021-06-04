@@ -13,16 +13,16 @@ internal class LoginViewModel(
     private val authenticationRepository: AuthenticationRepository
 ) : ViewModel() {
 
-    private val _login = MutableLiveData<Pair<String, String>>()
+    private val _login = MutableLiveData<String>()
 
     val loginResult: LiveData<Event<Resource<LoginResponse>>> =
         Transformations
             .switchMap(_login) {
-                authenticationRepository.login(it.first, it.second)
+                authenticationRepository.login(it)
             }
 
-    fun login(emailOrGsm: String, password: String) {
-        _login.value = Pair(emailOrGsm, password)
+    fun login(emailOrGsm: String) {
+        _login.value = emailOrGsm
     }
 
 }

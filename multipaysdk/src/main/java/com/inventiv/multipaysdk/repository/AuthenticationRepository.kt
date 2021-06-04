@@ -10,7 +10,10 @@ import com.inventiv.multipaysdk.data.model.Event
 import com.inventiv.multipaysdk.data.model.Resource
 import com.inventiv.multipaysdk.data.model.request.LoginEmail
 import com.inventiv.multipaysdk.data.model.request.LoginGsm
+import com.inventiv.multipaysdk.data.model.request.RegisterRequest
+import com.inventiv.multipaysdk.data.model.response.AgreementsResponse
 import com.inventiv.multipaysdk.data.model.response.LoginResponse
+import com.inventiv.multipaysdk.data.model.response.RegisterResponse
 import com.inventiv.multipaysdk.data.model.response.Result
 import com.inventiv.multipaysdk.data.model.type.ValidationErrorType
 import com.inventiv.multipaysdk.util.Formatter
@@ -20,27 +23,30 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
 
     private val loginResult = MediatorLiveData<Event<Resource<LoginResponse>>>()
 
-    fun login(emailOrGsm: String, password: String): LiveData<Event<Resource<LoginResponse>>> {
+    private val registerResult = MediatorLiveData<Event<Resource<RegisterResponse>>>()
+
+    private val agreementsResult = MediatorLiveData<Event<Resource<AgreementsResponse>>>()
+
+    fun login(emailOrGsm: String): LiveData<Event<Resource<LoginResponse>>> {
 
         val validEmail: Boolean = Validator.validEmail(emailOrGsm)
         val validGsm: Boolean = Validator.validGsmWithMask(emailOrGsm)
-        val validPassword: Boolean = Validator.validPassword(password)
         val loginInputType: Int = Validator.getInputType(emailOrGsm)
 
         val loginRequest = if (loginInputType == Validator.INPUT_TYPE_GSM) {
-            LoginGsm(Formatter.servicePhoneNumber(emailOrGsm), password)
+            LoginGsm(Formatter.servicePhoneNumber(emailOrGsm))
         } else {
-            LoginEmail(emailOrGsm, password)
+            LoginEmail(emailOrGsm)
         }
 
-        if ((validEmail || validGsm) && validPassword) {
+        if ((validEmail || validGsm)) {
 
             loginResult.postValue(Event(Resource.Loading()))
 
             apiService.loginRequest(loginRequest, object : NetworkCallback<Result> {
                 override fun onSuccess(response: Result?) {
                     val gson = MultiPaySdk.getComponent().gson()
-                    val otpResponse = gson.fromJson<LoginResponse>(
+                    val otpResponse = gson.fromJson(
                         response?.result,
                         LoginResponse::class.java
                     )
@@ -56,9 +62,6 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
 
             var type: ValidationErrorType = ValidationErrorType.ALL
 
-            if (!validPassword) {
-                type = ValidationErrorType.PASSWORD
-            }
             if (loginInputType == Validator.INPUT_TYPE_GSM && !validGsm) {
                 type = ValidationErrorType.GSM
             }
@@ -73,5 +76,49 @@ internal class AuthenticationRepository(private val apiService: ApiService) {
         }
 
         return loginResult
+    }
+
+    fun register(registerRequest: RegisterRequest): LiveData<Event<Resource<RegisterResponse>>> {
+
+        registerResult.postValue(Event(Resource.Loading()))
+
+        apiService.registerRequest(registerRequest, object : NetworkCallback<Result> {
+            override fun onSuccess(response: Result?) {
+                val gson = MultiPaySdk.getComponent().gson()
+                val otpResponse = gson.fromJson(
+                    response?.result,
+                    RegisterResponse::class.java
+                )
+                registerResult.postValue(Event(Resource.Success(otpResponse)))
+            }
+
+            override fun onError(error: ApiError) {
+                registerResult.postValue(Event(Resource.Failure(error.message)))
+            }
+        })
+
+        return registerResult
+    }
+
+    fun agreements(): LiveData<Event<Resource<AgreementsResponse>>> {
+
+        agreementsResult.postValue(Event(Resource.Loading()))
+
+        apiService.agreementsRequest(object : NetworkCallback<Result> {
+            override fun onSuccess(response: Result?) {
+                val gson = MultiPaySdk.getComponent().gson()
+                val otpResponse = gson.fromJson(
+                    response?.result,
+                    AgreementsResponse::class.java
+                )
+                agreementsResult.postValue(Event(Resource.Success(otpResponse)))
+            }
+
+            override fun onError(error: ApiError) {
+                agreementsResult.postValue(Event(Resource.Failure(error.message)))
+            }
+        })
+
+        return agreementsResult
     }
 }

@@ -10,6 +10,7 @@ import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.ui.authentication.login.LoginFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
+import com.inventiv.multipaysdk.ui.authentication.register.RegisterFragment
 import com.inventiv.multipaysdk.util.*
 
 internal class AuthenticationActivity : BaseContainerActivity() {
@@ -24,14 +25,12 @@ internal class AuthenticationActivity : BaseContainerActivity() {
         fun startOtp(
             context: Context,
             emailOrGsm: String,
-            password: String,
             otpNavigationArgs: OtpNavigationArgs,
             otpDirectionFrom: OtpDirectionFrom
         ): Intent {
             return Intent(context, AuthenticationActivity::class.java).apply {
                 putExtra(EXTRA_AUTHENTICATION_TYPE, AuthenticationType.OTP)
                 putExtra(EXTRA_EMAIL_OR_GSM, emailOrGsm)
-                putExtra(EXTRA_PASSWORD, password)
                 putExtra(EXTRA_OTP_NAVIGATION, otpNavigationArgs)
                 putParcelableExtra(EXTRA_OTP_DIRECTION_FROM, otpDirectionFrom)
             }
@@ -48,14 +47,12 @@ internal class AuthenticationActivity : BaseContainerActivity() {
             }
             AuthenticationType.OTP -> {
                 val emailOrGsm = intent.getStringExtra(EXTRA_EMAIL_OR_GSM)
-                val password = intent.getStringExtra(EXTRA_PASSWORD)
                 val otpNavigationArgs: OtpNavigationArgs? =
                     intent.getParcelableExtra(EXTRA_OTP_NAVIGATION)
                 val otpDirectionFrom: OtpDirectionFrom? =
                     intent.getParcelableExtra(EXTRA_OTP_DIRECTION_FROM)
                 OtpFragment.newInstance(
                     emailOrGsm!!,
-                    password!!,
                     otpNavigationArgs!!,
                     otpDirectionFrom!!
                 )
@@ -70,6 +67,9 @@ internal class AuthenticationActivity : BaseContainerActivity() {
                 finish()
             }
             is OtpFragment -> {
+                super.onBackPressed()
+            }
+            is RegisterFragment -> {
                 super.onBackPressed()
             }
         }

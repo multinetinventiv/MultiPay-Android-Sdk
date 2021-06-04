@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -39,31 +40,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_email_or_gsm_multipay_sdk"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:padding="@dimen/margin_normal_multipay_sdk"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_password_multipay_sdk"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small_multipay_sdk"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_email_or_gsm_multipay_sdk">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_edit_password_multipay_sdk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/login_password_multipay_sdk"
                     android:imeOptions="actionDone"
-                    android:inputType="textPassword"
+                    android:inputType="textEmailAddress"
                     android:padding="@dimen/margin_normal_multipay_sdk"
                     android:singleLine="true" />
 
@@ -77,20 +55,18 @@
                 android:text="@string/login_button_multipay_sdk"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_password_multipay_sdk" />
+                app:layout_constraintTop_toBottomOf="@+id/text_input_email_or_gsm_multipay_sdk" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/text_forgot_password_multipay_sdk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small_multipay_sdk"
-                android:gravity="center"
-                android:text="@string/login_forget_password_text_multipay_sdk"
-                android:textAppearance="?attr/textAppearanceBody1"
-                android:visibility="gone"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_register_multipay_sdk"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height_multipay_sdk"
+                android:layout_marginTop="@dimen/margin_micro_multipay_sdk"
+                android:text="@string/login_register_multipay_sdk"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_login_multipay_sdk" />
+                app:layout_constraintTop_toBottomOf="@+id/button_login_multipay_sdk" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_activation_code_multipay_sdk"
@@ -99,10 +75,11 @@
                 android:layout_height="@dimen/button_height_multipay_sdk"
                 android:text="@string/login_activation_text_multipay_sdk"
                 android:visibility="gone"
+                tools:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_forgot_password_multipay_sdk"
+                app:layout_constraintTop_toBottomOf="@+id/button_register_multipay_sdk"
                 app:layout_constraintVertical_bias="0.957" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -111,6 +88,7 @@
 
     <include
         android:id="@+id/login_progress_multipay_sdk"
-        layout="@layout/layout_progress_multipay_sdk" />
+        layout="@layout/layout_progress_multipay_sdk"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

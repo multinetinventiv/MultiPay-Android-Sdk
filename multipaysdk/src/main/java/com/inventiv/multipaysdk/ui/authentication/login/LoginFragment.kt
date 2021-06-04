@@ -15,6 +15,7 @@ import com.inventiv.multipaysdk.databinding.FragmentLoginMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
+import com.inventiv.multipaysdk.ui.authentication.register.RegisterFragment
 import com.inventiv.multipaysdk.util.hideKeyboard
 import com.inventiv.multipaysdk.util.replaceFragment
 import com.inventiv.multipaysdk.util.showSnackBarAlert
@@ -26,7 +27,6 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
 
     private lateinit var maskWatcher: MaskWatcher
     private lateinit var emailOrGsm: String
-    private lateinit var password: String
 
     private lateinit var viewModel: LoginViewModel
 
@@ -68,6 +68,9 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
         requireBinding().buttonLoginMultipaySdk.setOnClickListener {
             loginClicked()
         }
+        requireBinding().buttonRegisterMultipaySdk.setOnClickListener {
+            registerClicked()
+        }
     }
 
     override fun onDestroyView() {
@@ -85,7 +88,6 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
                     val loginResponse = resource.data
                     val otpFragment = OtpFragment.newInstance(
                         emailOrGsm,
-                        password,
                         OtpNavigationArgs(
                             loginResponse?.verificationCode,
                             loginResponse?.gsm,
@@ -110,9 +112,13 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
 
     private fun loginClicked() {
         requireBinding().textInputEditEmailOrGsmMultipaySdk.hideKeyboard()
-        requireBinding().textInputEditPasswordMultipaySdk.hideKeyboard()
         emailOrGsm = requireBinding().textInputEditEmailOrGsmMultipaySdk.text.toString().trim()
-        password = requireBinding().textInputEditPasswordMultipaySdk.text.toString().trim()
-        viewModel.login(emailOrGsm, password)
+        viewModel.login(emailOrGsm)
     }
+
+    private fun registerClicked() {
+        requireBinding().textInputEditEmailOrGsmMultipaySdk.hideKeyboard()
+        replaceFragment(RegisterFragment.newInstance(), R.id.layout_container_multipay_sdk)
+    }
+
 }

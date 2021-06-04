@@ -2,6 +2,7 @@ package com.inventiv.multipaysdk
 
 import android.content.Context
 import com.inventiv.multipaysdk.data.model.request.TransactionDetail
+import com.inventiv.multipaysdk.data.model.response.UserPreset
 import com.inventiv.multipaysdk.data.model.singleton.MultiPaySdkException
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
 import com.inventiv.multipaysdk.data.model.type.Language
@@ -52,10 +53,12 @@ object MultiPaySdk {
     @JvmStatic
     fun start(
         context: Context,
-        walletToken: String?
+        walletToken: String?,
+        userPreset: UserPreset? = null
     ) {
         context.startActivity(SplashActivity.newIntent(context))
         MultiPayUser.walletToken = walletToken
+        MultiPayUser.userPreset = userPreset
     }
 
     @JvmStatic
