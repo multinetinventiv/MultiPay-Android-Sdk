@@ -19,22 +19,6 @@ internal class AuthenticationActivity : BaseContainerActivity() {
                 putExtra(EXTRA_AUTHENTICATION_TYPE, AuthenticationType.LOGIN)
             }
         }
-
-        /*
-        fun startOtp(
-            context: Context,
-            emailOrGsm: String,
-            otpNavigationArgs: OtpNavigationArgs,
-            otpDirectionFrom: OtpDirectionFrom
-        ): Intent {
-            return Intent(context, AuthenticationActivity::class.java).apply {
-                putExtra(EXTRA_AUTHENTICATION_TYPE, AuthenticationType.OTP)
-                putExtra(EXTRA_EMAIL_OR_GSM, emailOrGsm)
-                putExtra(EXTRA_OTP_NAVIGATION, otpNavigationArgs)
-                putParcelableExtra(EXTRA_OTP_DIRECTION_FROM, otpDirectionFrom)
-            }
-        }
-         */
     }
 
     override fun fragment(): Fragment {
@@ -45,20 +29,6 @@ internal class AuthenticationActivity : BaseContainerActivity() {
             AuthenticationType.LOGIN -> {
                 LoginFragment.newInstance()
             }
-            /*
-            AuthenticationType.OTP -> {
-                val emailOrGsm = intent.getStringExtra(EXTRA_EMAIL_OR_GSM)
-                val otpNavigationArgs: OtpNavigationArgs? =
-                    intent.getParcelableExtra(EXTRA_OTP_NAVIGATION)
-                val otpDirectionFrom: OtpDirectionFrom? =
-                    intent.getParcelableExtra(EXTRA_OTP_DIRECTION_FROM)
-                OtpFragment.newInstance(
-                    emailOrGsm!!,
-                    otpNavigationArgs!!,
-                    otpDirectionFrom!!
-                )
-            }
-             */
             else -> {
                 return Fragment()
             }

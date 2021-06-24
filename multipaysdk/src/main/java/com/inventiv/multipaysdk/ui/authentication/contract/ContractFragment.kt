@@ -3,7 +3,6 @@ package com.inventiv.multipaysdk.ui.authentication.contract
 import android.app.Activity
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,8 +90,8 @@ internal class ContractFragment : BaseFragment<FragmentContractMultipaySdkBindin
         try {
             requireBinding().progressContractMultipaySdk.layoutProgressMultipaySdk.visibility =
                 visibility
-        }catch (e : Exception){
-            Log.e("ContactFragment", e.toString())
+        } catch (e: Exception) {
+
         }
     }
 }
