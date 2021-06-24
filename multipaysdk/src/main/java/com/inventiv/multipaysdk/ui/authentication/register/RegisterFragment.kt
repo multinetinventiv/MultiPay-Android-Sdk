@@ -16,6 +16,7 @@ import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
+import com.inventiv.multipaysdk.data.model.request.RegisterRequest
 import com.inventiv.multipaysdk.data.model.singleton.MultiPayUser
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.databinding.FragmentRegisterMultipaySdkBinding
@@ -41,6 +42,8 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
 
     private lateinit var viewModel: RegisterViewModel
     private lateinit var maskWatcher: PhoneNumberTextWatcher
+
+    private var registerRequest: RegisterRequest? = null
 
     override fun onResume() {
         super.onResume()
@@ -93,7 +96,9 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                 val gsm = textInputEditGsmMultipaySdk.text.toString().trim()
                 val gsmForService = Formatter.servicePhoneNumber(gsm)
                 val isNotificationAccepted = checkboxNotificationMultipaySdk.isChecked
-                viewModel.register(name, surname, email, gsmForService, isNotificationAccepted)
+                registerRequest =
+                    RegisterRequest(name, surname, email, gsmForService, isNotificationAccepted)
+                viewModel.register(registerRequest!!)
             }
 
         }
@@ -144,8 +149,8 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                     }
                 }
                 is Resource.Failure -> {
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
-                    showSnackBarAlert(resource.message)
                 }
             }
         })
@@ -160,20 +165,21 @@ internal class RegisterFragment : BaseFragment<FragmentRegisterMultipaySdkBindin
                 is Resource.Success -> {
                     resource.data?.apply {
                         val otpFragment = OtpFragment.newInstance(
-                            gsm!!,
-                            OtpNavigationArgs(
+                            emailOrGsm = gsm!!,
+                            otpNavigationArgs = OtpNavigationArgs(
                                 verificationCode,
                                 gsm,
                                 remainingTime
                             ),
-                            OtpDirectionFrom.REGISTER
+                            registerRequest = registerRequest!!,
+                            otpDirectionFrom = OtpDirectionFrom.REGISTER
                         )
                         replaceFragment(otpFragment, R.id.layout_container_multipay_sdk)
                         setLayoutProgressVisibility(View.GONE)
                     }
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }

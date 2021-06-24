@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseContainerActivity
 import com.inventiv.multipaysdk.data.model.type.AuthenticationType
-import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.ui.authentication.login.LoginFragment
 import com.inventiv.multipaysdk.ui.authentication.otp.OtpFragment
-import com.inventiv.multipaysdk.ui.authentication.otp.OtpNavigationArgs
 import com.inventiv.multipaysdk.ui.authentication.register.RegisterFragment
-import com.inventiv.multipaysdk.util.*
+import com.inventiv.multipaysdk.util.EXTRA_AUTHENTICATION_TYPE
 
 internal class AuthenticationActivity : BaseContainerActivity() {
 
@@ -19,20 +17,6 @@ internal class AuthenticationActivity : BaseContainerActivity() {
         fun startLogin(context: Context): Intent {
             return Intent(context, AuthenticationActivity::class.java).apply {
                 putExtra(EXTRA_AUTHENTICATION_TYPE, AuthenticationType.LOGIN)
-            }
-        }
-
-        fun startOtp(
-            context: Context,
-            emailOrGsm: String,
-            otpNavigationArgs: OtpNavigationArgs,
-            otpDirectionFrom: OtpDirectionFrom
-        ): Intent {
-            return Intent(context, AuthenticationActivity::class.java).apply {
-                putExtra(EXTRA_AUTHENTICATION_TYPE, AuthenticationType.OTP)
-                putExtra(EXTRA_EMAIL_OR_GSM, emailOrGsm)
-                putExtra(EXTRA_OTP_NAVIGATION, otpNavigationArgs)
-                putParcelableExtra(EXTRA_OTP_DIRECTION_FROM, otpDirectionFrom)
             }
         }
     }
@@ -45,17 +29,8 @@ internal class AuthenticationActivity : BaseContainerActivity() {
             AuthenticationType.LOGIN -> {
                 LoginFragment.newInstance()
             }
-            AuthenticationType.OTP -> {
-                val emailOrGsm = intent.getStringExtra(EXTRA_EMAIL_OR_GSM)
-                val otpNavigationArgs: OtpNavigationArgs? =
-                    intent.getParcelableExtra(EXTRA_OTP_NAVIGATION)
-                val otpDirectionFrom: OtpDirectionFrom? =
-                    intent.getParcelableExtra(EXTRA_OTP_DIRECTION_FROM)
-                OtpFragment.newInstance(
-                    emailOrGsm!!,
-                    otpNavigationArgs!!,
-                    otpDirectionFrom!!
-                )
+            else -> {
+                return Fragment()
             }
         }
     }

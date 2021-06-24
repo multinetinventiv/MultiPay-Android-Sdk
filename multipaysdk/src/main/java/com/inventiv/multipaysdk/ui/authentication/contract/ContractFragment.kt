@@ -63,8 +63,6 @@ internal class ContractFragment : BaseFragment<FragmentContractMultipaySdkBindin
             }
 
         webUrl?.let {
-            requireBinding().webViewMultipaySdk.webViewClient = WebViewClient()
-            requireBinding().webViewMultipaySdk.loadUrl(it)
             requireBinding().webViewMultipaySdk.webViewClient = object : WebViewClient() {
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                     super.onPageStarted(view, url, favicon)
@@ -76,6 +74,7 @@ internal class ContractFragment : BaseFragment<FragmentContractMultipaySdkBindin
                     setLayoutProgressVisibility(View.GONE)
                 }
             }
+            requireBinding().webViewMultipaySdk.loadUrl(it)
         }
 
         requireBinding().materialButtonAgreeMultipaySdk.setOnClickListener {
@@ -88,7 +87,11 @@ internal class ContractFragment : BaseFragment<FragmentContractMultipaySdkBindin
     }
 
     private fun setLayoutProgressVisibility(visibility: Int) {
-        requireBinding().progressContractMultipaySdk.layoutProgressMultipaySdk.visibility =
-            visibility
+        try {
+            requireBinding().progressContractMultipaySdk.layoutProgressMultipaySdk.visibility =
+                visibility
+        } catch (e: Exception) {
+
+        }
     }
 }

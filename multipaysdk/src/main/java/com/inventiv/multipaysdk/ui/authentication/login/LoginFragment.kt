@@ -87,19 +87,19 @@ internal class LoginFragment : BaseFragment<FragmentLoginMultipaySdkBinding>() {
                 is Resource.Success -> {
                     val loginResponse = resource.data
                     val otpFragment = OtpFragment.newInstance(
-                        emailOrGsm,
-                        OtpNavigationArgs(
+                        emailOrGsm = emailOrGsm,
+                        otpNavigationArgs = OtpNavigationArgs(
                             loginResponse?.verificationCode,
                             loginResponse?.gsm,
                             loginResponse?.remainingTime
                         ),
-                        OtpDirectionFrom.LOGIN
+                        otpDirectionFrom = OtpDirectionFrom.LOGIN
                     )
                     replaceFragment(otpFragment, R.id.layout_container_multipay_sdk)
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }

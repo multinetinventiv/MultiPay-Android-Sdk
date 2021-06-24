@@ -32,14 +32,8 @@ internal class RegisterViewModel(
                 authenticationRepository.agreements()
             }
 
-    fun register(
-        name: String,
-        surname: String,
-        email: String,
-        gsm: String,
-        isNotificationAccepted: Boolean
-    ) {
-        _register.value = RegisterRequest(name, surname, email, gsm, isNotificationAccepted)
+    fun register(registerRequest: RegisterRequest) {
+        _register.value = registerRequest
     }
 
     fun agreements() {

@@ -14,6 +14,7 @@ import com.inventiv.multipaysdk.R
 import com.inventiv.multipaysdk.base.BaseFragment
 import com.inventiv.multipaysdk.data.model.EventObserver
 import com.inventiv.multipaysdk.data.model.Resource
+import com.inventiv.multipaysdk.data.model.request.RegisterRequest
 import com.inventiv.multipaysdk.data.model.type.OtpDirectionFrom
 import com.inventiv.multipaysdk.databinding.FragmentOtpMultipaySdkBinding
 import com.inventiv.multipaysdk.repository.AuthenticationRepository
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit
 internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
 
     private var emailOrGsm: String? = null
+    private var registerRequest: RegisterRequest? = null
     private var otpNavigationArgs: OtpNavigationArgs? = null
     private var otpDirectionFrom: OtpDirectionFrom? = null
 
@@ -39,6 +41,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         fun newInstance(
             emailOrGsm: String,
             otpNavigationArgs: OtpNavigationArgs,
+            registerRequest: RegisterRequest? = null,
             otpDirectionFrom: OtpDirectionFrom
         ): OtpFragment =
             OtpFragment().apply {
@@ -46,6 +49,7 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                     putString(ARG_EMAIL_OR_GSM, emailOrGsm)
                     putParcelable(ARG_OTP_NAVIGATION, otpNavigationArgs)
                     putParcelable(ARG_OTP_DIRECTION_FROM, otpDirectionFrom)
+                    putParcelable(ARG_OTP_REGISTER_MODEL, registerRequest)
                 }
                 arguments = args
             }
@@ -66,7 +70,6 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         showToolbar()
         toolbarBack()
         title(R.string.otp_navigation_title_multipay_sdk)
-
     }
 
     override fun createBinding(
@@ -95,9 +98,11 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         super.onViewCreated(view, savedInstanceState)
         subscribeConfirmOtp()
         subscribeResendOtp()
+        subscribeResendOtpFromRegister()
         emailOrGsm = arguments?.getString(ARG_EMAIL_OR_GSM)
         otpNavigationArgs = arguments?.getParcelable(ARG_OTP_NAVIGATION)
         otpDirectionFrom = arguments?.getParcelable(ARG_OTP_DIRECTION_FROM)
+        registerRequest = arguments?.getParcelable(ARG_OTP_REGISTER_MODEL)
         requireBinding().viewPinMultipaySdk.addTextChangedListener(simpleTextWatcher)
         toolbar().setNavigationOnClickListener {
             requireActivity().onBackPressed()
@@ -111,13 +116,24 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
         requireBinding().viewPinMultipaySdk.showKeyboard()
         setupAndStartCountDownTimer()
         requireBinding().buttonResendMultipaySdk.setOnClickListener {
-            viewModel.login(emailOrGsm!!)
+            when (otpDirectionFrom) {
+                OtpDirectionFrom.LOGIN -> {
+                    viewModel.login(emailOrGsm!!)
+                }
+                OtpDirectionFrom.REGISTER -> {
+                    viewModel.register(registerRequest!!)
+                }
+            }
+            requireBinding().viewPinMultipaySdk.setText("")
             requireBinding().buttonResendMultipaySdk.visibility = View.GONE
         }
     }
 
     private fun setupAndStartCountDownTimer() {
         val seconds = otpNavigationArgs?.remainingTime?.toLong() ?: 100L
+        if (::countDownTimer.isInitialized) {
+            countDownTimer.cancel()
+        }
         countDownTimer = object : CountDownTimer(TimeUnit.SECONDS.toMillis(seconds), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val formattedTimerText =
@@ -159,8 +175,13 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
+                    if (resource.error.statusCode == SERVICE_GET_OTP_AGAIN) {
+                        countDownTimer.cancel()
+                        requireBinding().viewPinMultipaySdk.hideKeyboard()
+                        requireBinding().buttonResendMultipaySdk.visibility = View.VISIBLE
+                    }
                 }
             }
         })
@@ -184,7 +205,32 @@ internal class OtpFragment : BaseFragment<FragmentOtpMultipaySdkBinding>() {
                     setLayoutProgressVisibility(View.GONE)
                 }
                 is Resource.Failure -> {
-                    showSnackBarAlert(resource.message)
+                    showSnackBarAlert(resource.error.message)
+                    setLayoutProgressVisibility(View.GONE)
+                }
+            }
+        })
+    }
+
+    private fun subscribeResendOtpFromRegister() {
+        viewModel.registerResult.observe(viewLifecycleOwner, EventObserver { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    setLayoutProgressVisibility(View.VISIBLE)
+                }
+                is Resource.Success -> {
+                    val registerResponse = resource.data
+                    otpNavigationArgs =
+                        OtpNavigationArgs(
+                            verificationCode = registerResponse?.verificationCode,
+                            gsmNumber = registerResponse?.gsm,
+                            remainingTime = registerResponse?.remainingTime
+                        )
+                    setupAndStartCountDownTimer()
+                    setLayoutProgressVisibility(View.GONE)
+                }
+                is Resource.Failure -> {
+                    showSnackBarAlert(resource.error.message)
                     setLayoutProgressVisibility(View.GONE)
                 }
             }
